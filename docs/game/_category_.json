@@ -1,0 +1,8 @@
+{
+  "label": "Game logic",
+  "position": 2,
+  "link": {
+    "type": "generated-index",
+    "description": "Understand the parts needed to define your game logic"
+  }
+}
