@@ -62,8 +62,9 @@ const config = {
       navbar: {
         title: 'Boardzilla docs',
         logo: {
-          alt: 'My Site Logo',
-          src: 'img/logo.svg',
+          alt: 'RAR!',
+          src: 'img/logo.png',
+          srcDark: 'img/logo-dark.png',
         },
         items: [
           {
