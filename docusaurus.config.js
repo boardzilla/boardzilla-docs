@@ -1,6 +1,8 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
 
+const path = require('path')
+
 const lightCodeTheme = require('prism-react-renderer/themes/github');
 const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
@@ -64,7 +66,13 @@ const config = {
           alt: 'My Site Logo',
           src: 'img/logo.svg',
         },
-      },
+        items: [
+          {
+            to: 'api',
+            label: 'API',
+            position: 'left',
+          },
+        ],      },
       footer: {
         style: 'dark',
         links: [
@@ -97,7 +105,23 @@ const config = {
         darkTheme: darkCodeTheme,
       },
     }),
-    plugins: [require.resolve('docusaurus-lunr-search')],
+    plugins: [
+      require.resolve('docusaurus-lunr-search'),
+      [
+        'docusaurus-plugin-typedoc-api',
+        {
+          projectRoot: path.join(__dirname, '../boardzilla-core'),
+          packages: [{
+            path: ".",
+            entry: '.',
+          }],
+          typedocOptions: {
+            // Comments are supported, like tsconfig.json
+            "plugin": ["typedoc-plugin-rename-defaults"],
+          }
+        },
+      ],
+    ],
 };
 
 module.exports = config;

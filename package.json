@@ -19,9 +19,13 @@
     "@mdx-js/react": "^1.6.22",
     "clsx": "^1.2.1",
     "docusaurus-lunr-search": "^3.2.0",
+    "docusaurus-plugin-typedoc-api": "^3.0.1",
     "prism-react-renderer": "^1.3.5",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react-dom": "^17.0.2",
+    "typedoc": "^0.25.2",
+    "typedoc-plugin-rename-defaults": "git+https://github.com/felipecrs/typedoc-plugin-rename-defaults.git#2c07e579a77699676578a35c149f29188378b4d7",
+    "typescript": "^5.2.2"
   },
   "devDependencies": {
     "@docusaurus/module-type-aliases": "2.4.3"
