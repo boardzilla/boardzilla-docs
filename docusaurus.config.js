@@ -79,12 +79,12 @@ const config = {
             title: 'Community',
             items: [
               {
-                label: 'Discord',
-                href: 'https://discord.gg/bdjpdmuZpH',
-              },
-              {
                 label: 'GitHub',
                 href: 'https://github.com/boardzilla',
+              },
+              {
+                label: 'Discord',
+                href: 'https://discord.gg/bdjpdmuZpH',
               },
             ],
           },
