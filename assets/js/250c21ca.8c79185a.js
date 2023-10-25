@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkboardzilla_docs=self.webpackChunkboardzilla_docs||[]).push([[827],{8818:a=>{a.exports=JSON.parse('{"name":"docusaurus-plugin-typedoc-api","id":"default"}')}}]);
