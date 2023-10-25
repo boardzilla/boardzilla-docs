@@ -77,6 +77,19 @@ const config = {
         style: 'dark',
         links: [
           {
+            title: 'Links',
+            items: [
+              {
+                label: 'Docs',
+                href: '/',
+              },
+              {
+                label: 'API',
+                href: '/api',
+              },
+            ],
+          },
+          {
             title: 'Community',
             items: [
               {
