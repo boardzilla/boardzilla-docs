@@ -1,0 +1,38 @@
+---
+sidebar_position: 2
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Installation
+
+1. Create an empty game template, substituing `[game-name]` with the name of your game.
+
+<Tabs>
+<TabItem value="npm" label="npm">
+
+```console
+npx @boardzilla/create-game [game-name]
+```
+
+</TabItem>
+<TabItem value="yarn" label="yarn">
+
+```console
+npx @boardzilla/create-game [game-name] -i yarn
+```
+
+</TabItem>
+<TabItem value="pnpm" label="pnpm">
+
+```console
+npx @boardzilla/create-game [game-name] -i pnpm
+```
+
+</TabItem>
+</Tabs>
+
+2. Change into your newly created directory using `cd [game-name]`.
+3. Run `npm run dev` to start development.
+4. Go to [http://localhost:8080](http://localhost:8080) to start developing.
