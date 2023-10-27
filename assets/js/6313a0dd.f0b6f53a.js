@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkboardzilla_docs=self.webpackChunkboardzilla_docs||[]).push([[295],{6922:(a,s,c)=>{c.d(s,{Z:()=>l});var e=c(7294);const l={React:e,...e}}}]);
