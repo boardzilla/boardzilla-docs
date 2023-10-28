@@ -1399,7 +1399,7 @@
     utility-types "^3.10.0"
     webpack "^5.73.0"
 
-"@docusaurus/plugin-content-docs@2.4.3", "@docusaurus/plugin-content-docs@^2.4.3":
+"@docusaurus/plugin-content-docs@2.4.3":
   version "2.4.3"
   resolved "https://registry.yarnpkg.com/@docusaurus/plugin-content-docs/-/plugin-content-docs-2.4.3.tgz#aa224c0512351e81807adf778ca59fd9cd136973"
   integrity sha512-N7Po2LSH6UejQhzTCsvuX5NOzlC+HiXOVvofnEPj0WhMu1etpLEXE6a4aTxrtg95lQ5kf0xUIdjX9sh3d3G76A==
@@ -1617,7 +1617,7 @@
     fs-extra "^10.1.0"
     tslib "^2.4.0"
 
-"@docusaurus/types@2.4.3", "@docusaurus/types@^2.4.3":
+"@docusaurus/types@2.4.3":
   version "2.4.3"
   resolved "https://registry.yarnpkg.com/@docusaurus/types/-/types-2.4.3.tgz#4aead281ca09f721b3c0a9b926818450cfa3db31"
   integrity sha512-W6zNLGQqfrp/EoPD0bhb9n7OobP+RHpmvVzpA+Z/IuU3Q63njJM24hmT0GYboovWcDtFmnIJC9wcyx4RVPQscw==
@@ -1649,7 +1649,7 @@
     js-yaml "^4.1.0"
     tslib "^2.4.0"
 
-"@docusaurus/utils@2.4.3", "@docusaurus/utils@^2.4.3":
+"@docusaurus/utils@2.4.3":
   version "2.4.3"
   resolved "https://registry.yarnpkg.com/@docusaurus/utils/-/utils-2.4.3.tgz#52b000d989380a2125831b84e3a7327bef471e89"
   integrity sha512-fKcXsjrD86Smxv8Pt0TBFqYieZZCPh4cbf9oszUq/AMhZn3ujwpKaVYZACPX8mmjtYx0JOgNx52CREBfiGQB4A==
@@ -2261,11 +2261,6 @@
   integrity sha512-N3e3fkS86hNhtk6BEnc0rj3zcehaxx8QWhCROJkqpl5Zaoi7nAic3jH8q94jVD3zu5LGk+PUB6KAiDmimYOEQw==
   dependencies:
     "@types/yargs-parser" "*"
-
-"@vscode/codicons@^0.0.33":
-  version "0.0.33"
-  resolved "https://registry.yarnpkg.com/@vscode/codicons/-/codicons-0.0.33.tgz#a56243ab5492801fff04e53c0aab0d18a6521751"
-  integrity sha512-VdgpnD75swH9hpXjd34VBgQ2w2quK63WljodlUcOoJDPKiV+rPjHrcUc2sjLCNKxhl6oKqmsZgwOWcDAY2GKKQ==
 
 "@webassemblyjs/ast@1.11.6", "@webassemblyjs/ast@^1.11.5":
   version "1.11.6"
@@ -3663,17 +3658,10 @@ docusaurus-lunr-search@^3.2.0:
     unified "^9.0.0"
     unist-util-is "^4.0.2"
 
-docusaurus-plugin-typedoc-api@^3.0.1:
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/docusaurus-plugin-typedoc-api/-/docusaurus-plugin-typedoc-api-3.0.1.tgz#f00798426e46933eb0b09a678ce9be0c9f5b2a81"
-  integrity sha512-7VQ/J6sNtEQQ+RPk0eIog7MwDc5sdyfxNbPSdtSDg0D6J0HPB3pM8Q9S1LaJObgJs6QRBjDywBs8wY6MYjCXMA==
-  dependencies:
-    "@docusaurus/plugin-content-docs" "^2.4.3"
-    "@docusaurus/types" "^2.4.3"
-    "@docusaurus/utils" "^2.4.3"
-    "@vscode/codicons" "^0.0.33"
-    marked "^4.3.0"
-    typedoc "0.25.0"
+docusaurus-plugin-typedoc@^0.20.2:
+  version "0.20.2"
+  resolved "https://registry.yarnpkg.com/docusaurus-plugin-typedoc/-/docusaurus-plugin-typedoc-0.20.2.tgz#fc355cbe436a65b1b09f1ec8943fd9d0f06bf365"
+  integrity sha512-AOEogRFMtU2Ud5Qfatxji/I9csu70CgvtUAMFGDklGJWdFJRqY2gqVFzye8iMw8/Y6/fhb39aCG31rvjcA6QFw==
 
 dom-converter@^0.2.0:
   version "0.2.0"
@@ -4420,6 +4408,18 @@ handle-thing@^2.0.0:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/handle-thing/-/handle-thing-2.0.1.tgz#857f79ce359580c340d43081cc648970d0bb234e"
   integrity sha512-9Qn4yBxelxoh2Ow62nP+Ka/kMnOXRi8BXnRaUwezLNhqelnN49xKz4F/dPP8OYLxLxq6JDtZb2i9XznUQbNPTg==
+
+handlebars@^4.7.7:
+  version "4.7.8"
+  resolved "https://registry.yarnpkg.com/handlebars/-/handlebars-4.7.8.tgz#41c42c18b1be2365439188c77c6afae71c0cd9e9"
+  integrity sha512-vafaFqs8MZkRrSX7sFVUdo3ap/eNiLnb4IakshzvP56X5Nr1iGKAIqdX6tMlm6HcNRIkr6AxO5jFEoJzzpT8aQ==
+  dependencies:
+    minimist "^1.2.5"
+    neo-async "^2.6.2"
+    source-map "^0.6.1"
+    wordwrap "^1.0.0"
+  optionalDependencies:
+    uglify-js "^3.1.4"
 
 has-flag@^3.0.0:
   version "3.0.0"
@@ -7555,21 +7555,18 @@ typedarray-to-buffer@^3.1.5:
   dependencies:
     is-typedarray "^1.0.0"
 
+typedoc-plugin-markdown@^3.16.0:
+  version "3.16.0"
+  resolved "https://registry.yarnpkg.com/typedoc-plugin-markdown/-/typedoc-plugin-markdown-3.16.0.tgz#98da250271aafade8b6740a8116a97cd3941abcd"
+  integrity sha512-eeiC78fDNGFwemPIHiwRC+mEC7W5jwt3fceUev2gJ2nFnXpVHo8eRrpC9BLWZDee6ehnz/sPmNjizbXwpfaTBw==
+  dependencies:
+    handlebars "^4.7.7"
+
 "typedoc-plugin-rename-defaults@git+https://github.com/felipecrs/typedoc-plugin-rename-defaults.git#2c07e579a77699676578a35c149f29188378b4d7":
   version "0.6.7"
   resolved "git+https://github.com/felipecrs/typedoc-plugin-rename-defaults.git#2c07e579a77699676578a35c149f29188378b4d7"
   dependencies:
     camelcase "^8.0.0"
-
-typedoc@0.25.0:
-  version "0.25.0"
-  resolved "https://registry.yarnpkg.com/typedoc/-/typedoc-0.25.0.tgz#287f83d01c1c2186766884f4e04d698820d68115"
-  integrity sha512-FvCYWhO1n5jACE0C32qg6b3dSfQ8f2VzExnnRboowHtqUD6ARzM2r8YJeZFYXhcm2hI4C2oCRDgNPk/yaQUN9g==
-  dependencies:
-    lunr "^2.3.9"
-    marked "^4.3.0"
-    minimatch "^9.0.3"
-    shiki "^0.14.1"
 
 typedoc@^0.25.2:
   version "0.25.2"
@@ -7590,6 +7587,11 @@ ua-parser-js@^1.0.35:
   version "1.0.36"
   resolved "https://registry.yarnpkg.com/ua-parser-js/-/ua-parser-js-1.0.36.tgz#a9ab6b9bd3a8efb90bb0816674b412717b7c428c"
   integrity sha512-znuyCIXzl8ciS3+y3fHJI/2OhQIXbXw9MWC/o3qwyR+RGppjZHrM27CGFSKCJXi2Kctiz537iOu2KnXs1lMQhw==
+
+uglify-js@^3.1.4:
+  version "3.17.4"
+  resolved "https://registry.yarnpkg.com/uglify-js/-/uglify-js-3.17.4.tgz#61678cf5fa3f5b7eb789bb345df29afb8257c22c"
+  integrity sha512-T9q82TJI9e/C1TAxYvfb16xO120tMVFZrGA3f9/P4424DNu6ypK103y0GPFVa17yotwSyZW5iYXgjYHkGrJW/g==
 
 undici-types@~5.25.1:
   version "5.25.3"
@@ -8107,6 +8109,11 @@ wildcard@^2.0.0:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/wildcard/-/wildcard-2.0.1.tgz#5ab10d02487198954836b6349f74fff961e10f67"
   integrity sha512-CC1bOL87PIWSBhDcTrdeLo6eGT7mCFtrg0uIJtqJUFyK+eJnzl8A1niH56uu7KMa5XFrtiV+AQuHO3n7DsHnLQ==
+
+wordwrap@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/wordwrap/-/wordwrap-1.0.0.tgz#27584810891456a4171c8d0226441ade90cbcaeb"
+  integrity sha512-gvVzJFlPycKc5dZN4yPkP8w7Dc37BtP1yczEneOb4uq34pXZcvrtRTmWV8W+Ume+XCxKgbjM+nevkyFPMybd4Q==
 
 wrap-ansi@^7.0.0:
   version "7.0.0"

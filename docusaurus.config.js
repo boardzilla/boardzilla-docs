@@ -114,17 +114,12 @@ const config = {
     plugins: [
       require.resolve('docusaurus-lunr-search'),
       [
-        'docusaurus-plugin-typedoc-api',
+        'docusaurus-plugin-typedoc',
         {
-          projectRoot: path.join(__dirname, '../boardzilla-core'),
-          packages: [{
-            path: ".",
-            entry: '.',
-          }],
-          typedocOptions: {
-            // Comments are supported, like tsconfig.json
-            "plugin": ["typedoc-plugin-rename-defaults"],
-          }
+          entryPoints: [path.join(__dirname, '../boardzilla-core/index.d.ts')],
+          tsconfig: path.join(__dirname, '../boardzilla-core/tsconfig.json'),
+          // Comments are supported, like tsconfig.json
+          plugin: ["typedoc-plugin-rename-defaults"],
         },
       ],
     ],
