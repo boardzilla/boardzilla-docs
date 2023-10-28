@@ -58,7 +58,6 @@ const config = {
   themeConfig: ({
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     // Replace with your project's social card
-    image: 'img/docusaurus-social-card.jpg',
     navbar: {
       title: 'Boardzilla docs',
       logo: {
@@ -66,30 +65,10 @@ const config = {
         src: 'img/logo.png',
         srcDark: 'img/logo-dark.png',
       },
-      items: [
-        {
-          to: 'api',
-          label: 'API',
-          position: 'left',
-        },
-      ],
     },
     footer: {
       style: 'dark',
       links: [
-        {
-          title: 'Links',
-          items: [
-            {
-              label: 'Docs',
-              href: '/',
-            },
-            {
-              label: 'API',
-              href: '/api',
-            },
-          ],
-        },
         {
           title: 'Community',
           items: [
@@ -120,6 +99,9 @@ const config = {
         tsconfig: path.join(__dirname, '../boardzilla-core/tsconfig.json'),
         // Comments are supported, like tsconfig.json
         plugin: ["typedoc-plugin-rename-defaults"],
+        frontmatter: {
+          sidebar_position: 5,
+        }
       },
     ],
   ],
