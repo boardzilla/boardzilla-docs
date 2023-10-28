@@ -7562,6 +7562,11 @@ typedoc-plugin-markdown@^3.16.0:
   dependencies:
     handlebars "^4.7.7"
 
+typedoc-plugin-merge-modules@^5.1.0:
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/typedoc-plugin-merge-modules/-/typedoc-plugin-merge-modules-5.1.0.tgz#53ac37f4ab40caac8ee23da1e26042d3a103c4a8"
+  integrity sha512-jXH27L/wlxFjErgBXleh3opVgjVTXFEuBo68Yfl18S9Oh/IqxK6NV94jlEJ9hl4TXc9Zm2l7Rfk41CEkcCyvFQ==
+
 "typedoc-plugin-rename-defaults@git+https://github.com/felipecrs/typedoc-plugin-rename-defaults.git#2c07e579a77699676578a35c149f29188378b4d7":
   version "0.6.7"
   resolved "git+https://github.com/felipecrs/typedoc-plugin-rename-defaults.git#2c07e579a77699676578a35c149f29188378b4d7"
