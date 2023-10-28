@@ -55,74 +55,74 @@ const config = {
   ],
 
   themes: ['@docusaurus/theme-live-codeblock'],
-  themeConfig:
+  themeConfig: ({
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
-    ({
-      // Replace with your project's social card
-      image: 'img/docusaurus-social-card.jpg',
-      navbar: {
-        title: 'Boardzilla docs',
-        logo: {
-          alt: 'RAR!',
-          src: 'img/logo.png',
-          srcDark: 'img/logo-dark.png',
-        },
-        items: [
-          {
-            to: 'api',
-            label: 'API',
-            position: 'left',
-          },
-        ],      },
-      footer: {
-        style: 'dark',
-        links: [
-          {
-            title: 'Links',
-            items: [
-              {
-                label: 'Docs',
-                href: '/',
-              },
-              {
-                label: 'API',
-                href: '/api',
-              },
-            ],
-          },
-          {
-            title: 'Community',
-            items: [
-              {
-                label: 'GitHub',
-                href: 'https://github.com/boardzilla',
-              },
-              {
-                label: 'Discord',
-                href: 'https://discord.gg/bdjpdmuZpH',
-              },
-            ],
-          },
-        ],
-        copyright: `Copyright © ${new Date().getFullYear()} Meow Inc. Built with Docusaurus.`,
+    // Replace with your project's social card
+    image: 'img/docusaurus-social-card.jpg',
+    navbar: {
+      title: 'Boardzilla docs',
+      logo: {
+        alt: 'RAR!',
+        src: 'img/logo.png',
+        srcDark: 'img/logo-dark.png',
       },
-      prism: {
-        theme: lightCodeTheme,
-        darkTheme: darkCodeTheme,
-      },
-    }),
-    plugins: [
-      require.resolve('docusaurus-lunr-search'),
-      [
-        'docusaurus-plugin-typedoc',
+      items: [
         {
-          entryPoints: [path.join(__dirname, '../boardzilla-core/index.d.ts')],
-          tsconfig: path.join(__dirname, '../boardzilla-core/tsconfig.json'),
-          // Comments are supported, like tsconfig.json
-          plugin: ["typedoc-plugin-rename-defaults"],
+          to: 'api',
+          label: 'API',
+          position: 'left',
         },
       ],
+    },
+    footer: {
+      style: 'dark',
+      links: [
+        {
+          title: 'Links',
+          items: [
+            {
+              label: 'Docs',
+              href: '/',
+            },
+            {
+              label: 'API',
+              href: '/api',
+            },
+          ],
+        },
+        {
+          title: 'Community',
+          items: [
+            {
+              label: 'GitHub',
+              href: 'https://github.com/boardzilla',
+            },
+            {
+              label: 'Discord',
+              href: 'https://discord.gg/bdjpdmuZpH',
+            },
+          ],
+        },
+      ],
+      copyright: `Copyright © ${new Date().getFullYear()} Meow Inc. Built with Docusaurus.`,
+    },
+    prism: {
+      theme: lightCodeTheme,
+      darkTheme: darkCodeTheme,
+    },
+  }),
+  plugins: [
+    require.resolve('docusaurus-lunr-search'),
+    [
+      'docusaurus-plugin-typedoc',
+      {
+        entryPoints: [path.join(__dirname, "../boardzilla-core/game/")],
+        tsconfig: path.join(__dirname, '../boardzilla-core/tsconfig.json'),
+        // Comments are supported, like tsconfig.json
+        plugin: ["typedoc-plugin-rename-defaults"],
+      },
     ],
+  ],
 };
 
 module.exports = config;
