@@ -10,7 +10,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 const config = {
   title: 'Boardzilla docs',
   tagline: 'Dinosaurs are cool',
-  favicon: 'img/icon.png',
+  favicon: 'img/favicon.png',
 
   // Set the production url of your site here
   url: 'https://docs.boardzilla.io',
