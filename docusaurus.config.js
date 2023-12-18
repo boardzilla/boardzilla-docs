@@ -62,8 +62,8 @@ const config = {
       title: 'Boardzilla docs',
       logo: {
         alt: 'RAR!',
-        src: 'img/logo.png',
-        srcDark: 'img/logo-dark.png',
+        src: 'img/logo.svg',
+        srcDark: 'img/logo.svg',
       },
     },
     footer: {
