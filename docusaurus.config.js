@@ -96,20 +96,19 @@ const config = {
       'docusaurus-plugin-typedoc',
       {
         entryPoints: [
-          "../boardzilla-core/game/",
-          "../boardzilla-core/game/board",
-          "../boardzilla-core/game/board/types.d.ts",
-          "../boardzilla-core/game/flow",
-          "../boardzilla-core/game/flow/types.d.ts",
-          "../boardzilla-core/game/action",
-          "../boardzilla-core/game/action/types.d.ts",
-          "../boardzilla-core/game/player",
-          "../boardzilla-core/game/player/types.d.ts"
+          "../boardzilla-core/src",
+          "../boardzilla-core/src/game.ts",
+          "../boardzilla-core/src/board",
+          "../boardzilla-core/src/flow",
+          "../boardzilla-core/src/action",
+          "../boardzilla-core/src/player",
+          "../boardzilla-core/src/ui"
         ],
+        excludeInternal: true,
+        excludeNotDocumented: true,
         tsconfig: path.join(__dirname, '../boardzilla-core/tsconfig.json'),
         plugin: [
           "typedoc-plugin-markdown",
-          "typedoc-plugin-rename-defaults",
           "typedoc-plugin-merge-modules"
         ],
         frontmatter: {

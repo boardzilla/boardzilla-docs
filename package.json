@@ -25,9 +25,8 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "typedoc": "^0.25.2",
-    "typedoc-plugin-markdown": "^3.16.0",
+    "typedoc-plugin-markdown": "^3.17.1",
     "typedoc-plugin-merge-modules": "^5.1.0",
-    "typedoc-plugin-rename-defaults": "git+https://github.com/felipecrs/typedoc-plugin-rename-defaults.git#2c07e579a77699676578a35c149f29188378b4d7",
     "typescript": "^5.2.2"
   },
   "devDependencies": {
