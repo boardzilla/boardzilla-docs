@@ -1,84 +1,85 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
 
-const path = require('path')
+const path = require("path");
 
-const lightCodeTheme = require('prism-react-renderer/themes/github');
-const darkCodeTheme = require('prism-react-renderer/themes/dracula');
+const lightCodeTheme = require("prism-react-renderer").themes.github;
+const darkCodeTheme = require("prism-react-renderer").themes.dracula;
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'Boardzilla docs',
-  tagline: 'Dinosaurs are cool',
-  favicon: 'img/favicon.png',
+  title: "Boardzilla docs",
+  tagline: "Dinosaurs are cool",
+  favicon: "img/favicon.png",
 
   // Set the production url of your site here
-  url: 'https://docs.boardzilla.io',
+  url: "https://docs.boardzilla.io",
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/',
+  baseUrl: "/",
   // ...
-  projectName: 'boardzilla-docs',
-  organizationName: 'boardzilla',
+  projectName: "boardzilla-docs",
+  organizationName: "boardzilla",
   trailingSlash: false,
 
-  onBrokenLinks: 'throw',
-  onBrokenMarkdownLinks: 'throw',
+  onBrokenLinks: "throw",
+  onBrokenMarkdownLinks: "throw",
 
   // Even if you don't use internalization, you can use this field to set useful
   // metadata like html lang. For example, if your site is Chinese, you may want
   // to replace "en" with "zh-Hans".
   i18n: {
-    defaultLocale: 'en',
-    locales: ['en'],
+    defaultLocale: "en",
+    locales: ["en"],
   },
-
+  markdown: {
+    format: "detect",
+  },
   presets: [
     [
-      'classic',
+      "classic",
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
-          routeBasePath: '/',
-          sidebarPath: require.resolve('./sidebars.js'),
+          routeBasePath: "/",
+          sidebarPath: require.resolve("./sidebars.js"),
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/boardzilla/boardzilla-docs/tree/main/',
+          editUrl: "https://github.com/boardzilla/boardzilla-docs/tree/main/",
         },
         blog: false,
         theme: {
-          customCss: require.resolve('./src/css/custom.css'),
+          customCss: require.resolve("./src/css/custom.css"),
         },
       }),
     ],
   ],
 
-  themes: ['@docusaurus/theme-live-codeblock'],
-  themeConfig: ({
+  themes: ["@docusaurus/theme-live-codeblock"],
+  themeConfig: {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     // Replace with your project's social card
     navbar: {
-      title: 'Boardzilla docs',
+      title: "Boardzilla docs",
       logo: {
-        alt: 'RAR!',
-        src: 'img/logo.svg',
-        srcDark: 'img/logo.svg',
+        alt: "RAR!",
+        src: "img/logo.svg",
+        srcDark: "img/logo.svg",
       },
     },
     footer: {
-      style: 'dark',
+      style: "dark",
       links: [
         {
-          title: 'Community',
+          title: "Community",
           items: [
             {
-              label: 'GitHub',
-              href: 'https://github.com/boardzilla',
+              label: "GitHub",
+              href: "https://github.com/boardzilla",
             },
             {
-              label: 'Discord',
-              href: 'https://discord.gg/bdjpdmuZpH',
+              label: "Discord",
+              href: "https://discord.gg/bdjpdmuZpH",
             },
           ],
         },
@@ -89,11 +90,11 @@ const config = {
       theme: lightCodeTheme,
       darkTheme: darkCodeTheme,
     },
-  }),
+  },
   plugins: [
-    require.resolve('docusaurus-lunr-search'),
+    require.resolve("docusaurus-lunr-search"),
     [
-      'docusaurus-plugin-typedoc',
+      "docusaurus-plugin-typedoc",
       {
         entryPoints: [
           "../boardzilla-core/src",
@@ -102,18 +103,15 @@ const config = {
           "../boardzilla-core/src/flow",
           "../boardzilla-core/src/action",
           "../boardzilla-core/src/player",
-          "../boardzilla-core/src/ui"
+          "../boardzilla-core/src/ui",
         ],
         excludeInternal: true,
         excludeNotDocumented: true,
-        tsconfig: path.join(__dirname, '../boardzilla-core/tsconfig.json'),
-        plugin: [
-          "typedoc-plugin-markdown",
-          "typedoc-plugin-merge-modules"
-        ],
+        tsconfig: path.join(__dirname, "../boardzilla-core/tsconfig.json"),
+        plugin: ["typedoc-plugin-merge-modules"],
         frontmatter: {
           sidebar_position: 5,
-        }
+        },
       },
     ],
   ],
