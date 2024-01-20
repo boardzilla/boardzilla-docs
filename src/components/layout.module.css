@@ -1,0 +1,19 @@
+.main {
+  width: 500px;
+  height: 500px;
+  position: relative;
+  outline: 1px solid black;
+}
+
+.piece {
+  position: absolute;
+  background: #099;
+  outline: 1px solid blue;
+  transition: transform .6s, top .6s, left .6s, width .6s, height .6s;
+  color: white;
+  padding: 2%;
+}
+
+.selected {
+  background: #99f;
+}

@@ -23,7 +23,7 @@ const config = {
   trailingSlash: false,
 
   onBrokenLinks: "warn",
-  onBrokenMarkdownLinks: "throw",
+  onBrokenMarkdownLinks: "warn",
 
   // Even if you don't use internalization, you can use this field to set useful
   // metadata like html lang. For example, if your site is Chinese, you may want
@@ -34,6 +34,7 @@ const config = {
   },
   markdown: {
     format: "detect",
+    mermaid: true,
   },
   presets: [
     [
@@ -55,7 +56,10 @@ const config = {
     ],
   ],
 
-  themes: ["@docusaurus/theme-live-codeblock"],
+  themes: [
+    "@docusaurus/theme-live-codeblock",
+    "@docusaurus/theme-mermaid",
+  ],
   themeConfig: {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     // Replace with your project's social card
@@ -105,10 +109,15 @@ const config = {
           "../boardzilla-core/src/player",
           "../boardzilla-core/src/ui",
         ],
+        sort: "source-order",
+        categorizeByGroup: false,
         excludeInternal: true,
         excludeNotDocumented: true,
         tsconfig: path.join(__dirname, "../boardzilla-core/tsconfig.json"),
-        plugin: ["typedoc-plugin-merge-modules"],
+        plugin: [
+          "typedoc-plugin-merge-modules",
+          "typedoc-plugin-no-inherit"
+        ],
         frontmatter: {
           sidebar_position: 5,
         },
