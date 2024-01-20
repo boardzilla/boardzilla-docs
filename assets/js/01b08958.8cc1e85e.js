@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkboardzilla_docs=self.webpackChunkboardzilla_docs||[]).push([[8283],{4475:e=>{e.exports=JSON.parse('{"title":"Interface","slug":"/category/interface","permalink":"/category/interface","navigation":{"previous":{"title":"UI","permalink":"/game/ui"},"next":{"title":"Manage Docs Versions","permalink":"/interface/manage-docs-versions"}}}')}}]);
