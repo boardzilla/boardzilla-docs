@@ -7,3 +7,5 @@ cd ../boardzilla-core
 ./node_modules/.bin/typedoc
 cd -
 cp -r ../boardzilla-core/docs docs/api
+echo 'label: "API"
+position: 6' > docs/api/_category_.yml

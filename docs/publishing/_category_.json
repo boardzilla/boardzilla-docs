@@ -1,0 +1,8 @@
+{
+  "label": "Publishing",
+  "position": 5,
+  "link": {
+    "type": "doc",
+    "id": "publish"
+  }
+}
