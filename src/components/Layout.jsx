@@ -30,7 +30,7 @@ const Layout = () => {
   }, [Board]);
 
   const aspectRatioStr = ['1 / 4', '1 / 3', '1 / 2', '3 / 5', '2 / 3', '3 / 4', '4 / 5', '1', '5 / 4', '4 / 3', '3 / 2', '5 / 3', '2 / 1', '3 / 1', '4 / 1'];
-
+  const preRef = React.useRef()
   React.useMemo(() => {
     const {Piece} = createBoardClasses();
 
@@ -173,8 +173,10 @@ const Layout = () => {
         </div>
       </div>
 
+
       <div className={styles.code}>
-        <pre>
+        <button onClick={() =>  navigator.clipboard.writeText(preRef.current.innerText)}className={styles.copy}>Copy</button>
+        <pre ref={preRef}>
           <div>space.layout(Piece, &#123;</div>
           {(minRows !== undefined || maxRows !== undefined) &&
             <div className={styles.indent}>
