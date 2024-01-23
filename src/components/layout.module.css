@@ -1,11 +1,25 @@
-.main {
-  width: 500px;
-  height: 500px;
+.layout-playground {
+  display: grid;
+  grid-auto-rows: 1fr;
+  grid-template-columns: 0.5fr 1fr;
+  grid-template-rows: min-content 1fr;
+  grid-template-areas:
+    "controls code"
+    "controls main";
+}
+
+.layout-playground .main {
+  grid-area: main;
+}
+
+.layout-playground .main .canvas {
+  width: 100%;
+  aspect-ratio: 1;
   position: relative;
   outline: 1px solid black;
 }
 
-.piece {
+.layout-playground .main .piece {
   position: absolute;
   background: #099;
   outline: 1px solid blue;
@@ -14,6 +28,57 @@
   padding: 2%;
 }
 
-.selected {
+.layout-playground .selected {
   background: #99f;
+}
+
+.layout-playground .parameter-controls {
+  display: grid;
+  grid-template-columns: 8em 1fr;
+  grid-area: controls;
+}
+
+.layout-playground  .parameter-controls .label {
+  text-align: right;
+  padding: .4em;
+  background: #ccc;
+  border-bottom: 3px solid white;
+  border-radius: 8px 0 0 8px;
+  font-weight: bold;
+}
+
+.layout-playground  .parameter-controls .helper {
+  font-weight: normal;
+  font-size: 80%;
+}
+
+.layout-playground  .parameter-controls .value {
+  padding: .4em;
+  background: #eee;
+  border-bottom: 3px solid white;
+}
+
+.layout-playground  .parameter-controls input[type="number"] {
+  width: 4em;
+}
+
+.layout-playground  .parameter-controls .xyrange .vertical {
+  appearance: slider-vertical;
+  width: 2em;
+}
+
+.layout-playground .code {
+  grid-area: code;
+  background: #333;
+  font-weight: bold;
+  color: #9c9;
+}
+
+.layout-playground .code .indent {
+  padding-left: 1.5em;
+}
+
+.layout-playground .code pre {
+  background: unset;
+  margin: 0;
 }

@@ -258,9 +258,9 @@ the flow. There are two types of values included here:
 #### Loop variables
 
 The loop variables included here are from any loops that the flow is currently
-inside of, namely the current iterator value in any [`forLoop`](forloop)'s, the
-current collection member of any [`forEach`](foreach) loops, the evaluated test
-expression in any [`switchCase`](switchcase)'s.
+inside of, namely the current iterator value in any [`forLoop`](#forloop)'s, the
+current collection member of any [`forEach`](#foreach) loops, the evaluated test
+expression in any [`switchCase`](#switchcase)'s.
 
 The values are included as key value pairs where the key is the `name` parameter
 supplied for the flow command.
