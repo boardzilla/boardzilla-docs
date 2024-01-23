@@ -44,25 +44,3 @@ the phases, rounds and turns of the game, and what actions are avaiable to
 players at which point in the Flow.
 
 Learn more in [Flow](./flow).
-
-## UI
-Boardzilla renders and animated the board on the player's browser according to
-the rules of your game. By default everything appears in a very raw but usable
-format. You can gradually customize how your game appears.
-
-### Layout
-The layout of the game is the definition of where the Spaces and Pieces appear
-in the player's browser, and how they change as Pieces are added into an area
-and start to fill it up.
-
-### Appearance
-The appearance of each visible space and piece can be customized using JSX that
-you provide and you can apply your own CSS to these. You can also supply special
-effects that will be applied when things happen to these elements.
-
-### Controls
-Controls are what we call any floating boxes above the game board. These include:
-- Prompts
-- Button choices
-- Inputs for text or numbers
-- Confirmation text and buttons

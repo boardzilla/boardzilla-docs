@@ -54,7 +54,7 @@ An action consists of several properties.
 - any other special **properites** of the action, such as prompts, conditions,
   confirmations and validations
 
-Actions are all created in a single place inside the
+Actions are all created in a single place in `game/index.ts` inside the
 [createGame](../api/modules#creategame) when you call
 [`game.defineActions`](../api/classes/game#defineactions). Each action is listed
 with it's name, and the selections and behaviours of the action are chained onto

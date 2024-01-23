@@ -1,3 +1,13 @@
+html[data-theme="dark"] .layout-playground  .parameter-controls .label {
+  background: #333;
+  border-bottom: 3px solid black;
+}
+
+html[data-theme="dark"] .layout-playground  .parameter-controls .value {
+  background: #555;
+  border-bottom: 3px solid black;
+}
+
 .layout-playground {
   display: grid;
   grid-auto-rows: 1fr;
@@ -17,6 +27,7 @@
   aspect-ratio: 1;
   position: relative;
   outline: 1px solid black;
+  background: white;
 }
 
 .layout-playground .main .piece {
@@ -83,6 +94,14 @@
 
 .layout-playground .code .indent {
   padding-left: 1.5em;
+}
+
+.layout-playground .code .keyword {
+  color: #99f;
+}
+
+.layout-playground .code .string {
+  color: #fcc;
 }
 
 .layout-playground .code pre {

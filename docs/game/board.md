@@ -4,9 +4,9 @@ sidebar_position: 3
 # Board Structure
 
 The board is a singleton class that is declared as the first step of creating a
-game. Installing Boardzilla automatically creates this class and you can add
-properties and methods to it as you progress. Your board extends the base
-[Board](../api/classes/board) class.
+game. Installing Boardzilla automatically creates this class in `game/index.ts`
+and you can add properties and methods to it as you progress. Your board extends
+the base [Board](../api/classes/board) class.
 
 Boards contains [Spaces](../api/classes/space) (fixed regions) and
 [Pieces](../api/classes/piece) (movable game objects). This is essentially a

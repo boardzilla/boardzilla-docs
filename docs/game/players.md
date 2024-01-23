@@ -59,9 +59,9 @@ See [the full API](../api/classes/Player) for `Player`.
 
 It is common to subclass the [`Player`](../api/classes/Player) class with a
 player class suited to a particular game. For this reason, installing Boardzilla
-automatically creates this subclass, to which you can add properties and methods
-to it as you progress. Typically this is where you keep per-player state, like
-any per-player scoring.
+automatically creates this subclass in `game/index.ts`, to which you can add
+properties and methods to it as you progress. Typically this is where you keep
+per-player state, e.g. any per-player scoring.
 
 The player object is used in many places in Boardzilla. Most importantly, it is
 the argument sent to every [Action](actions). For this reason, the Player

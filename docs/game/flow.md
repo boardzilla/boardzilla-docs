@@ -14,7 +14,8 @@ some loops around them with logic to decide when the game is over.
 
 ## Typical flow structure
 
-Flow is defined inside the [createGame](../api/modules#creategame) when you call
+Flow is defined in `game/index.ts` inside the
+[createGame](../api/modules#creategame) when you call
 [`game.defineFlow`](../api/classes/game#defineflow). The arguments to this
 function are the steps for your game. There are two basic types of steps:
 - a function

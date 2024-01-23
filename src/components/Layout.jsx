@@ -107,16 +107,20 @@ const Layout = () => {
           </>
           :
           <>
-            <div className={styles.label}>offsets<div className={styles.helper}>offsets are absolute and needed for hex grids</div></div>
+            <div className={styles.label}>offsets<div className={styles.helper}>offsets are relative % and needed for hex grids</div></div>
             <div className={styles.value}>
-              <div className={styles.xyrange}>
-                <div>row.x: <nobr><input type="range" min={-100} max={100} value={offsetRowX} onChange={e => setOffsetRowX(parseInt(e.target.value))}/> {offsetRowX}%</nobr></div>
-                row.y: <input type="range" orient="vertical" className={styles.vertical} min={0} max={200} value={offsetRowY} onChange={e => setOffsetRowY(parseInt(e.target.value))}/> {offsetRowY}%
-              </div>
-              <div className={styles.xyrange}>
-                <div>column.x: <nobr><input type="range" min={0} max={200} value={offsetColumnX} onChange={e => setOffsetColumnX(parseInt(e.target.value))}/> {offsetColumnX}%</nobr></div>
-                column.y: <input type="range" orient="vertical" className={styles.vertical} min={-100} max={100} value={offsetColumnY} onChange={e => setOffsetColumnY(parseInt(e.target.value))}/> {offsetColumnY}%
-              </div>
+              {maxRows !== 1 &&
+                <div className={styles.xyrange}>
+                  <div>row.x: <nobr><input type="range" min={-100} max={100} value={offsetRowX} onChange={e => setOffsetRowX(parseInt(e.target.value))}/> {offsetRowX}%</nobr></div>
+                  row.y: <input type="range" orient="vertical" className={styles.vertical} min={0} max={200} value={offsetRowY} onChange={e => setOffsetRowY(parseInt(e.target.value))}/> {offsetRowY}%
+                </div>
+              }
+              {maxColumns !== 1 &&
+                <div className={styles.xyrange}>
+                  <div>column.x: <nobr><input type="range" min={0} max={200} value={offsetColumnX} onChange={e => setOffsetColumnX(parseInt(e.target.value))}/> {offsetColumnX}%</nobr></div>
+                  column.y: <input type="range" orient="vertical" className={styles.vertical} min={-100} max={100} value={offsetColumnY} onChange={e => setOffsetColumnY(parseInt(e.target.value))}/> {offsetColumnY}%
+                </div>
+              }
             </div>
           </>
         }
@@ -177,33 +181,33 @@ const Layout = () => {
       <div className={styles.code}>
         <button onClick={() =>  navigator.clipboard.writeText(preRef.current.innerText)}className={styles.copy}>Copy</button>
         <pre ref={preRef}>
-          <div>space.layout(Piece, &#123;</div>
+          <div>space.<span className={styles.keyword}>layout</span>(Piece, &#123;</div>
           {(minRows !== undefined || maxRows !== undefined) &&
             <div className={styles.indent}>
-              rows: {minRows === maxRows ? minRows :
-                '{' + (minRows ? `min: ${minRows}` : '') + (minRows && maxRows ? ', ' : '') + (maxRows ? `max: ${maxRows}` : '') + '}'
+              <span className={styles.keyword}>rows</span>: {minRows === maxRows || maxRows === 1 ? maxRows :
+                <>&#123;{minRows ? <><span className={styles.keyword}>min</span>: {minRows}</> : ''}{minRows && maxRows ? ', ' : ''}{(maxRows ? <><span className={styles.keyword}>max</span>: {maxRows}</> : '')}&#125;</>
               },
             </div>
           }
           {(minColumns !== undefined || maxColumns !== undefined) &&
             <div className={styles.indent}>
-              columns: {minColumns === maxColumns ? minColumns :
-                '{' + (minColumns ? `min: ${minColumns}` : '') + (minColumns && maxColumns ? ', ' : '') + (maxColumns ? `max: ${maxColumns}` : '') + '}'
+              <span className={styles.keyword}>columns</span>: {minColumns === maxColumns ? minColumns :
+                <>&#123;{minColumns ? <><span className={styles.keyword}>min</span>: {minColumns}</> : ''}{minColumns && maxColumns ? ', ' : ''}{maxColumns ? <><span className={styles.keyword}>max</span>: {maxColumns}</> : ''}&#125;</>
               },
             </div>
           }
-          {(orthogonal && (gapX > 0 || gapY > 0)) && <div className={styles.indent}>gap: {gapX === gapY ? gapX : `{x: ${gapX}, y: ${gapY}}`},</div>}
-          {!orthogonal && <div className={styles.indent}>offsetRow: {offsetRowX === 0 ? offsetRowY : `{x: ${offsetRowX}, y: ${offsetRowY}}`},</div>}
-          {!orthogonal && <div className={styles.indent}>offsetColumn: {offsetColumnY === 0 ? offsetColumnX : `{x: ${offsetColumnX}, y: ${offsetColumnY}}`},</div>}
-          {scaling !== 'fit' && <div className={styles.indent}>scaling: '{scaling}',</div>}
-          {alignment !== 'center' && <div className={styles.indent}>alignment: '{alignment}',</div>}
-          {direction !== 'square' && <div className={styles.indent}>direction: '{direction}',</div>}
-          {maxOverlap < 100 && <div className={styles.indent}>maxOverlap: {maxOverlap},</div>}
-          {haphazardly > 0 && <div className={styles.indent}>haphazardly: {haphazardly},</div>}
+          {(orthogonal && (gapX > 0 || gapY > 0)) && <div className={styles.indent}><span className={styles.keyword}>gap</span>: {gapX === gapY ? gapX : <>&#123;<span className={styles.keyword}>x</span>: {gapX}, <span className={styles.keyword}>y</span>: {gapY}&#125;</>},</div>}
+          {!orthogonal && maxRows !== 1 && <div className={styles.indent}><span className={styles.keyword}>offsetRow</span>: {offsetRowX === 0 ? offsetRowY : <>&#123;<span className={styles.keyword}>x</span>: {offsetRowX}, <span className={styles.keyword}>y</span>: {offsetRowY}&#125;</>},</div>}
+          {!orthogonal && maxColumns !== 1 && <div className={styles.indent}><span className={styles.keyword}>offsetColumn</span>: {offsetColumnY === 0 ? offsetColumnX : <>&#123;<span className={styles.keyword}>x</span>: {offsetColumnX}, <span className={styles.keyword}>y</span>: {offsetColumnY}&#125;</>},</div>}
+          {scaling !== 'fit' && <div className={styles.indent}><span className={styles.keyword}>scaling</span>: <span className={styles.string}>'{scaling}'</span>,</div>}
+          {alignment !== 'center' && <div className={styles.indent}><span className={styles.keyword}>alignment</span>: <span className={styles.string}>'{alignment}'</span>,</div>}
+          {direction !== 'square' && <div className={styles.indent}><span className={styles.keyword}>direction</span>: <span className={styles.string}>'{direction}'</span>,</div>}
+          {maxOverlap < 100 && <div className={styles.indent}><span className={styles.keyword}>maxOverlap</span>: {maxOverlap},</div>}
+          {haphazardly > 0 && <div className={styles.indent}><span className={styles.keyword}>haphazardly</span>: {haphazardly},</div>}
           <div>&#125;);</div>
           <div>&nbsp;</div>
-          <div>board.all(Piece).appearance(&#123;</div>
-          <div className={styles.indent}>aspectRatio: {aspectRatioStr[aspectRatio]}</div>
+          <div>board.<span className={styles.keyword}>all</span>(Piece).<span className={styles.keyword}>appearance</span>(&#123;</div>
+          <div className={styles.indent}><span className={styles.keyword}>aspectRatio</span>: {aspectRatioStr[aspectRatio]}</div>
           <div>&#125;);</div>
         </pre>
       </div>
@@ -220,7 +224,7 @@ const Layout = () => {
                 width: `${c._ui.computedStyle?.width}%`,
                 height: `${c._ui.computedStyle?.height}%`,
               }}
-            >{i + 1}</div>
+            >Piece {i + 1}</div>
           ))}
         </div>
       </div>
