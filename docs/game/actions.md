@@ -56,7 +56,7 @@ An action consists of several properties.
 
 Actions are all created in a single place in `game/index.ts` inside the
 [createGame](../api/modules#creategame) when you call
-[`game.defineActions`](../api/classes/game#defineactions). Each action is listed
+[`game.defineActions`](../api/classes/Game#defineactions). Each action is listed
 with it's name, and the selections and behaviours of the action are chained onto
 it, e.g.:
 
@@ -392,7 +392,7 @@ play, your action might look like:
 Sometimes an action will trigger other actions based on new information, such as
 when revealing a card that requires some choices and actions for the player. In
 these cases the action can trigger additional actions using
-[`game.followUp`](../api/classes/Game#followUp). This can be called anywhere
+[`game.followUp`](../api/classes/Game#followup). This can be called anywhere
 that is triggered directly by the action, usually in the action `do`. This
 causes Boardzilla to immediately prompt this action following the completion of
 the current action.

@@ -85,7 +85,7 @@ elements or their children at all.
 :::
 
 Bear in the mind that the elements in a game might be
-[invisible](board#visibility) to players (e.g. a flipped Card) in which case the
+[invisible](../game/board#visibility) to players (e.g. a flipped Card) in which case the
 properties of the element will be `undefined`. You can check for `undefined`
 properties, or simply call
 [`isVisible()`](../api/classes/GameElement#isvisible) to determine if
@@ -134,7 +134,7 @@ attributes, e.g.:
 ```
 
 :::tip player attribute
-If an element is [assigned](board#ownership) to a player, this also causes a
+If an element is [assigned](../game/board#ownership) to a player, this also causes a
 `data-player` attribute to be added. The value is the **seat position** of the
 player, e.g.
 
@@ -248,7 +248,7 @@ from external URLs in your game and any such requests will fail.
 
 The default build configuration included when you install Boardzilla handles
 files of types JPG, PNG, SVG, WEBP, TTF. More can be added in the [esbuild
-config](development#building).
+config](../introduction/development#building).
 
 ## SVG
 

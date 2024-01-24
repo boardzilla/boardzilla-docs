@@ -24,8 +24,8 @@ Player order is not always the same as the seating order around the
 table. Boardzilla will begin the game with players in order based on seating,
 but if the order is changed, then `game.players` will be in turn order, but
 looking at [`player.position`](../api/classes/Player#position) or
-[`game.players.inPositionOrder()`](../api/classes/Game#inpositionorder) will tell
-you what the seating order is.
+[`game.players.inPositionOrder()`](../api/classes/PlayerCollection#inpositionorder)
+will tell you what the seating order is.
 
 :::
 

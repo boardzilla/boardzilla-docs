@@ -227,7 +227,7 @@ to the API for querying. Pieces are never created or destroyed once the game has
 started, and instead are simply moved to or retrieved from the pile.
 
 Remove a piece (move it to the pile) simply by calling it's
-[`remove`](../api/classes/GameElement#remove) method, or for a list of items,
+[`remove`](../api/classes/Piece#remove) method, or for a list of items,
 the [ElementCollection#remove](../api/classes/ElementCollection#remove) can be
 used. For example, to remove all cards from the deck that are lower than 5, we
 can say:

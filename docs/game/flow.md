@@ -16,7 +16,7 @@ some loops around them with logic to decide when the game is over.
 
 Flow is defined in `game/index.ts` inside the
 [createGame](../api/modules#creategame) when you call
-[`game.defineFlow`](../api/classes/game#defineflow). The arguments to this
+[`game.defineFlow`](../api/classes/Game#defineflow). The arguments to this
 function are the steps for your game. There are two basic types of steps:
 - a function
 - a flow command
@@ -59,7 +59,7 @@ Pieces in your game must be [created](board#creation) before calling
 `defineFlow`. If pieces are only needed later in the game, they can be created
 on the [`pile`](../api/classes/Board#pile) using `board.pile.create()` and moved
 from the `pile` when needed. Similarly when elements are
-[`removed`](../api/classes/GameElement#remove) they actually are put into the
+[`removed`](../api/classes/Piece#remove) they actually are put into the
 `pile`.
 
 :::
@@ -117,7 +117,7 @@ them, e.g.:
 ## Flow commands
 
 All flow commands are available on
-[`game.flowCommands`](../api/classes/game#flowcommands). It is common to
+[`game.flowCommands`](../api/classes/Game#flowcommands). It is common to
 deconstruct all needed commands before defining flow, e.g.: 
 
 ```ts

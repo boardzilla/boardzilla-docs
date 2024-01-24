@@ -11,7 +11,7 @@ html[data-theme="dark"] .layout-playground  .parameter-controls .value {
 .layout-playground {
   display: grid;
   grid-auto-rows: 1fr;
-  grid-template-columns: 0.5fr 1fr;
+  grid-template-columns: 325px 1fr;
   grid-template-rows: min-content 1fr;
   grid-template-areas:
     "controls code"

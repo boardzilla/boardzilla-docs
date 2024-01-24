@@ -127,11 +127,12 @@ placement to be specific to an Action or specific to a step in the Flow:
 - [`board.layoutStep`](../api/classes/Board#layoutstep)
 
 Both of these apply layout rules to a control by specifying the
-[`Action`](action) or the [`playerActions.name`](flow#player-actions)
-respectively and providing parameters to anchor it to the board in a particular
-location. This is to allow your game to place these in a suitable location of
-the board that corresponds to the action needed, and does not obscure game
-elements. See [`ActionLayout`](../api/modules#actionlayout) for details.
+[`Action`](../game/actions) or the
+[`playerActions.name`](../game/flow#player-actions) respectively and providing
+parameters to anchor it to the board in a particular location. This is to allow
+your game to place these in a suitable location of the board that corresponds to
+the action needed, and does not obscure game elements. See
+[`ActionLayout`](../api/modules#actionlayout) for details.
 
 The controls can also be targetted with CSS like all Boardzilla elements. The
 controls box always have the HTML class `player-controls` applied, and other

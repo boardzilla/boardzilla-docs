@@ -27,7 +27,7 @@ The player is a core class that represents a user playing the game. Each game
 will have a player class. Players can have pieces and spaces assigned to them,
 and any piece that enters these becomes "owned" by the player.
 
-Learn more in [Players](./player).
+Learn more in [Players](./players).
 
 ## Action
 An Action is a discrete unit of choice for a player. An action has a **name**,

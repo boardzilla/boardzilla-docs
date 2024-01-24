@@ -13,7 +13,7 @@ Boardzilla usually follows these steps in this general order:
 - Test the action in the browser
 - Add more actions
 - Customize the flow to add rounds, phases, turns etc.
-- Customize the [UI](core-concepts#ui) by adding game art, custom HTML/CSS and animations
+- Customize the [UI](/category/customizing-the-ui) by adding game art, custom HTML/CSS and animations
 
 :::tip[UI Last]
 It is generally best to customize the UI last. Boardzilla's default UI may not be pretty but it's the easiest way to see exactly what's going on, or why a rule is not behaving as you expect.
