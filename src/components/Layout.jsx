@@ -78,8 +78,10 @@ const Layout = () => {
     if (orthogonal && (gapX > 0 || gapY > 0)) {
       lines.push(`  gap: ${gapX === gapY ? gapX : `{x: ${gapX}, y: ${gapY}}`},`)
     }
-    if (!orthogonal) {
+    if (!orthogonal && maxRows !== 1) {
       lines.push(`  offsetRow: ${offsetRowX === 0 ? offsetRowY : `{x: ${offsetRowX}, y: ${offsetRowY}}`},`)
+    }
+    if (!orthogonal && maxColumns !== 1) {
       lines.push(`  offsetColumn: ${offsetColumnY === 0 ? offsetColumnX : `{x: ${offsetColumnX}, y: ${offsetColumnY}}`},`)
     }
     if (scaling !== "fit") {
