@@ -1,13 +1,13 @@
 ---
 sidebar_position: 6
 ---
+
 # Flow
 
 The Flow of your game is how the game runs from beginning to end. This describes
-the phases, rounds and turns of the game, and what actions are avaiable to
-players at which point in the Flow. You describe the Flow using the API and
-Boardzilla keeps track of where your players are in the game, even if the game
-sits idle for periods of time.
+the phases, rounds and turns of the game, and what actions are available to
+players at various points in the Flow. You describe the Flow using the available API and
+Boardzilla keeps track of where your players are in the Flow.
 
 Your Flow definition will contain at minimum some player actions, and usually
 some loops around them with logic to decide when the game is over.
@@ -18,25 +18,26 @@ Flow is defined in `game/index.ts` inside the
 [createGame](../api/modules#creategame) when you call
 [`game.defineFlow`](../api/classes/Game#defineflow). The arguments to this
 function are the steps for your game. There are two basic types of steps:
-- Plain Functions
+
+- Functions
 - Flow commands
 
 Functions alter the game state in some way, and Flow commands change the flow of
 the game. You can keep adding as many functions and Flow commands as needed, in
-any order.  Let's look at a simple example from the Boardzilla starter game:
+any order. Let's look at a simple example from the Boardzilla starter game:
 
-``` ts Sample flow
-  game.defineFlow(
-    () => $.pool.shuffle(),
-    loop(
-      eachPlayer({
-        name: 'player',
-        do: playerActions({
-          actions: ['take']
-        }),
-      })
-    )
-  );
+```ts Sample flow
+game.defineFlow(
+  () => $.pool.shuffle(),
+  loop(
+    eachPlayer({
+      name: "player",
+      do: playerActions({
+        actions: ["take"],
+      }),
+    })
+  )
+);
 ```
 
 This flow contains exactly two items: a function call that shuffles the pool,
@@ -74,16 +75,14 @@ In the example above the main loop itself includes other Flow commands, namely
 `eachPlayer` and `playerActions`. This is an important distinction between the
 two types of flow steps, plain functions and Flow commands:
 
-:::tip
-
-***Flow commands can only be added directly by other Flow commands.***
-
+:::warning Please note!
+Flow commands can **_only_** be added directly by other Flow commands.
 :::
 
 For example, imagine you have a flow function that does some things, setting up
 the deck, dealing some cards, and then cleaning up after the hand:
 
-``` ts Sample flow
+```ts Sample flow
   game.defineFlow(
     () => {
       // shuffle the deck
@@ -98,7 +97,7 @@ If you now want to insert a Flow command in the middle to add a player action,
 you must break the function into two pieces and insert the flow function between
 them, e.g.:
 
-``` ts Sample flow with playerAction added
+```ts Sample flow with playerAction added
   game.defineFlow(
     () => {
       // shuffle the deck
@@ -118,15 +117,10 @@ them, e.g.:
 
 All Flow commands are available on
 [`game.flowCommands`](../api/classes/Game#flowcommands). It is common to
-deconstruct all needed commands before defining flow, e.g.: 
+deconstruct all needed commands before defining flow, e.g.:
 
 ```ts
-  const {
-    playerActions,
-    eachPlayer,
-    forEach,
-    forLoop,
-  } = game.flowCommands;
+const { playerActions, eachPlayer, forEach, forLoop } = game.flowCommands;
 ```
 
 Let's look at the various Flow commands. There are 3 main types of flow
@@ -165,11 +159,10 @@ automatically sets the ["current" player](players#current-player).
 
 #### [`everyPlayer`](../api/modules#everyplayer)
 
-Strictly speaking, this does not create a loop at all. It looks identical to
-`eachPlayer` above except that instead of taking each iteration for each player
-in turn, it let's all players take they turn simultaneously in parallel. This
-"loop" completes when all players have completed the body of the loop, or when
-the loop is otherwise interrupted.
+Strictly speaking, this isn't a loop. However, it looks identical to
+`eachPlayer` except that instead of operating on each player
+in turn, it let's all players take their turn in parallel. This
+"loop" completes when all players have completed the body of this command, or is otherwise interrupted.
 
 ### Branching Flow commands
 
@@ -186,22 +179,21 @@ execute a `default` branch if no other matches apply. This is similar to the
 `switch...case` in C/Javascript but without [fall
 through](https://en.wikipedia.org/wiki/Switch_statement#Fallthrough) behaviour.
 
-
 ### Player Actions
 
 #### [`playerActions`](../api/modules#playeractions)
 
-The sole Flow command for prompting player actions. This command accept a list
+This is the sole Flow command for prompting player actions. This command accept a list
 of allowed [actions](actions) that were defined in `defineActions` and prompts
 the current player (or a particular player or players if specified).
 
 Note that like all other selections in Boardzilla, this list of actions has
-[tree-shaking and skipping](actions#tree-shaking-and-skipping) behaviour. If one
+[tree-shaking and skipping](actions#tree-shaking-and-skipping) behavior. If one
 of the included actions is determined to have no possible valid moves, it will
 not be included in player prompts. If only one of the supplied actions is
 determined to be playable, it will be prompted with any required selections. If
 such an action requires no further selections it will be auto-played. Just like
-action selections this behaviour can be configured for each `playerActions` with
+action selections this behavior can be configured for each `playerActions` with
 a `skipIf` parameter.
 
 For this reason, it is common to include a wide variety of possible actions in
@@ -220,24 +212,24 @@ For example if you want to loop through some cards laid out in a board Space
 called "field", something like the following is probably **not** what you want:
 
 ```ts
- forEach({
-   name: 'card',
-   // highlight-next-line
-   collection: $.field.all(Card), // ❌ only evaluated at the start of the game
-   do: playerAction({ actions: ['chooseCard', 'pass'] })
-  })
+forEach({
+  name: "card",
+  // highlight-next-line
+  collection: $.field.all(Card), // ❌ only evaluated at the start of the game
+  do: playerAction({ actions: ["chooseCard", "pass"] }),
+});
 ```
 
 Instead use the functional form, so that the expression will be evaluated each
 time this loop is entered:
 
 ```ts
- forEach({
-   name: 'card',
-   // highlight-next-line
-   collection: () => $.field.all(Card), // ✅
-   do: playerAction({ actions: ['chooseCard', 'pass'] })
-  })
+forEach({
+  name: "card",
+  // highlight-next-line
+  collection: () => $.field.all(Card), // ✅
+  do: playerAction({ actions: ["chooseCard", "pass"] }),
+});
 ```
 
 :::
@@ -248,12 +240,13 @@ For many Flow commands, it is necessary to know what the current position
 is. For example in a simple `for i` loop, we need to access `i` and have logic
 that depends on its current value.
 
-Basically all function parameters in Flow commands accept a single argument of
+All function parameters in Flow commands accept a single argument of
 type [`FlowArguments`](../api/modules#flowarguments) for this purpose. The
-argument is a single object that contains all values "in scope" at this point in
+argument is a single object that contains all the values "in scope" at this point in
 the flow. There are two types of values included here:
-* loop variables
-* player action selections
+
+- loop variables
+- player action selections
 
 #### Loop variables
 
@@ -266,26 +259,26 @@ The values are included as key value pairs where the key is the `name` parameter
 supplied for the Flow command.
 
 ```ts Example of reading loop variables
-  forLoop({
+forLoop({
+  // highlight-next-line
+  name: "x", // x is declared here
+  initial: 0,
+  next: (x) => x + 1,
+  while: (x) => x < 3,
+  do: forLoop({
     // highlight-next-line
-    name: 'x', // x is declared here
+    name: "y", // y is declared here
     initial: 0,
-    next: x => x + 1,
-    while: x => x < 3,
-    do: forLoop({
-      // highlight-next-line
-      name: 'y', // y is declared here
-      initial: 0,
-      next: y => y + 1,
-      while: y => y < 2,
-      // highlight-start
-      do: ({ x, y }) => {
-        // x is available here as the value of the outer loop
-        // and y will be the value of the inner loop
-      }
-      // highlight-end
-    })
-  })
+    next: (y) => y + 1,
+    while: (y) => y < 2,
+    // highlight-start
+    do: ({ x, y }) => {
+      // x is available here as the value of the outer loop
+      // and y will be the value of the inner loop
+    },
+    // highlight-end
+  }),
+});
 ```
 
 #### Player action selections
@@ -297,34 +290,32 @@ actions. For example, here we have defined an action called "takeResource" and
 later we want to know what choices the player made in the flow.
 
 ```ts example Player action selections
-  game.defineActions({
-    ...
-    takeResources: player => action<{amount: number}>({
-      prompt: 'Take resources'
-    }).chooseFrom(
-      'resource', ['Lumber', 'Steel', 'Wheat']
-    ).do(
-      ({ resource, amount }) => player.addResources(resource, amount)
-    )
-    ...
-  });
-
-  game.defineFlow(
-    ...
-    playerActions({ 
-      actions: [
-        { 
-          name: 'takeResources',
-          do: ({ takeResources }) => {
-            // highlight-start
-            // takeResoures.resource will be the name of the resource, e.g. 'Steel'
-            // takeResoures.amount will be the selection number "amount"
-            // highlight-end
-          }
-        }
-      ]
+game.defineActions({
+  // highlight-next-line
+  takeResources: (player) => // Note the name of the action
+    action<{ amount: number }>({
+      prompt: "Take resources",
     })
-  );
+      .chooseFrom("resource", ["Lumber", "Steel", "Wheat"])
+      .do(({ resource, amount }) => player.addResources(resource, amount)),
+});
+
+game.defineFlow(
+  playerActions({
+    actions: [
+      {
+        // highlight-next-line
+        name: "takeResources", // Here, this matches the name of the action above
+        do: ({ takeResources }) => {
+          // highlight-start
+          // takeResoures.resource will be the name of the resource, e.g. 'Steel'
+          // takeResoures.amount will be the selection number "amount"
+          // highlight-end
+        },
+      },
+    ],
+  })
+);
 ```
 
 :::tip Action vs playerActions
@@ -370,17 +361,19 @@ only thing you want to call after a particular action, in which case you can
 pass it as the action `do`, e.g.:
 
 ```ts
-  loop(playerActions({
+loop(
+  playerActions({
     actions: [
-      'takeOneFromBag',
+      "takeOneFromBag",
       {
-        name: 'done',
+        name: "done",
         // break out of the loop when a player selects 'Done'
         // highlight-next-line
-        do: Do.break
-      }
-    ]
-  }));
+        do: Do.break,
+      },
+    ],
+  })
+);
 ```
 
 :::danger These are not javascript keywords
@@ -404,13 +397,13 @@ flow all by themselves.
 Use e.g. `return` or `else` to control what executes, e.g.:
 
 ```ts
-  loop({
-    name: 'round',
-    do: () => {
-      // highlight-next-line
-      if (game.isRoundFinished()) return Do.break();
-      // otherwise do other stuff
-      game.doOtherStuff();
-    }
-  });
+loop({
+  name: "round",
+  do: () => {
+    // highlight-next-line
+    if (game.isRoundFinished()) return Do.break();
+    // otherwise do other stuff
+    game.doOtherStuff();
+  },
+});
 ```

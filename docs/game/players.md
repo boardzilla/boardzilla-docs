@@ -1,6 +1,7 @@
 ---
 sidebar_position: 4
 ---
+
 # Players
 
 The [`Player`](../api/classes/Player) is a core class that represents a user
@@ -29,7 +30,7 @@ will tell you what the seating order is.
 
 :::
 
-See [the full API](../api/classes/PlayerCollection) for `PlayerCollection`.
+[The API documentation](../api/classes/PlayerCollection) contains a full list of available methods on `PlayerCollection`.
 
 ## Current player
 
@@ -53,24 +54,21 @@ an array. In these cases, you must use
 retrieve the list of current players rather than
 [`game.players.current()`](../api/classes/PlayerCollection#current).
 
-See [the full API](../api/classes/Player) for `Player`.
+[The API documentation](../api/classes/Player) contains a full list of available methods on `Player`.
 
 ## Customize player
 
-It is common to subclass the [`Player`](../api/classes/Player) class with a
-player class suited to a particular game. For this reason, installing Boardzilla
-automatically creates this subclass in `game/index.ts`, to which you can add
-properties and methods to it as you progress. Typically this is where you keep
-per-player state, e.g. any per-player scoring.
+When you create a Boardzilla game, you are automatically provided with a subclassed [`Player`](../api/classes/Player) class
+where you can add properties and methods specific to your game. Typically this is where you keep
+per-player state, such as score.
 
-The player object is used in many places in Boardzilla. Most importantly, it is
+The player object is used throughout Boardzilla. Most importantly, it is
 the argument sent to every [Action](actions). For this reason, the Player
 subclass for your game is passed as an argument to
 [createGame](../api/modules.md#creategame) so that every method and object that
-uses player has the Typescript generic applied to it so it understands the
-properties and methods of *your game's* Player.
+uses player passes _your game's_ Player type, and you can access your custom methods and properties.
 
-## Player Board elements 
+## Player Board elements
 
 As described in [Board Structure](board#ownership), player's can own elements of the board
 by setting its `player` property to the player you choose. This marks the

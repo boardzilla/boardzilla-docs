@@ -1,6 +1,7 @@
 ---
 sidebar_position: 5
 ---
+
 # Appearance
 
 Defining the [layout](layout) for your game elements is only one part of the
@@ -61,16 +62,16 @@ element. Here's a simple example of JSX to show a Card that has `name`, `cost`
 and `description`:
 
 ```jsx
-  board.all(Card).appearance({
-    aspectRatio: 3 / 4,
-    render: card => (
-      <div>
-        <div className="name">{card.name}</div>
-        <div className="cost">{card.cost}</div>
-        <div className="description">{card.description}</div>
-      </div>
-    )
-  });
+board.all(Card).appearance({
+  aspectRatio: 3 / 4,
+  render: (card) => (
+    <div>
+      <div className="name">{card.name}</div>
+      <div className="cost">{card.cost}</div>
+      <div className="description">{card.description}</div>
+    </div>
+  ),
+});
 ```
 
 You can put as much logic here as you like to conditionally display elements
@@ -101,7 +102,7 @@ the HTML class for the HTML Element, in other words a class named `Card` will
 appear in the HTML as:
 
 ```html
-<div class="Card ... ">
+<div class="Card ... "></div>
 ```
 
 :::tip class names
@@ -129,7 +130,7 @@ attributes, e.g.:
   data-name="ace-of-hearts"
   data-suit="H"
   data-number="1"
->
+></div>
 ```
 
 :::tip player attribute
@@ -138,8 +139,9 @@ If an element is [assigned](../game/board#ownership) to a player, this also caus
 player, e.g.
 
 ```html
-<div class="Hand ... " data-player="1">
+<div class="Hand ... " data-player="1"></div>
 ```
+
 :::
 
 These are here so you can target elements with different CSS as they change. If
@@ -160,7 +162,7 @@ Remember that all HTML attributes are strings! Numbers and booleans are converte
 If you have e.g. `Card.active` as a boolean property, it will appear as:
 
 ```html
-<div class="Card..." data-active="true">
+<div class="Card..." data-active="true"></div>
 ```
 
 and can be targetted in CSS as:
@@ -168,6 +170,7 @@ and can be targetted in CSS as:
 ```css
 .Card[data-active="true"] {
 ```
+
 :::
 
 :::tip use em or %
@@ -201,7 +204,7 @@ HTML element, e.g.:
 
 ```jsx
   // highlight-next-line
-  import cardArt from './assets/card-art.webp;
+  import cardArt from './assets/card-art.webp';
 
   ...
 
@@ -241,20 +244,20 @@ cards, e.g.:
 
 All assets for your game must be included in your game folder and be included
 either in the `ui/index.ts` or the `ui/style.scss`. You may not load any assets
-from external URLs in your game and any such requests will fail.
+from external URLs in your game as any such requests will fail.
 
 :::
 
 The default build configuration included when you install Boardzilla handles
-files of types JPG, PNG, SVG, WEBP, TTF. More can be added in the [esbuild
+files of types .jpg, .png, .svg, .webp and .ttf. More can be added in the [esbuild
 config](../introduction/development#building).
 
 ## SVG
 
 SVGs can be a good choice for art in Boardzilla since the elements in Boardzilla
 can scale depending on their location. Boardzilla will happily render SVG as
-well as HTML, either by importing an SVG assets and placing it into an `<img
-src>` or by including `<svg>` elements inside the render JSX. In practice,
+well as HTML, either by importing SVG assets and placing it into an `<img
+src>` or by including `<svg>` elements inside the JSX within `render`. In practice,
 including `<svg>` can be tricky for a couple of reasons.
 
 1. SVGs in JSX require editing to make the [attribute names
@@ -308,12 +311,14 @@ effect applied to it when `isTrump` transitions from `false` to `true`, you can
 apply the effect with `appearance.effect`, e.g.:
 
 ```ts
-  board.all(Card).appearance({
-    effects: [{
+board.all(Card).appearance({
+  effects: [
+    {
       attributes: { isTrump: true },
       className: "newly-trump",
-    }]
-  });
+    },
+  ],
+});
 ```
 
 The `"newly-trump"` CSS class will be applied to your `Card` DOM element only
@@ -334,6 +339,7 @@ off default rendering, simply add in the layout block:
 ```
 board.disableDefaultAppearance();
 ```
+
 :::
 
 # Board size
@@ -347,7 +353,7 @@ function, e.g.:
 
 ```ts
   render({
-    boardSizes: () => ({ 
+    boardSizes: () => ({
       name: "standard",
       aspectRatio: 4 / 3
     })
@@ -377,11 +383,11 @@ mobile devices, e.g.:
 ```ts
   render({
     boardSizes: (screenX, screenY, mobile) => {
-      if (mobile) return { 
+      if (mobile) return {
         name: "mobile",
         aspectRatio: 1 / 2
       });
-      return { 
+      return {
         name: "standard",
         aspectRatio: 5 / 3
       })
