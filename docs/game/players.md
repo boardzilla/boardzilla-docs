@@ -84,7 +84,7 @@ or many owned elements.
 ## Profile badge
 
 It is generally good practice to place the
-[<ProfileBadge>](../api/modules#profilebadge) component into the UI to mark the
+[&lt;ProfileBadge/&gt;](../api/modules#profilebadge) component into the UI to mark the
 player's area of the board and show information about the player, such as
 score. This automatically displays if it's the player's turn, whether they're
 online, and links to their profile, if any. It can be further customized with

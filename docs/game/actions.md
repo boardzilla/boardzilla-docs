@@ -37,7 +37,7 @@ Think of actions like function calls. An action for a chess move would be like a
 function named `move` that takes two arguments `piece` and `space`. This is a
 single action, not two. The player's client would essentially make a call like:
 
-<img style="align:center" src="/img/move.png"/>
+<div style="text-align:center"><img src="/img/move.png"/></div>
 
 For this reason, you will sometimes see the values selected by the players
 called "arguments".

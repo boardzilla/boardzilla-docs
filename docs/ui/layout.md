@@ -3,11 +3,12 @@ sidebar_position: 3
 ---
 # Layout
 
-A layout is basically just a strategy for how items are visually placed inside
-other items. A layout might say that items should be laid out in a row, or a
-stack, or a grid. When many items enter the same space, it might say that they
-should scale down to fit, should squish together, or that only a certain number
-should actually be visible.
+Customizing the game UI probably requires declaring several layouts. Each layout
+provides a strategy for a given game element about how items should be visually
+placed inside it. A layout might declare that for a given area, items should be
+laid out in a row, or a stack, or a grid. When many items enter the same space,
+it might declare whether they should scale down to fit, should squish together,
+or whether only a certain number of them should actually be visible.
 
 All layout declarations go in the `layout` of the main
 [`render`](../api/modules#render) function, e.g.:
@@ -16,9 +17,7 @@ All layout declarations go in the `layout` of the main
   render(setup, {
     ...
     layout: (board) => {
-      board.layout('mat', {
-        area: { top: 5, height: 90, left: 5, width: 90 },
-      });
+      // layout declarations go here
       ...
     }
 

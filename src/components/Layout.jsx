@@ -142,7 +142,7 @@ const Layout = () => {
             <div className={styles.label}>gap<div className={styles.helper}>gap size is absolute to board size</div></div>
             <div className={styles.value}>
               <div className={styles.xyrange}>
-                <div>X: <nobr><input type="range" min={0} max={50} step={0.5} value={gapX} onChange={e => setGapX(parseFloat(e.target.value))}/> {gapX}%</nobr></div>
+                <div>X: <br/><nobr><input type="range" min={0} max={50} step={0.5} value={gapX} onChange={e => setGapX(parseFloat(e.target.value))}/> {gapX}%</nobr></div>
                 Y: <input orient="vertical" className={styles.vertical} type="range" min={0} max={50} step={0.5} value={gapY} onChange={e => setGapY(parseFloat(e.target.value))}/> {gapY}%
               </div>
             </div>
