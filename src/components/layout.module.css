@@ -1,9 +1,9 @@
-html[data-theme="dark"] .layout-playground  .parameter-controls .label {
+html[data-theme="dark"] .layout-playground .parameter-controls .label {
   background: #333;
   border-bottom: 3px solid black;
 }
 
-html[data-theme="dark"] .layout-playground  .parameter-controls .value {
+html[data-theme="dark"] .layout-playground .parameter-controls .value {
   background: #555;
   border-bottom: 3px solid black;
 }
@@ -76,35 +76,4 @@ html[data-theme="dark"] .layout-playground  .parameter-controls .value {
 .layout-playground .parameter-controls .xyrange .vertical {
   appearance: slider-vertical;
   width: 2em;
-}
-
-.layout-playground .code {
-  grid-area: code;
-  background: #333;
-  font-weight: bold;
-  color: #9c9;
-  position: relative;
-}
-
-.layout-playground .copy {
-  position: absolute;
-  right: 2px;
-  top: 2px;
-}
-
-.layout-playground .code .indent {
-  padding-left: 1.5em;
-}
-
-.layout-playground .code .keyword {
-  color: #99f;
-}
-
-.layout-playground .code .string {
-  color: #fcc;
-}
-
-.layout-playground .code pre {
-  background: unset;
-  margin: 0;
 }
