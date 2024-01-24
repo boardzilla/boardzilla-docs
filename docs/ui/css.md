@@ -17,62 +17,62 @@ the HTML and edit it directly to see what effect your custom CSS will have.
 
 ```css
 html {
-  /**
-   * The html element is where dark-mode is set. 
-   * Use html.dark to target elements in dark mode
-   */
-
-  body {
-    /**
-     * The body element is typically targetted only for global CSS changes
-     * like `font-family`.
-     */
-
-    #setup {
-      /**
-       * The game setup page with seating and settings.
-       */
-    }
-
-    #game {
-      /**
-       * The top-level element for the game itself. This has a variety of classes
-       * applied to it to target particular browsers and devices, namely:
-       * - mobile
-       * - desktop
-       * - browser-chrome
-       * - browser-edge
-       * - browser-safari
-       * - browser-firefox
-       */
-
-      #background {
-        /**
-         * The background element that contains the wood grain. This can be
-         * replaced by setting `background-image`
-         */
-      }
-
-      #play-area {
-        /**
-         * The Board is rendered here, as opposed to any player controls.
-         * Use this for scoping CSS selectors to the board only
-         */
-
-        .transform-wrapper {
-            /**
-             * Wrapper div around each game element that Boardzilla uses for
-             * animations. Generally, there is no reason to target this directly.
-             */
-
-          &[data-zoomed] {
-            /**
-             * If the current element is zoomed. You may target this to have distinct
-             * styling when an element is zoomed
-             */
-          }
-
-          .Space, .Piece {
+│ /**
+│  * The html element is where dark-mode is set. 
+│  * Use html.dark to target elements in dark mode
+│  */
+│
+└ body {
+  │ /**
+  │  * The body element is typically targetted only for global CSS changes
+  │  * like `font-family`.
+  │  */
+  │
+  ├ #setup {
+  │   /**
+  │    * The game setup page with seating and settings.
+  │    */
+  │ }
+  │
+  └ #game {
+    │ /**
+    │  * The top-level element for the game itself. This has a variety of classes
+    │  * applied to it to target particular browsers and devices, namely:
+    │  * - mobile
+    │  * - desktop
+    │  * - browser-chrome
+    │  * - browser-edge
+    │  * - browser-safari
+    │  * - browser-firefox
+    │  */
+    │
+    ├ #background {
+    │   /**
+    │    * The background element that contains the wood grain. This can be
+    │    * replaced by setting `background-image`
+    │    */
+    │ }
+    │
+    ├ #play-area {
+    │ │ /**
+    │ │  * The Board is rendered here, as opposed to any player controls.
+    │ │  * Use this for scoping CSS selectors to the board only
+    │ │  */
+    │ │
+    │ │ .transform-wrapper {
+    │ │ │   /**
+    │ │ │    * Wrapper div around each game element that Boardzilla uses for
+    │ │ │    * animations. Generally, there is no reason to target this directly.
+    │ │ │    */
+    │ │ │
+    │ │ ├ &[data-zoomed] {
+    │ │ │   /**
+    │ │ │    * If the current element is zoomed. You may target this to have distinct
+    │ │ │    * styling when an element is zoomed
+    │ │ │    */
+    │ │ │ }
+    │ │ │
+    │ │ └ .Space, .Piece {
             /**
              * Specific Spaces and Pieces of your board are here. They also have a
              * class name matching the Typescript class of the element. See UI
