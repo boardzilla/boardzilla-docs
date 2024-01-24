@@ -2,6 +2,7 @@ import React from 'react';
 import { Board, createBoardClasses } from '@boardzilla/core';
 
 import styles from './layout.module.css';
+import CodeBlock from '@theme/CodeBlock';
 
 const Layout = () => {
   const [pieces, setPieces] = React.useState(4);
@@ -30,7 +31,8 @@ const Layout = () => {
   }, [Board]);
 
   const aspectRatioStr = ['1 / 4', '1 / 3', '1 / 2', '3 / 5', '2 / 3', '3 / 4', '4 / 5', '1', '5 / 4', '4 / 3', '3 / 2', '5 / 3', '2 / 1', '3 / 1', '4 / 1'];
-  const preRef = React.useRef()
+  const [codeSample, setCodeSample] = React.useState("")
+
   React.useMemo(() => {
     const {Piece} = createBoardClasses();
 
@@ -64,6 +66,44 @@ const Layout = () => {
     board.applyLayouts();
 
   }, [board, orthogonal, gapX, gapY, offsetColumnX, offsetColumnY, offsetRowX, offsetRowY, pieces, aspectRatio, scaling, alignment, direction, minRows, maxRows, minColumns, maxColumns, maxOverlap, haphazardly]);
+
+  React.useEffect(() => {
+    const lines = ["space.layout(Piece, {"]
+    if (minRows !== undefined || maxRows !== undefined) {
+      lines.push("  rows: " + (minRows === maxRows ? minRows : '{' + (minRows ? `min: ${minRows}` : '') + (minRows && maxRows ? ', ' : '') + (maxRows ? `max: ${maxRows}` : '') + '}') + ",")
+    }
+    if (minColumns !== undefined || maxColumns !== undefined) {
+      lines.push("  columns: " + (minColumns === maxColumns ? minColumns : '{' + (minColumns ? `min: ${minColumns}` : '') + (minColumns && maxColumns ? ', ' : '') + (maxColumns ? `max: ${maxColumns}` : '') + '}') + ",")
+    }
+    if (orthogonal && (gapX > 0 || gapY > 0)) {
+      lines.push(`  gap: ${gapX === gapY ? gapX : `{x: ${gapX}, y: ${gapY}}`},`)
+    }
+    if (!orthogonal) {
+      lines.push(`  offsetRow: ${offsetRowX === 0 ? offsetRowY : `{x: ${offsetRowX}, y: ${offsetRowY}}`},`)
+      lines.push(`  offsetColumn: ${offsetColumnY === 0 ? offsetColumnX : `{x: ${offsetColumnX}, y: ${offsetColumnY}}`},`)
+    }
+    if (scaling !== "fit") {
+      lines.push(`  scaling: '${scaling}',`)
+    }
+    if (alignment !== 'center') {
+      lines.push(`  alignment: '${alignment}',`)
+    }
+    if (direction !== 'square') {
+      lines.push(`  direction: '${direction}',`)
+    }
+    if (maxOverlap < 100) {
+      lines.push(`  maxOverlap: ${maxOverlap},`)
+    }
+    if (haphazardly > 0) {
+      lines.push(`  haphazardly: ${haphazardly},`)
+    }
+    lines.push("})")
+    lines.push("")
+    lines.push("board.all(Piece).appearance({")
+    lines.push(`  aspectRatio: ${aspectRatioStr[aspectRatio]}`)
+    lines.push("})")
+    setCodeSample(lines.join("\n"))
+  }, [minRows, maxRows, minColumns, maxColumns, orthogonal, gapX, gapY, scaling, alignment, direction, maxOverlap, haphazardly, aspectRatioStr, aspectRatio ])
 
   return (
     <div className={styles['layout-playground']}>
@@ -178,39 +218,7 @@ const Layout = () => {
       </div>
 
 
-      <div className={styles.code}>
-        <button onClick={() =>  navigator.clipboard.writeText(preRef.current.innerText)}className={styles.copy}>Copy</button>
-        <pre ref={preRef}>
-          <div>space.<span className={styles.keyword}>layout</span>(Piece, &#123;</div>
-          {(minRows !== undefined || maxRows !== undefined) &&
-            <div className={styles.indent}>
-              <span className={styles.keyword}>rows</span>: {minRows === maxRows || maxRows === 1 ? maxRows :
-                <>&#123;{minRows ? <><span className={styles.keyword}>min</span>: {minRows}</> : ''}{minRows && maxRows ? ', ' : ''}{(maxRows ? <><span className={styles.keyword}>max</span>: {maxRows}</> : '')}&#125;</>
-              },
-            </div>
-          }
-          {(minColumns !== undefined || maxColumns !== undefined) &&
-            <div className={styles.indent}>
-              <span className={styles.keyword}>columns</span>: {minColumns === maxColumns ? minColumns :
-                <>&#123;{minColumns ? <><span className={styles.keyword}>min</span>: {minColumns}</> : ''}{minColumns && maxColumns ? ', ' : ''}{maxColumns ? <><span className={styles.keyword}>max</span>: {maxColumns}</> : ''}&#125;</>
-              },
-            </div>
-          }
-          {(orthogonal && (gapX > 0 || gapY > 0)) && <div className={styles.indent}><span className={styles.keyword}>gap</span>: {gapX === gapY ? gapX : <>&#123;<span className={styles.keyword}>x</span>: {gapX}, <span className={styles.keyword}>y</span>: {gapY}&#125;</>},</div>}
-          {!orthogonal && maxRows !== 1 && <div className={styles.indent}><span className={styles.keyword}>offsetRow</span>: {offsetRowX === 0 ? offsetRowY : <>&#123;<span className={styles.keyword}>x</span>: {offsetRowX}, <span className={styles.keyword}>y</span>: {offsetRowY}&#125;</>},</div>}
-          {!orthogonal && maxColumns !== 1 && <div className={styles.indent}><span className={styles.keyword}>offsetColumn</span>: {offsetColumnY === 0 ? offsetColumnX : <>&#123;<span className={styles.keyword}>x</span>: {offsetColumnX}, <span className={styles.keyword}>y</span>: {offsetColumnY}&#125;</>},</div>}
-          {scaling !== 'fit' && <div className={styles.indent}><span className={styles.keyword}>scaling</span>: <span className={styles.string}>'{scaling}'</span>,</div>}
-          {alignment !== 'center' && <div className={styles.indent}><span className={styles.keyword}>alignment</span>: <span className={styles.string}>'{alignment}'</span>,</div>}
-          {direction !== 'square' && <div className={styles.indent}><span className={styles.keyword}>direction</span>: <span className={styles.string}>'{direction}'</span>,</div>}
-          {maxOverlap < 100 && <div className={styles.indent}><span className={styles.keyword}>maxOverlap</span>: {maxOverlap},</div>}
-          {haphazardly > 0 && <div className={styles.indent}><span className={styles.keyword}>haphazardly</span>: {haphazardly},</div>}
-          <div>&#125;);</div>
-          <div>&nbsp;</div>
-          <div>board.<span className={styles.keyword}>all</span>(Piece).<span className={styles.keyword}>appearance</span>(&#123;</div>
-          <div className={styles.indent}><span className={styles.keyword}>aspectRatio</span>: {aspectRatioStr[aspectRatio]}</div>
-          <div>&#125;);</div>
-        </pre>
-      </div>
+      <CodeBlock className="language-js">{codeSample}</CodeBlock>
 
       <div className={styles.main}>
         <div className={styles.canvas}>
