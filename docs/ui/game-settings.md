@@ -21,7 +21,7 @@ your game, you might add:
   render(setup, {
     ...
     settings: {
-      realtimeVp: toggleSetting('Show VP in real-time')
+      realtimeVp: toggleSetting("Show VP in real-time")
     },
     ...
   });
@@ -31,7 +31,7 @@ And somewhere in your UI code you will lookup the game's setting to see if this
 value is turned on to determine whether to show VP:
 
 ```ts
-  if (board.game.setting('realtimeVp')) {
+  if (board.game.setting("realtimeVp")) {
     // show VP
   }
 ```

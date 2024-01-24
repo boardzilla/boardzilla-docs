@@ -79,7 +79,7 @@ differently based on the state of the element, or of the game itself.
 :::tip render false
 
 Pass false to the `render` attribute to tell Boardzilla not to render these
-elements or their children at all.
+elements or their contents at all.
 
 :::
 
@@ -163,7 +163,7 @@ If you have e.g. `Card.active` as a boolean property, it will appear as:
 <div class="Card..." data-active="true">
 ```
 
-and must be targetted in CSS as:
+and can be targetted in CSS as:
 
 ```css
 .Card[data-active="true"] {
@@ -172,13 +172,13 @@ and must be targetted in CSS as:
 
 :::tip use em or %
 
-Since elements in Boardzilla can change size depending on game state, it's
-important to never use absolute CSS units like `px`.
+Since elements in Boardzilla can change size, it's important to never use
+absolute CSS units like `px`.
 
 Always use `em` units when you want your CSS to be relative to the element it
 belongs to. CSS attributes that accept a `%` relative to parent size are also
-appropriate. Use `rem` if you want the size to be relative to the entire game
-board.
+appropriate. Use `rem` in rare cases where you want the size to be relative to
+the entire game board.
 
 :::
 
@@ -278,13 +278,18 @@ reference it directly in your CSS, e.g.:
 ```css
 @font-face {
   font-family: "Font Name";
-  src: url('./assets/font-file.ttf');
+  src: url(./assets/font-file.ttf);
 }
 
 body {
   font-family: "Font Name";
 }
 ```
+
+If you apply your font to the `body` element as above, bear in mind that it will
+apply not only to everything on the game board, but all game messages, and the
+setup page. See [CSS](css) for more information on the different elements that
+can be targetted.
 
 ## Animations
 
@@ -293,7 +298,7 @@ and size. This is done by applying a CSS `transition` effect to a wrapper
 element that controls size and position. You can add transition effects that
 react to changes in your elements simply by adding style and class info in the
 `render` and using CSS `transition`s to change how they animate as these
-properties change. E.g. the Boardzilla starter game features Token that animate
+properties change. E.g. the Boardzilla starter game features Tokens that animate
 their flip.
 
 You can also provide CSS effects that listen for changes on your elements and
@@ -306,7 +311,7 @@ apply the effect with `appearance.effect`, e.g.:
   board.all(Card).appearance({
     effects: [{
       attributes: { isTrump: true },
-      className: 'newly-trump',
+      className: "newly-trump",
     }]
   });
 ```
@@ -319,11 +324,12 @@ flash or highlight in some way only when a card change to become trump.
 
 :::tip Disable default
 
-When you are writing your custom UI, at some point you will want to get
-rid of the Boardzilla default styling that appears when you start. As you add
-`render` properties to each elements `appearance` you will replace this default
-UI for those elements. However, you can turn it off entirely for any elements
-that need no customization and can be left blank. Simply call:
+When you are writing your custom UI, at some point you will want to get rid of
+the Boardzilla default styling that appears when you start. As you add `render`
+properties to each elements `appearance` you will replace this default UI for
+those elements. However, you can turn it off entirely for all elements. Any
+elements that have no custom appearance will then be left unrendered. To turn
+off default rendering, simply add in the layout block:
 
 ```
 board.disableDefaultAppearance();
@@ -342,7 +348,7 @@ function, e.g.:
 ```ts
   render({
     boardSizes: () => ({ 
-      name: 'standard',
+      name: "standard",
       aspectRatio: 4 / 3
     })
     ...
@@ -372,11 +378,11 @@ mobile devices, e.g.:
   render({
     boardSizes: (screenX, screenY, mobile) => {
       if (mobile) return { 
-        name: 'mobile',
+        name: "mobile",
         aspectRatio: 1 / 2
       });
       return { 
-        name: standard',
+        name: "standard",
         aspectRatio: 5 / 3
       })
     })
@@ -393,7 +399,7 @@ provide, e.g.:
   render({
     ...
     layout: (board, player, boardSize) => {
-      if (boardSize === 'mobile') {
+      if (boardSize === "mobile") {
 
         // mobile layout here
 

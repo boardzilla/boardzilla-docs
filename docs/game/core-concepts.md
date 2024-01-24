@@ -8,8 +8,8 @@ throughout the documentation.
 
 ## Board
 The Board is the class that defines the overall layout of the game. It is
-composed of **Spaces** and **Pieces**. It itself is a Space but with special
-behaviour.
+composed of **Spaces** and **Pieces**. Together these are called
+**Elements**. The board itself is a Space but with special behaviour.
 
 ### Space
 Spaces are regions of the Board. They are **stable** and never change once the

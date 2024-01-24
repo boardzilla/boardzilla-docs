@@ -9,11 +9,12 @@ format.
 
 You can customize the appearance and layout behaviour of all your game
 elements. In Boardzilla, it is easy to build the UI iteratively. You start with
-the default raw look. It is possible to develop the entire game using this
-default UI, and only start customizing once all the rules are working. In many
-ways, the default UI is easier to use during development since when
-troubleshooting issues, you can safely rule out the UI code and see plainly how
-the board changes according to your rules.
+the default raw look that it only intended to be used temporarily while
+developing. It is possible to develop the entire game using this default UI, and
+only start customizing once all the rules are working. In many ways, the default
+UI is easier to use during development since when troubleshooting issues, you
+can safely rule out the UI code and see plainly how the board changes according
+to your rules.
 
 Like editing the rules, you can edit the UI in the devtools while you're in the
 middle of playtesting the game, watch your UI changes update in real-time, and
