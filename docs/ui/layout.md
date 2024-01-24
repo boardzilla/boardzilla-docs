@@ -4,11 +4,26 @@ sidebar_position: 3
 # Layout
 
 Customizing the game UI probably requires declaring several layouts. Each layout
-provides a strategy for a given game element about how items should be visually
-placed inside it. A layout might declare that for a given area, items should be
-laid out in a row, or a stack, or a grid. When many items enter the same space,
-it might declare whether they should scale down to fit, should squish together,
-or whether only a certain number of them should actually be visible.
+provides a strategy how items are visually laid out. Each layout declaration has
+3 parts:
+
+1. The container element that uses this layout
+2. The content elements that it applies to
+3. The layout rules
+
+For example, in the following layout declaration:
+
+```ts
+  $.deck.layout(Card, { alignment: 'left' }
+```
+
+The **container** is the deck space `$.deck`, the **contents** are any `Card`s
+in the deck, and a single **rule** says that these cards should left align.
+
+Layout declarations might declare that for a given area, items should be laid
+out in a row, or a stack, or a grid. When many items enter the same space, it
+might declare whether they should scale down to fit, should squish together, or
+whether only a certain number of them should actually be visible.
 
 All layout declarations go in the `layout` of the main
 [`render`](../api/modules#render) function, e.g.:
@@ -44,9 +59,9 @@ Each layout in a space operates completely independantly of the others in that
 space. E.g. if you have a space that might have both Cards and Tokens in it and
 you apply one layout to Cards and another to Tokens, each Card and Token in that
 space will be laid out in accordance with its respective layout rules, but Cards
-will not affect how Tokens are laid out, and vice versa. They are completely
-free to overlap each other (with later layouts appearing over top of earlier
-ones).
+will not affect how Tokens are laid out, and vice versa. They are therefore
+completely free to overlap each other if the layouts use the same area. Later
+layouts will appear over top of earlier ones in this case.
 
 <div style="textAlign: center"><img src="/img/layouts.svg"/></div>
 
@@ -59,7 +74,7 @@ last one declared (Rectangles) appears on top.
 ## Layout parameters
 
 Creating a layout for an area of the board is a series of questions, with
-different [parameters](../api/modules#layoutattributes) used to define each one.
+different [parameters](../api/modules#layoutattributes) used to answer each one.
 
 * What part of the area should be used to display its contents? (`area` or
   `margin`)
@@ -73,11 +88,11 @@ different [parameters](../api/modules#layoutattributes) used to define each one.
 * How should they expand or squish to fit in the area? (`scaling` and `maxOverlap`)
 
 How all the parameters interact is somewhat technical. The best way to find what
-you're looking for is to experiment. A helpful [layout sandbox](layout-sandbox) is provided here
-to let you try different parameters and see the results with different
-elements. Also browsing the sample games to see how their layouts work is a good
-resource. Of course, refer to [the
-documentation](../api/modules#layoutattributes) for the technical descriptions.
+you're looking for is to experiment. A helpful [layout sandbox](layout-sandbox)
+is provided here to let you try different parameters and see the results with
+different elements. Also browsing the sample games to see how their layouts work
+is a good resource. Of course, refer to [the API
+documentation](../api/modules#layoutattributes) for the complete descriptions.
 
 :::tip relative percentages
 
@@ -95,18 +110,20 @@ the deck's width and height.
 :::
 
 Note that the layout code is evaluated every time the board changes, so if
-e.g. you have a layout for the cards in the deck, the supplied `layout` might
-look like:
+e.g. you have a layout on `$.field` for _only_ the cards for which `card.color`
+is `"red"`, then the `layout` declaration might look like:
 
 ```ts
-$.deck.layout(Card, {
-  ...
-});
+$.field.layout(
+  $.field.all(Card, {color: "red"}), {
+    ...
+  }
+);
 ```
 
-This will be applied to each `Card` in the `deck` Space, and as cards enter or
-leave the deck, the layout will automatically be re-applied given the new set of
-cards in the deck.
+This will be applied to each `Card` in the `field` Space with `color` equal to
+`"red"`, and as cards enter or leave the field or change color, the layout will
+automatically be re-applied given the new set of red cards in the field.
 
 :::tip layout bounding box
 

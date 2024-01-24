@@ -9,7 +9,7 @@ format.
 
 You can customize the appearance and layout behaviour of all your game
 elements. In Boardzilla, it is easy to build the UI iteratively. You start with
-the default raw look. It is possible to develop the entire game using the
+the default raw look. It is possible to develop the entire game using this
 default UI, and only start customizing once all the rules are working. In many
 ways, the default UI is easier to use during development since when
 troubleshooting issues, you can safely rule out the UI code and see plainly how

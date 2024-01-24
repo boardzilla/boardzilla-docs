@@ -3,9 +3,9 @@ sidebar_position: 5
 ---
 # Appearance
 
-Getting the layout for your game elements is only one part of the UI. The other
-major piece is the appearance of each item. This is where you tell Boardzilla
-exactly what each item should look like. This is done by calling
+Defining the [layout](layout) for your game elements is only one part of the
+UI. The other major piece is the appearance of each item. This is where you tell
+Boardzilla exactly what each item should look like. This is done by calling
 [`appearance`](../api/classes/GameElement#appearance) on the elements you want
 to set. Like layout, this is re-evaluated as the board changes, so if you want
 e.g. `Card`'s to appear differently when they're in the deck vs the field, you
@@ -21,9 +21,11 @@ $.field.all(Card).appearance({
 });
 ```
 
-If multiple appearance calls are made that apply to the same element, they are
-stacked on top of each other and only overwrite the values if provided. You
-might, e.g. call
+In this case, the correct appearance will be set as the Card changes
+locations. If multiple appearance calls are made that apply to the same element,
+they are combined with later declarations only overwriting previous values if
+provided. You might, e.g. call
+
 ```ts
 Card.appearance({ aspectRatio: 3 / 4 });
 ```
@@ -35,9 +37,6 @@ $.deck.all(Card).appearance({ render: ... })
 ```
 
 to set the appearance of cards more specifically in different board regions.
-
-The different appearances given will be applied to Cards whenever they move
-between the deck and the field.
 
 ## Aspect ratio
 

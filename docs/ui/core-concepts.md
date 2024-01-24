@@ -16,8 +16,8 @@ sandbox](layout-sandbox).
 
 ### Appearance
 The appearance of each visible space and piece can be customized using JSX that
-you provide and you can apply your own CSS to these. You can also supply special
-effects that will be applied when things happen to these elements.
+you provide, and you can apply any CSS you like to these. You can also supply
+special effects that will be applied when things happen to these elements.
 
 Learn more in [Appearance](./appearance).
 

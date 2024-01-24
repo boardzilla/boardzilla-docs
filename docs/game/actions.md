@@ -367,11 +367,11 @@ action. To modify the strategy, add a `skipIf` parameter to either a [selection
 function](#selections), or to the
 [`playerActions`](../api/modules#playeractions) function.
 
-| Strategy         | `skipIf` value | Description                                                                                                                                                                                                                                                                                                     | Default                                            |
-|------------------|----------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------|
-| Never Skip       | `'never'`      | Boardzilla will always present this selection for choosing by the player even if the choice is forced.                                                                                                                                                                                                          | n/a                                                |
-| Skip if Only One | `'always'`     | Boardzilla will skip this selection if there is only one viable option.                                                                                                                                                                                                                                         | Default for all [selection functions](#selections) |
-| Always Skip      | <nobr>`'only-one'`</nobr>   | Rather than present this choice directly, the player will be prompted with choices from the *next choice* in the action for each possible choice here, essentially expanding the choices ahead of time to save the player a step. This option only has relevance if there are subsequent choices in the action. | Default for [`playerActions`](../api/modules#playeractions)                                                   |
+| Strategy         | `skipIf` value            | Description                                                                                                                                                                                                                                                                                                     | Default                                                     |
+|------------------|---------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------|
+| Never Skip       | `'never'`                 | Boardzilla will always present this selection for choosing by the player even if the choice is forced.                                                                                                                                                                                                          | n/a                                                         |
+| Skip if Only One | <nobr>`'only-one'`</nobr> | Boardzilla will skip this selection if there is only one viable option.                                                                                                                                                                                                                                         | Default for all [selection functions](#selections)          |
+| Always Skip      | `'always'`                | Rather than present this choice directly, the player will be prompted with choices from the *next choice* in the action for each possible choice here, essentially expanding the choices ahead of time to save the player a step. This option only has relevance if there are subsequent choices in the action. | Default for [`playerActions`](../api/modules#playeractions) |
 
 For example, if you want the player to play a card from hand but want the player
 to explicitly click the card, **even if there is only one card** in hand to
@@ -416,8 +416,8 @@ the current action.
 ```
 
 In this example, certain cards trigger another action named
-"specialAction". This action must be defined elsewhere in the `defineActions`
-call with this name.
+"specialAction". This action must be defined elsewhere in the
+[`defineActions`](../api/classes/Game#defineactions) call with this name.
 
 Often a variety of ways to trigger this follow-up will exist in play with
 variations. Imagine a card game where drawing certain cards lets you take

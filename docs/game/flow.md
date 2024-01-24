@@ -18,11 +18,11 @@ Flow is defined in `game/index.ts` inside the
 [createGame](../api/modules#creategame) when you call
 [`game.defineFlow`](../api/classes/Game#defineflow). The arguments to this
 function are the steps for your game. There are two basic types of steps:
-- a function
-- a flow command
+- Plain Functions
+- Flow commands
 
-Functions alter the game state in some way, and flow commands change the flow of
-the game. You can keep adding as many functions and flow commands as needed, in
+Functions alter the game state in some way, and Flow commands change the flow of
+the game. You can keep adding as many functions and Flow commands as needed, in
 any order.  Let's look at a simple example from the Boardzilla starter game:
 
 ``` ts Sample flow
@@ -64,19 +64,19 @@ from the `pile` when needed. Similarly when elements are
 
 :::
 
-The next argument in this example calls `loop`. This is a basic flow command
-that causes a portion of the flow to be repeated until something interupts
+The next argument in this example calls `loop`. This is a basic Flow command
+that causes a portion of the flow to be repeated until something interrupts
 it. In this case, it sets up the basic game loop. Flow commands can set up other
 types of loops, have players take turns, create branching logic, and most
 importantly, prompt players for the actions they can perform.
 
-In the example above the main loop itself includes other flow commands, namely
+In the example above the main loop itself includes other Flow commands, namely
 `eachPlayer` and `playerActions`. This is an important distinction between the
-two types of flow steps, functions and flow commands:
+two types of flow steps, plain functions and Flow commands:
 
 :::tip
 
-***Flow commands can only be added directly by other flow commands.***
+***Flow commands can only be added directly by other Flow commands.***
 
 :::
 
@@ -94,7 +94,7 @@ the deck, dealing some cards, and then cleaning up after the hand:
   );
 ```
 
-If you now want to insert a flow command in the middle to add a player action,
+If you now want to insert a Flow command in the middle to add a player action,
 you must break the function into two pieces and insert the flow function between
 them, e.g.:
 
@@ -116,7 +116,7 @@ them, e.g.:
 
 ## Flow commands
 
-All flow commands are available on
+All Flow commands are available on
 [`game.flowCommands`](../api/classes/Game#flowcommands). It is common to
 deconstruct all needed commands before defining flow, e.g.: 
 
@@ -129,24 +129,22 @@ deconstruct all needed commands before defining flow, e.g.:
   } = game.flowCommands;
 ```
 
-Let's look at the
-various flow commands. There are 3 main types of flow commands, looping,
-branching and actions.
+Let's look at the various Flow commands. There are 3 main types of flow
+commands, looping, branching and actions.
 
-### Looping flow commands
+### Looping Flow commands
 
 #### [`loop`](../api/modules#loop)
 
 The most basic loop, this creates a loop that continues indefinitely until
-explicitly interupted. This would be like a C/Javascript `while(true)`.
+explicitly interrupted. This would be like a C/Javascript `while(true)`.
 
 #### [`whileLoop`](../api/modules#whileloop)
 
 Like the basic `loop`, except that it accepts a condition and will only start a
 new iteration of the loop if the condition is true. This is exaclty like the
-C/Javascript `while(condition)`. In particular, note that this loop might never
-execute even the first iteration if the supplied condition is false to begin
-with.
+C/Javascript `while(condition)`. In particular, note that this loop might not
+execute even one iteration if the supplied condition is false to begin with.
 
 #### [`forLoop`](../api/modules#forloop)
 
@@ -162,8 +160,8 @@ collection. This is like `for ... of` or `Array#forEach` in Javascript.
 #### [`eachPlayer`](../api/modules#eachplayer)
 
 This is a loop that iterates over each player. This is the same as `forEach`
-with the additional behaviour that it sets the the "current" player on each
-iteration of the loop.
+with one addition. On each iteration as the player changes, it also
+automatically sets the ["current" player](players#current-player).
 
 #### [`everyPlayer`](../api/modules#everyplayer)
 
@@ -173,7 +171,7 @@ in turn, it let's all players take they turn simultaneously in parallel. This
 "loop" completes when all players have completed the body of the loop, or when
 the loop is otherwise interrupted.
 
-### Branching flow commands
+### Branching Flow commands
 
 #### [`ifElse`](../api/modules#ifelse)
 
@@ -193,27 +191,28 @@ through](https://en.wikipedia.org/wiki/Switch_statement#Fallthrough) behaviour.
 
 #### [`playerActions`](../api/modules#playeractions)
 
-The sole flow command for prompting player actions. This command accept a list
+The sole Flow command for prompting player actions. This command accept a list
 of allowed [actions](actions) that were defined in `defineActions` and prompts
 the current player (or a particular player or players if specified).
 
 Note that like all other selections in Boardzilla, this list of actions has
 [tree-shaking and skipping](actions#tree-shaking-and-skipping) behaviour. If one
-of the included actions is determined to have possible valid moves, it will not
-be included in player prompts. If only one of the supplied actions is determined
-to be playable, it will be prompted. If such an action requires no further
-prompts it will be auto-played. Just like action selections this behaviour can
-be configured for each `playerActions` with a `skipIf` parameter.
+of the included actions is determined to have no possible valid moves, it will
+not be included in player prompts. If only one of the supplied actions is
+determined to be playable, it will be prompted with any required selections. If
+such an action requires no further selections it will be auto-played. Just like
+action selections this behaviour can be configured for each `playerActions` with
+a `skipIf` parameter.
 
 For this reason, it is common to include a wide variety of possible actions in
 the list of `playerActions` but let each action definition take responsibility
 for determining whether it is actually playable at the time based on its
 selections and/or `condition` parameter.
 
-:::danger flow commands are created once
+:::danger Flow commands are created once
 
 Unlike [`Actions`](actions) that are created for each player **at the time** of
-being played, flow commands are created **at the beginning** of the game. Be
+being played, Flow commands are created **at the beginning** of the game. Be
 careful with passing expressions directly to Flow commands that rely on game
 state.
 
@@ -224,7 +223,7 @@ called "field", something like the following is probably **not** what you want:
  forEach({
    name: 'card',
    // highlight-next-line
-   collection: deck.all(Card), // only evaluated at the start of the game
+   collection: $.field.all(Card), // ❌ only evaluated at the start of the game
    do: playerAction({ actions: ['chooseCard', 'pass'] })
   })
 ```
@@ -236,7 +235,7 @@ time this loop is entered:
  forEach({
    name: 'card',
    // highlight-next-line
-   collection: () => deck.all(Card),
+   collection: () => $.field.all(Card), // ✅
    do: playerAction({ actions: ['chooseCard', 'pass'] })
   })
 ```
@@ -245,11 +244,11 @@ time this loop is entered:
 
 ### Current Flow Position
 
-For many flow commands, it is necessary to know what the current position
+For many Flow commands, it is necessary to know what the current position
 is. For example in a simple `for i` loop, we need to access `i` and have logic
 that depends on its current value.
 
-Basically all function parameters in flow commands accept a single argument of
+Basically all function parameters in Flow commands accept a single argument of
 type [`FlowArguments`](../api/modules#flowarguments) for this purpose. The
 argument is a single object that contains all values "in scope" at this point in
 the flow. There are two types of values included here:
@@ -264,7 +263,7 @@ current collection member of any [`forEach`](#foreach) loops, the evaluated test
 expression in any [`switchCase`](#switchcase)'s.
 
 The values are included as key value pairs where the key is the `name` parameter
-supplied for the flow command.
+supplied for the Flow command.
 
 ```ts Example of reading loop variables
   forLoop({
@@ -292,7 +291,7 @@ supplied for the flow command.
 #### Player action selections
 
 For player action selections, the arguments to the player action are included as
-a single object. Again this only applies if the flow command is inside the `do`
+a single object. Again this only applies if the Flow command is inside the `do`
 branch belonging to this player action. The name in this case is the name of the
 actions. For example, here we have defined an action called "takeResource" and
 later we want to know what choices the player made in the flow.
@@ -337,17 +336,17 @@ confusing which we should use for what.
 In general the action `do` is the proper place to react to what a player just did. This
 includes mutating the board, recording state, or triggering follow-up actions.
 
-The playerActions `do` should be used only if the player action changes the flow
-of the game, e.g. ending a phase or somehow interrupting a loop, or triggering
-other rounds of player actions, since flow commands can only be issued inside
-other flow commands.
+The playerActions `do` should be used only for changes to the flow of the game
+as a result of the player action, e.g. ending a phase or somehow interrupting a
+loop, or triggering other rounds of player actions, since Flow commands can only
+be issued inside other Flow commands.
 
 :::
 
-## Loop interuption
+## Loop interruption
 
 It is important in a game to able to interrupt loops. In fact if we use the
-basic `loop` flow command, the loop will continue indefinitely **unless** we
+basic `loop` Flow command, the loop will continue indefinitely _unless_ we
 interrupt it. There are 3 basic [loop interruption
 functions](../api/modules#do):
 
@@ -386,7 +385,7 @@ pass it as the action `do`, e.g.:
 
 :::danger These are not javascript keywords
 
-Remember that the flow interuption functions are merely humble Javascript
+Remember that the flow interruption functions are merely humble Javascript
 functions, **not keywords**, despite being named similarly. They do not break control
 flow all by themselves.
 
