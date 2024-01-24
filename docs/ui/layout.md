@@ -48,7 +48,7 @@ will not affect how Tokens are laid out, and vice versa. They are completely
 free to overlap each other (with later layouts appearing over top of earlier
 ones).
 
-<div style="textAlign: center"><img src="/img/layouts.png"/></div>
+<div style="textAlign: center"><img src="/img/layouts.svg"/></div>
 
 In the example pictured here, two layouts are declared for a space, one for
 Circle elements and one for Rectangle elements. Each declares a different grid

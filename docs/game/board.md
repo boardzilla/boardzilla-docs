@@ -42,7 +42,7 @@ graph TD;
 In the context of an actual game board, the Spaces and Pieces in this diagram
 might look something like this:
 
-<img src="/img/board.png"/>
+<img src="/img/board.svg"/>
 
 Here the <span style="color: #666"><b>Spaces</b></span> are grey and the <span
 style="color: #009"><b>Pieces</b></span> are blue. Spaces can contain other
@@ -164,7 +164,7 @@ Rememeber the difference between `player` and `owner`. They are related but dist
 - `player` is a property you set that assigns a game element to that player, and is usually permanent. Think of it like a name tag, or the color of the element.
 - `owner` is a read-only property that indicates where the piece currently resides. A Card might be owned by a player while they hold it, but the card "doesn't have their name on it" so to speak, and may change hands.
 
-<div style="text-align:center"><img src="/img/owner.png"/></div>
+<div style="text-align:center"><img src="/img/owner.svg"/></div>
 :::
 
 The Player object also conveniently has methods for retrieving these elements:
