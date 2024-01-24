@@ -56,10 +56,7 @@ const config = {
     ],
   ],
 
-  themes: [
-    "@docusaurus/theme-live-codeblock",
-    "@docusaurus/theme-mermaid"
-  ],
+  themes: ["@docusaurus/theme-live-codeblock", "@docusaurus/theme-mermaid"],
   themeConfig: {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     // Replace with your project's social card
@@ -116,16 +113,13 @@ const config = {
         navigation: {
           includeCategories: true,
           includeGroups: false,
-          includeFolders: true
+          includeFolders: true,
         },
         tsconfig: path.join(__dirname, "../boardzilla-core/tsconfig.json"),
-        plugin: [
-          "typedoc-plugin-merge-modules",
-          "typedoc-plugin-no-inherit",
-        ],
+        plugin: ["typedoc-plugin-merge-modules", "typedoc-plugin-no-inherit"],
         theme: "docusaurus",
         frontmatter: {
-          sidebar_position: 5,
+          sidebar_position: 7,
         },
       },
     ],
