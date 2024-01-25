@@ -20,26 +20,27 @@ game starts. They can contain both other spaces and pieces.
 
 ### Piece
 
-Pieces are **movable** objects in the game. They can move to other spaces or can be moved inside other Pieces, such as for instance, when tokens are placed onto
+Pieces are **movable** objects in the game. They can move to other spaces or can
+be moved inside other Pieces, such as for instance, when tokens are placed onto
 a card.
 
 You can read further about this in [Board Structure](./board).
 
 ## Player
 
-The player is a class that represents a user playing the game. Each game
-will have a player class specific to it. Players can have pieces and spaces assigned to them,
-and any piece that enters these becomes "owned" by the player.
+The player is a class that represents a user playing the game. Each game will
+have a player class specific to it. Players can have pieces and spaces assigned
+to them, and any piece that enters these becomes "owned" by the player.
 
 You can read further about this in [Players](./players).
 
 ## Action
 
 An Action is a discrete unit of choice for a player. An action has a **name**,
-any possible **selections** for the action, and **behavior**. In Chess, for example, an
-action might be called "move". It has two selections: the piece being moved, and
-space it's moved to. It's behavior would be to move the piece to its
-destination and a message to the game log.
+any possible **selections** for the action, and **behavior**. In Chess, for
+example, an action might be called "move". It has two selections: the piece
+being moved, and space it's moved to. It's behavior would be to move the piece
+to its destination and a message to the game log.
 
 You can read further about this in [Actions](./actions).
 

@@ -13,7 +13,7 @@ The layout of the game is the definition of where the Spaces and Pieces appear
 in the player's browser, and how they change as Pieces are added into an area
 and start to fill it up.
 
-Learn more in this in [Layout](./layout) and also try out the [Layout
+Learn more in [Layout](./layout) and also try out the [Layout
 sandbox](layout-sandbox).
 
 ### Appearance
@@ -22,11 +22,12 @@ The appearance of each visible space and piece can be customized using JSX that
 you provide, and you can apply any CSS you like to these. You can also supply
 special effects that will be applied when things happen to these elements.
 
-Learn more this in [Appearance](./appearance).
+Learn more in [Appearance](./appearance).
 
 ### Controls
 
-Controls are what we call any input controls that sit on top of the game board. These include:
+Controls are what we call any input controls that sit on top of the game
+board. These include:
 
 - Prompts
 - Button choices

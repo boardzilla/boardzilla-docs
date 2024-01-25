@@ -13,13 +13,13 @@ e.g. `Card`'s to appear differently when they're in the deck vs the field, you
 might call:
 
 ```ts
-$.deck.all(Card).appearance({
-  ...
-});
+  $.deck.all(Card).appearance({
+    ...
+  });
 
-$.field.all(Card).appearance({
-  ...
-});
+  $.field.all(Card).appearance({
+    ...
+  });
 ```
 
 In this case, the correct appearance will be set as the Card changes
@@ -28,13 +28,13 @@ they are combined with later declarations only overwriting previous values if
 provided. You might, e.g. call
 
 ```ts
-Card.appearance({ aspectRatio: 3 / 4 });
+  Card.appearance({ aspectRatio: 3 / 4 });
 ```
 
 to set the aspect ratio of all `Card`'s, but then call
 
 ```ts
-$.deck.all(Card).appearance({ render: ... })
+  $.deck.all(Card).appearance({ render: ... })
 ```
 
 to set the appearance of cards more specifically in different board regions.
@@ -62,16 +62,16 @@ element. Here's a simple example of JSX to show a Card that has `name`, `cost`
 and `description`:
 
 ```jsx
-board.all(Card).appearance({
-  aspectRatio: 3 / 4,
-  render: (card) => (
-    <div>
-      <div className="name">{card.name}</div>
-      <div className="cost">{card.cost}</div>
-      <div className="description">{card.description}</div>
-    </div>
-  ),
-});
+  board.all(Card).appearance({
+    aspectRatio: 3 / 4,
+    render: (card) => (
+      <div>
+        <div className="name">{card.name}</div>
+        <div className="cost">{card.cost}</div>
+        <div className="description">{card.description}</div>
+      </div>
+    ),
+  });
 ```
 
 You can put as much logic here as you like to conditionally display elements
@@ -85,11 +85,11 @@ elements or their contents at all.
 :::
 
 Bear in the mind that the elements in a game might be
-[invisible](../game/board#visibility) to players (e.g. a flipped Card) in which case the
-properties of the element will be `undefined`. You can check for `undefined`
-properties, or simply call
-[`isVisible()`](../api/classes/GameElement#isvisible) to determine if
-the back of the card should be displayed instead.
+[invisible](../game/board#visibility) to players (e.g. a flipped Card) in which
+case the properties of the element will be `undefined`. You can check for
+`undefined` properties, or simply call
+[`isVisible()`](../api/classes/GameElement#isvisible) to determine if the back
+of the card should be displayed instead.
 
 ## CSS
 
@@ -102,7 +102,7 @@ the HTML class for the HTML Element, in other words a class named `Card` will
 appear in the HTML as:
 
 ```html
-<div class="Card ... "></div>
+  <div class="Card ... ">
 ```
 
 :::tip class names
@@ -117,7 +117,7 @@ The name of the element will also be represented as the HTML element's `id`. So
 if you create a Space called `"deck"`, you can target it with:
 
 ```css
-.Space#deck {
+  .Space#deck {
 ```
 
 In addition the properties you give to your card class, as well as built-in
@@ -125,12 +125,12 @@ properties like `name` and `player` are added to the HTML element as `data-`
 attributes, e.g.:
 
 ```html
-<div
-  class="Card ... "
-  data-name="ace-of-hearts"
-  data-suit="H"
-  data-number="1"
-></div>
+  <div
+    class="Card ... "
+    data-name="ace-of-hearts"
+    data-suit="H"
+    data-number="1"
+  >
 ```
 
 :::tip player attribute
@@ -139,7 +139,7 @@ If an element is [assigned](../game/board#ownership) to a player, this also caus
 player, e.g.
 
 ```html
-<div class="Hand ... " data-player="1"></div>
+  <div class="Hand ... " data-player="1">
 ```
 
 :::
@@ -149,7 +149,7 @@ you want to target the aces in a standard player deck represented with a `Card`
 class that has a `number` property, you can target:
 
 ```css
-.Card[data-number="1"] {
+  .Card[data-number="1"] {
 ```
 
 The `render` JSX you supply will be rendered inside the `<div>`. In this way,
@@ -162,13 +162,13 @@ Remember that all HTML attributes are strings! Numbers and booleans are converte
 If you have e.g. `Card.active` as a boolean property, it will appear as:
 
 ```html
-<div class="Card..." data-active="true"></div>
+  <div class="Card..." data-active="true">
 ```
 
 and can be targetted in CSS as:
 
 ```css
-.Card[data-active="true"] {
+  .Card[data-active="true"] {
 ```
 
 :::
@@ -193,7 +193,7 @@ elements will be HTML DOM children of the `"deck"` element. If you want to
 target CSS for specifically the `Card`s in the `"deck"` you can simply use:
 
 ```css
-Space#deck .Card {
+  Space#deck .Card {
 ```
 
 ## Artwork
@@ -256,9 +256,9 @@ config](../introduction/development#building).
 
 SVGs can be a good choice for art in Boardzilla since the elements in Boardzilla
 can scale depending on their location. Boardzilla will happily render SVG as
-well as HTML, either by importing SVG assets and placing it into an `<img
-src>` or by including `<svg>` elements inside the JSX within `render`. In practice,
-including `<svg>` can be tricky for a couple of reasons.
+well as HTML, either by importing an SVG asset and placing it into an `<img
+src>` or by including `<svg>` elements inside the JSX within `render`. In
+practice, including `<svg>` can be tricky for a couple of reasons.
 
 1. SVGs in JSX require editing to make the [attribute names
    JSX-friendly](https://react.dev/learn/writing-markup-with-jsx#converting-html-to-jsx). This
@@ -279,14 +279,14 @@ party font, first download this to a file inside your game directory and
 reference it directly in your CSS, e.g.:
 
 ```css
-@font-face {
-  font-family: "Font Name";
-  src: url(./assets/font-file.ttf);
-}
+  @font-face {
+    font-family: "Font Name";
+    src: url(./assets/font-file.ttf);
+  }
 
-body {
-  font-family: "Font Name";
-}
+  body {
+    font-family: "Font Name";
+  }
 ```
 
 If you apply your font to the `body` element as above, bear in mind that it will
@@ -311,14 +311,12 @@ effect applied to it when `isTrump` transitions from `false` to `true`, you can
 apply the effect with `appearance.effect`, e.g.:
 
 ```ts
-board.all(Card).appearance({
-  effects: [
-    {
+  board.all(Card).appearance({
+    effects: [{
       attributes: { isTrump: true },
       className: "newly-trump",
-    },
-  ],
-});
+    }],
+  });
 ```
 
 The `"newly-trump"` CSS class will be applied to your `Card` DOM element only

@@ -10,10 +10,13 @@ define the possible actions and when each player can perform each.
 
 ## What constitutes an Action?
 
-An action consists of a set of choices that together constitute the whole action. The choices
-that belong to an action cannot reveal any information or affect the game until the
-complete action is taken. An action therefore, consists of the complete set of choices and must be taken altogether or not at all.
-As an action doesn't reveal any private information, a player can change their mind at any point during the action without consequence, and other players will not be aware of this.
+An action consists of a set of choices that together constitute the whole
+action. The choices that belong to an action cannot reveal any information or
+affect the game until the complete action is taken. An action therefore,
+consists of the complete set of choices and must be taken altogether or not at
+all.  As an action doesn't reveal any private information, a player can change
+their mind at any point during the action without consequence, and other players
+will not be aware of this.
 
 :::info Actions are a set of choices or selections
 A chess move as a Boardzilla Action would have two **selections**:
@@ -29,8 +32,9 @@ destination space is selected.
 :::
 
 Each action may contain several selections for the player to make and they must
-use only the information the player has available at at the time they
-begin the action. If an action involves revealing information and then making a follow up choice, these must be separate actions. (see [follow-ups](#follow-ups)).
+use only the information the player has available at at the time they begin the
+action. If an action involves revealing information and then making a follow up
+choice, these must be separate actions. (see [follow-ups](#follow-ups)).
 
 :::tip Actions are like functions
 
@@ -103,8 +107,8 @@ There's quite a bit going on with this action. Let's break it down:
 
 ## Selections
 
-An action can have zero or more selections. There are 5
-fundamental types of selections available in Boardzilla.
+An action can have zero or more selections. There are 5 fundamental types of
+selections available in Boardzilla.
 
 | Type      | Method                                                 | Description                                                                             | Appearance                                                      |
 | :-------- | :----------------------------------------------------- | :-------------------------------------------------------------------------------------- | :-------------------------------------------------------------- |
@@ -144,27 +148,29 @@ argument with key-value pairs for the selections. For example:
   );
 ```
 
-Because of this, selections can use the result of previous selections within a single action.
-Whenever you're working selections within an action, and a property accepts
-a function, that function will be called with the selections up to that
-point.
+Because of this, selections can use the result of previous selections within a
+single action.  Whenever you're working selections within an action, and a
+property accepts a function, that function will be called with the selections up
+to that point.
 
-Often one selection will depend on the choices made in previous
-selections. For example, suppose the player needs to select a type of resource to
-purchase and the amount they wish to purchase. The `chooseNumber` method accepts
-`min` and `max` to set the range of allowed values. We might set the `max` based
-on the amount available for the resource they chose.
+Often one selection will depend on the choices made in previous selections. For
+example, suppose the player needs to select a type of resource to purchase and
+the amount they wish to purchase. The `chooseNumber` method accepts `min` and
+`max` to set the range of allowed values. We might set the `max` based on the
+amount available for the resource they chose.
 
 ```ts
-action({
-  prompt: "Purchase resources",
-})
-  .chooseFrom("resource", ["Lumber", "Steel", "Wheat"])
-  .chooseNumber("amount", {
-    min: 1,
-    // here the "resource" chosen is available to limit the range for the 2nd selection
-    max: ({ resource }) => board.availableResources(resource),
-  });
+  action({
+    prompt: "Purchase resources",
+  }).chooseFrom(
+    "resource", ["Lumber", "Steel", "Wheat"]
+  ).chooseNumber(
+    "amount", {
+      min: 1,
+      // here the "resource" chosen is available to limit the range for the 2nd selection
+      max: ({ resource }) => board.availableResources(resource),
+    }
+  );
 ```
 
 :::tip Using Typescript for actions
@@ -182,26 +188,21 @@ time to actually do something!
 
 ### Moving
 
-The most common behaviour is to move a Piece or
-Pieces into a new location. For most moves, we can just call
-[`move`](../api/classes/Action#move) after the selections, e.g.
+The most common behaviour is to move a Piece or Pieces into a new location. For
+most moves, we can just call [`move`](../api/classes/Action#move) after the
+selections, e.g.
 
 ```ts
-(player) =>
-  action({
+  player => action({
     prompt: "Play a card",
-  })
-    .chooseOnBoard(
-      "card",
-      player.allMy(Card)
-      // highlight-start
-    )
-    .move(
-      // move the card selected into the "play" Space
-      "card",
-      $.play
-    );
-// highlight-end
+  }).chooseOnBoard(
+    "card", player.allMy(Card)
+    // highlight-start
+  ).move(
+    // move the card selected into the "play" Space
+    "card", $.play
+  );
+  // highlight-end
 ```
 
 Notice that in this example we use a string as the **first argument**, meaning
@@ -224,26 +225,25 @@ the element, and Boardzilla moves it to this location as part of the action.
 
 ### Messaging
 
-It's usually good to send a message to all players explaining what just occurred.
-The easiest way to do this is by adding a
-[`message`](../api/classes/Action#message) call onto the action. The
-`message` function takes a string and can interpolate either the player name or
-any of the items selected by using `{{handlebars}}` syntax. For example in the play
-card action above, we can add a message like this:
+It's usually good to send a message to all players explaining what just
+occurred.  The easiest way to do this is by adding a
+[`message`](../api/classes/Action#message) call onto the action. The `message`
+function takes a string and can interpolate either the player name or any of the
+items selected by using `{{handlebars}}` syntax. For example in the play card
+action above, we can add a message like this:
 
 ```ts
-(player) =>
-  action({
+  player => action({
     prompt: "Play a card",
-  })
-    .chooseOnBoard("card", player.allMy(Card))
-    .move(
-      "card",
-      $.play
-      // highlight-start
-    )
-    .message("{{player}} played {{card}}");
-// highlight-end
+  }).chooseOnBoard(
+    "card", player.allMy(Card)
+  ).move(
+    "card", $.play
+    // highlight-start
+  ).message(
+    "{{player}} played {{card}}"
+  );
+  // highlight-end
 ```
 
 We can also add more `{{handlebars}}` variables using the second argument, e.g.:
@@ -257,45 +257,45 @@ We can also add more `{{handlebars}}` variables using the second argument, e.g.:
 
 :::tip Using {{handlebars}}
 
-Using Boardzilla's `{{handlebars}}` syntax in messages allows
-references to Players or Game objects to have special formatting applied. You can interpolate values
-into the message string directly, but for this reason, using the `{{handlebars}}` syntax is recommended.
+Using Boardzilla's `{{handlebars}}` syntax in messages allows references to
+Players or Game objects to have special formatting applied. You can interpolate
+values into the message string directly, but for this reason, using the
+`{{handlebars}}` syntax is recommended.
 
 :::
 
 :::tip Message strings
 
 Boardzilla provides string representations of Players and Game Elements that use
-their `"name"` using the standard `toString()`. Feel free to override these
-and provide your own `toString()` if you want to customize how these things appear in messages.
+their `"name"` using the standard `toString()`. Feel free to override these and
+provide your own `toString()` if you want to customize how these things appear
+in messages.
 
 :::
 
 ### Other behavior
 
 All other behavior can be achieved with the general
-[`do`](../api/classes/Action#do) method. This just lets us add arbitrary code
-to an action. Suppose that in our card play example above, we additionally want
-to perform some logic if the drawn card is special. An additional `do`
-clause might look like:
+[`do`](../api/classes/Action#do) method. This just lets us add arbitrary code to
+an action. Suppose that in our card play example above, we additionally want to
+perform some logic if the drawn card is special. An additional `do` clause might
+look like:
 
 ```ts
-(player) =>
-  action({
+  player => action({
     prompt: "Play a card",
-  })
-    .chooseOnBoard("card", player.allMy(Card))
-    .move("card", $.play)
-    .message(
-      "{{player}} played {{card}}"
-      // highlight-start
-    )
-    .do(({ card }) => {
-      if (card.isSpecial()) {
-        game.somethingSpecialHappened = true;
-        game.message("Something special happened!");
-      }
-    });
+  }).chooseOnBoard(
+    "card", player.allMy(Card)
+  ).move(
+    "card", $.play
+  ).message(
+    "{{player}} played {{card}}"
+    // highlight-start
+  ).do(
+    ({ card }) => {
+      if (card.isSpecial()) card.performSpecial();
+    }
+  );
 // highlight-end
 ```
 
@@ -315,37 +315,41 @@ mutation depending on which order you chain the methods.
 ## Tree-shaking and Skipping
 
 Where possible, Boardzilla analyzes each possible action based on the state of
-the board to determine which actions can be performed, or when players only have a single action available to them. For example, if you have a `playCard` action that has a selection of any
-card in the player's hand, but that player has no cards, the `playCard` will be
-removed from the list of possible actions. Also if a player has no cards in their hand,
-and their only choices are to play a card or pass, Boardzilla will only present the pass action to the player.
+the board to determine which actions can be performed, or when players only have
+a single action available to them. For example, if you have a `playCard` action
+that has a selection of any card in the player's hand, but that player has no
+cards, the `playCard` will be removed from the list of possible actions. Also if
+a player has no cards in their hand, and their only choices are to play a card
+or pass, Boardzilla will only present the pass action to the player.
 
 In the example above with choosing `"resource"` and `"amount"`, consider what
 would happen if `board.availableResources("Lumber")` returned `0`. In this case,
-`min` would be `1` and the `max` would be `0`, resulting in an invalid choice. Boardzilla
-would therefore eliminate `"Lumber"` from the possible resources to choose
-from. It's possible that only one resource is selectable, in this case the
-`"resource"` selection can be skipped and the player would be prompted only for
-the `"amount"` when trying to perform this action.
+`min` would be `1` and the `max` would be `0`, resulting in an invalid
+choice. Boardzilla would therefore eliminate `"Lumber"` from the possible
+resources to choose from. It's possible that only one resource is selectable, in
+this case the `"resource"` selection can be skipped and the player would be
+prompted only for the `"amount"` when trying to perform this action.
 
 :::tip Skipping forced selections
 
-If there is **_only one_** possible action to move the game forward, the player's client
-will automatically make this move.
+If there is **_only one_** possible action to move the game forward, the
+player's client will automatically make this move.
 
 For example, if a player is presented with options to play cards, use items, or
 pass, if they have neither cards nor items, then the game will automatically
 "pass".
 
 This behavior can be changed using `skipIf` which is detailed below.
+
 :::
 
-The process of eliminating actions based on what is possible is called "tree-shaking".
-Boardzilla handles this for you automatically. This means you can add several possible actions to the list of
-available actions, even if some of them depend on unusual circumstances. Perhaps
-an action can only be taken if you have a particular card, or if the game is in
-a particular phase, etc. Boardzilla will prune the set of possible actions to
-present the choices to the player that make sense under the circumstances.
+The process of eliminating actions based on what is possible is called
+"tree-shaking".  Boardzilla handles this for you automatically. This means you
+can add several possible actions to the list of available actions, even if some
+of them depend on unusual circumstances. Perhaps an action can only be taken if
+you have a particular card, or if the game is in a particular phase,
+etc. Boardzilla will prune the set of possible actions to present the choices to
+the player that make sense under the circumstances.
 
 ### Customizing the tree-shaking
 
@@ -381,21 +385,19 @@ function](#selections), or to the
 
 | Strategy         | `skipIf` value            | Description                                                                                                                                                                                                                                                                                                     | Default                                                     |
 | ---------------- | ------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------- |
-| Never Skip       | `'never'`                 | Boardzilla will always present this selection to players even if it is their only choice.                                                                                                                                                                                                                       | n/a                                                         |
-| Skip if Only One | <nobr>`'only-one'`</nobr> | Boardzilla will skip this selection if there is only one viable option.                                                                                                                                                                                                                                         | Default for all [selection functions](#selections)          |
-| Always Skip      | `'always'`                | Rather than present this choice directly, the player will be prompted with choices from the _next choice_ in the action for each possible choice here, essentially expanding the choices ahead of time to save the player a step. This option only has relevance if there are subsequent choices in the action. | Default for [`playerActions`](../api/modules#playeractions) |
+| Never Skip       | `"never"`                 | Boardzilla will always present this selection to players even if it is their only choice.                                                                                                                                                                                                                       | n/a                                                         |
+| Skip if Only One | <nobr>`"only-one"`</nobr> | Boardzilla will skip this selection if there is only one viable option.                                                                                                                                                                                                                                         | Default for all [selection functions](#selections)          |
+| Always Skip      | `"always"`                | Rather than present this choice directly, the player will be prompted with choices from the _next choice_ in the action for each possible choice here, essentially expanding the choices ahead of time to save the player a step. This option only has relevance if there are subsequent choices in the action. | Default for [`playerActions`](../api/modules#playeractions) |
 
 For example, if you want the player to play a card from hand but want the player
 to explicitly click the card, **even if there is only one card** in hand to
 play, your action might look like:
 
 ```ts
-(player) =>
-  action({
+  player => action({
     prompt: "Play a card",
   }).chooseOnBoard(
-    "card",
-    player.allMy(Card),
+    "card", player.allMy(Card),
     // highlight-next-line
     { skipIf: "never" }
   );
@@ -403,28 +405,30 @@ play, your action might look like:
 
 ## Follow-ups
 
-Sometimes an action will trigger further actions based on new information, such as
-when revealing a card that requires some choices and actions for the player. In
-these cases the action can trigger additional actions using
+Sometimes an action will trigger further actions based on new information, such
+as when revealing a card that requires some choices and actions for the
+player. In these cases the action can trigger additional actions using
 [`game.followUp`](../api/classes/Game#followup). This can be called anywhere
 that is triggered directly by the action, usually in the action `do`. This
 causes Boardzilla to immediately prompt this action following the completion of
 the current action.
 
 ```ts
-(player) =>
-  action({
+  player => action({
     prompt: "Play a card",
-  })
-    .chooseOnBoard("card", player.allMy(Card))
-    .move("card", $.play)
-    .do(({ card }) => {
+  }).chooseOnBoard(
+    "card", player.allMy(Card)
+  ).move(
+    "card", $.play
+  ).do(
+    ({ card }) => {
       // highlight-start
       if (card.hasSpecialAction) {
         game.followUp({ name: "specialAction" });
       }
       // highlight-end
-    });
+    }
+  );
 ```
 
 In this example, certain cards trigger another action named
@@ -438,19 +442,21 @@ amounts. Rather than define different actions for each amount, we can pass
 arguments to the follow-up action. The triggering action might look like this:
 
 ```ts
-(player) =>
-  action({
+  player => action({
     prompt: "Play a card",
-  })
-    .chooseOnBoard("card", player.allMy(Card))
-    .move("card", $.play)
-    .do(({ card }) => {
+  }).chooseOnBoard(
+    "card", player.allMy(Card)
+  ).move(
+    "card", $.play
+  ).do(
+    ({ card }) => {
       // highlight-start
       if (card.takeResources > 0) {
         game.followUp({ name: "takeResources", amount: card.takeResources });
       }
       // highlight-end
-    });
+    }
+  );
 ```
 
 In this case the `"amount"` becomes just another argument in the action named
@@ -458,12 +464,13 @@ In this case the `"amount"` becomes just another argument in the action named
 passed in. The `"takeResources"` action then might look something like this:
 
 ```ts
-(player) =>
-  action<{ amount: number }>({
+  player => action<{ amount: number }>({
     prompt: "Take resources",
-  })
-    .chooseFrom("resource", ["Lumber", "Steel", "Wheat"])
-    .do(({ resource, amount }) => player.addResources(resource, amount));
+  }).chooseFrom(
+    "resource", ["Lumber", "Steel", "Wheat"]
+  ).do(
+    ({ resource, amount }) => player.addResources(resource, amount)
+  );
 ```
 
 Note the use of the Typescript generic here `<{amount: number}>`. This is not

@@ -40,8 +40,8 @@ All layout declarations go in the `layout` of the main
 ```
 
 The Boardzilla layout engine works by applying different layout strategies to
-game elements on the board. By default, each element has a simple layout
-that divides up its space equally to hold as many items as it has and fits them
+game elements on the board. By default, each element has a simple layout that
+divides up its space equally to hold as many items as it has and fits them
 exactly within the allotted space. This is the layout you see when you start
 building your board. Each layout strategy you apply creates a new invisible grid
 layer on top in which things can fit. This invisible grid will grow or shrink as
@@ -51,8 +51,8 @@ elements](../api/classes/ElementCollection#layout). When you apply a new layout
 to a space, you declare what element(s), or class of elements, it should apply
 to. Any element that enters this space gets put into one of the layouts
 depending on whether it applies. If multiple layouts apply, Boardzilla
-prioritizes from more specific to more general (e.g. a specific element overrides
-one that applies to a class of elements). If no layouts apply, the
+prioritizes from more specific to more general (e.g. a specific element
+overrides one that applies to a class of elements). If no layouts apply, the
 default layout gets applied at the very bottom.
 
 Each layout in a space operates completely independently of the others in that
@@ -81,23 +81,26 @@ different [parameters](../api/modules#layoutattributes) used to answer each one.
 - How large should the grid be to accommodate its contents? (`rows` and
   `columns`)
 - How tightly should they be packed? (`gap` or `offsetRow`/`offsetColumn`)
-- Should they be in a square grid, or something non-orthogonal like a hexagon? (`gap`
-  or `offsetRow`/`offsetColumn`)
+- Should they be in a square grid, or something non-orthogonal like a hexagon?
+  (`gap` or `offsetRow`/`offsetColumn`)
 - How should they fill up their grid as more are added? (`direction`,
   `alignment` and `limit`)
-- How should they scale to fit in the area? (`scaling` and `maxOverlap`)
+- How should they stretch, shrink, or squish together to fit in the area?
+  (`scaling` and `maxOverlap`)
 
-How these parameters interact can become complicated. The best approach is to experiment in order to find what
-you're looking for. A helpful [layout sandbox](layout-sandbox)
-is provided here to let you try different parameters and see the results with
-different elements. Also browsing the [sample games](/examples/examples) to see how their layouts work
-is a good resource. Of course, refer to [the API
-documentation](../api/modules#layoutattributes) for the complete descriptions.
+How these parameters interact can become complicated. The best approach is to
+experiment in order to find what you're looking for. A helpful [layout
+sandbox](layout-sandbox) is provided here to let you try different parameters
+and see the results with different elements. Also browsing the [sample
+games](/examples/examples) to see how their layouts work is a good resource. Of
+course, refer to [the API documentation](../api/modules#layoutattributes) for
+the complete descriptions.
 
 :::tip relative percentages
 
 Most of the sizing attributes in the `layout` parameters are percentage
-values. These are generally percentages of the container element's layout, so e.g.
+values. These are generally percentages of the container element's layout, so
+e.g.
 
 ```ts
 $.deck.layout(Card, {
