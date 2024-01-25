@@ -1,15 +1,16 @@
 ---
 sidebar_position: 3
 ---
+
 # Layout
 
 Customizing the game UI probably requires declaring several layouts. Each layout
 provides a strategy how items are visually laid out. Each layout declaration has
 3 parts:
 
-1. The container element that uses this layout
-2. The content elements that it applies to
-3. The layout rules
+1. The **container** that uses this layout
+2. The **contents** that it applies to
+3. The **rules** for the layout
 
 For example, in the following layout declaration:
 
@@ -18,7 +19,7 @@ For example, in the following layout declaration:
 ```
 
 The **container** is the deck space `$.deck`, the **contents** are any `Card`s
-in the deck, and a single **rule** says that these cards should left align.
+in the deck, and the **rules** are that these cards should left align.
 
 Layout declarations might declare that for a given area, items should be laid
 out in a row, or a stack, or a grid. When many items enter the same space, it
@@ -33,14 +34,13 @@ All layout declarations go in the `layout` of the main
     ...
     layout: (board) => {
       // layout declarations go here
-      ...
     }
 
   });
 ```
 
 The Boardzilla layout engine works by applying different layout strategies to
-game elements on the board. By default each element has a very simple layout
+game elements on the board. By default, each element has a simple layout
 that divides up its space equally to hold as many items as it has and fits them
 exactly within the allotted space. This is the layout you see when you start
 building your board. Each layout strategy you apply creates a new invisible grid
@@ -51,11 +51,11 @@ elements](../api/classes/ElementCollection#layout). When you apply a new layout
 to a space, you declare what element(s), or class of elements, it should apply
 to. Any element that enters this space gets put into one of the layouts
 depending on whether it applies. If multiple layouts apply, Boardzilla
-priortizes ones that apply more specifically (e.g. a specific element overrides
-one that applies to a class of elements). If none apply, it falls through to the
-default layout at the very bottom.
+prioritizes from more specific to more general (e.g. a specific element overrides
+one that applies to a class of elements). If no layouts apply, the
+default layout gets applied at the very bottom.
 
-Each layout in a space operates completely independantly of the others in that
+Each layout in a space operates completely independently of the others in that
 space. E.g. if you have a space that might have both Cards and Tokens in it and
 you apply one layout to Cards and another to Tokens, each Card and Token in that
 space will be laid out in accordance with its respective layout rules, but Cards
@@ -76,21 +76,21 @@ last one declared (Rectangles) appears on top.
 Creating a layout for an area of the board is a series of questions, with
 different [parameters](../api/modules#layoutattributes) used to answer each one.
 
-* What part of the area should be used to display its contents? (`area` or
+- What part of the area should be used to display its contents? (`area` or
   `margin`)
-* How large should the grid be to accommodate its contents? (`rows` and
+- How large should the grid be to accommodate its contents? (`rows` and
   `columns`)
-* How tightly should they be packed? (`gap` or `offsetRow`/`offsetColumn`)
-* Should they be in a square grid, or something non-orthogonal like a hexagon? (`gap`
+- How tightly should they be packed? (`gap` or `offsetRow`/`offsetColumn`)
+- Should they be in a square grid, or something non-orthogonal like a hexagon? (`gap`
   or `offsetRow`/`offsetColumn`)
-* How should they fill up their grid as more are added? (`direction`,
+- How should they fill up their grid as more are added? (`direction`,
   `alignment` and `limit`)
-* How should they expand or squish to fit in the area? (`scaling` and `maxOverlap`)
+- How should they scale to fit in the area? (`scaling` and `maxOverlap`)
 
-How all the parameters interact is somewhat technical. The best way to find what
-you're looking for is to experiment. A helpful [layout sandbox](layout-sandbox)
+How these parameters interact can become complicated. The best approach is to experiment in order to find what
+you're looking for. A helpful [layout sandbox](layout-sandbox)
 is provided here to let you try different parameters and see the results with
-different elements. Also browsing the sample games to see how their layouts work
+different elements. Also browsing the [sample games](/examples/examples) to see how their layouts work
 is a good resource. Of course, refer to [the API
 documentation](../api/modules#layoutattributes) for the complete descriptions.
 
@@ -101,7 +101,7 @@ values. These are generally percentages of the container element's layout, so e.
 
 ```ts
 $.deck.layout(Card, {
-  area: { left: 25, top: 25, width: 50, height: 50 }
+  area: { left: 25, top: 25, width: 50, height: 50 },
 });
 ```
 
@@ -139,6 +139,7 @@ The controls (floating boxes with player prompts and inputs) can have their
 location customized to be contextual with the action taken. There are two
 methods for controlling placement of these, depending on whether you want the
 placement to be specific to an Action or specific to a step in the Flow:
+
 - [`board.layoutAction`](../api/classes/Board#layoutaction)
 - [`board.layoutStep`](../api/classes/Board#layoutstep)
 

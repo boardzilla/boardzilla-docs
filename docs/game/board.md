@@ -1,17 +1,18 @@
 ---
 sidebar_position: 3
 ---
+
 # Board Structure
 
 The board is a singleton class that is declared as the first step of creating a
-game. Installing Boardzilla automatically creates this class in `game/index.ts`
-and you can add properties and methods to it as you progress. Your board extends
+game. Creating a Boardzilla game automatically creates this class in `game/index.ts`
+which can have properties and methods added to it. This class extends
 the base [Board](../api/classes/board) class.
 
 Boards contains [Spaces](../api/classes/space) (fixed regions) and
 [Pieces](../api/classes/piece) (movable game objects). This is essentially a
-data tree, with Board as the root branch and the spaces and pieces within in as
-branches. For example, a Board may have spaces for each player's tableau, and
+hierarchy, with your board instance at the top of this hierarchy and the spaces and pieces placed within in it.
+For example, a Board may have spaces for each player's tableau, and
 inside those are spaces for the player's hand, and inside those are their
 cards. All of these spaces and pieces are called the
 [Elements](../api/classes/GameElement) of the game. Elements in Boardzilla
@@ -52,15 +53,15 @@ tokens onto a card.
 
 ## Subclassing
 
-Typically, a game will declare a few classes of game pieces, e.g. Cards, Tokens
-and the like. Each of these will be a subclass of Piece. These subclasses can
+Typically, a game will declare a few classes for your various game pieces, e.g. Cards, Tokens
+and the like. Each of these will be a subclass of [Piece](../api/classes/piece). These subclasses can
 add properties and methods that you can use in the rules of game. E.g. a `Card`
 class, that might have `suit` and `number` properties, and special methods like
 `isTrump()`.
 
 ```ts title="Example Card class"
 export class Card extends Piece {
-  suit: 'S' | 'H' | 'D' | 'C';
+  suit: "S" | "H" | "D" | "C";
   number: number;
 
   isTrump() {
@@ -70,7 +71,7 @@ export class Card extends Piece {
 ```
 
 Spaces can be subclassed as well. This is less common, but helpful if you have
-several spaces of a particular type that have special properties or behaviour.
+several spaces of a particular type that have special properties or behavior.
 
 Defining subclasses like this also makes it easy to customize their appearance
 later and give the different classes of Pieces entirely different visuals.
@@ -78,11 +79,10 @@ later and give the different classes of Pieces entirely different visuals.
 ## Querying
 
 Accessing parts of the board is done using the Query API on the board and the
-spaces and pieces you add. The two most important methods are
-[`all`](../api/classes/GameElement#all) and
-[`first`](../api/classes/GameElement#first).
-- `all` Search the tree recursively and return *all* matches
-- `first` Search the tree recursively and return only the *first* match
+spaces and pieces you add. The two most important methods are:
+
+- [`all`](../api/classes/GameElement#all) Search the tree recursively and return _all_ matches
+- [`first`](../api/classes/GameElement#first) Search the tree recursively and return only the _first_ match
 
 In the example tree above, calling `board.all(Piece)` would return the two cards
 at the bottom of the tree. If we used the Card class above, we could also have
@@ -96,7 +96,7 @@ Any methods that return lists of elements, like `all`, actually return an
 class that can be treated like an array but also contains many other methods.
 
 :::warning first can return undefined
-Note that `first` can return `undefined` if matching element is found. When using
+Note that `first` can return `undefined` if no matching element is found. When using
 `first`, you will frequently add `!` or `?` depending on the situation, which is
 a good reminder to not assume that a piece is always where you expect, e.g.
 
@@ -104,6 +104,7 @@ a good reminder to not assume that a piece is always where you expect, e.g.
 // flip the top Card of the deck, if there are any
 $.deck.first(Card)?.showToAll();
 ```
+
 :::
 
 For convenience, all uniquely named spaces are also accessible from a global `$`
@@ -119,12 +120,12 @@ Spaces and pieces are created using the
 [create](../api/classes/GameElement#create) method. All Game Elements have a
 class and a name. The Class can be one of the based classes or one of the
 subclasses you've declared. The name can be any string. It is used for searches,
-determining uniqueness, and also appears in the HTML for CSS targetting.  e.g.:
+determining uniqueness, and also appears in the HTML for CSS targetting. e.g.:
 
 ```ts
-  const tableau = board.create(Space, 'tableau');
-  const hand = tableau.create(Space, 'hand');
-  hand.create(Card, '2C');
+const tableau = board.create(Space, "tableau");
+const hand = tableau.create(Space, "hand");
+hand.create(Card, "2C");
 ```
 
 You can also specify the properties during their creation with a 3rd argument:
@@ -135,6 +136,7 @@ You can also specify the properties during their creation with a 3rd argument:
 ```
 
 ## Ownership
+
 All Game Elements also have an optional `player` property built-in. Setting this
 property assigns the element to a [Player](../api/classes/Player). This is
 useful for pieces and spaces that permanently belong to them, like their player
@@ -142,12 +144,12 @@ mat, or their unique player token. These elements can be created and queried
 using the `player` property.
 
 ```ts
-  // create 2 tableaus for each player
-  board.create(Space, 'tableau', { player: game.players[0] });
-  board.create(Space, 'tableau', { player: game.players[1] });
+// create 2 tableaus for each player
+board.create(Space, "tableau", { player: game.players[0] });
+board.create(Space, "tableau", { player: game.players[1] });
 
-  // get player 1's tableau
-  board.first(Space, 'tableau', { player: game.players[0] });
+// get player 1's tableau
+board.first(Space, "tableau", { player: game.players[0] });
 ```
 
 Any elements that are contained within an element assigned to a player are also
@@ -161,25 +163,27 @@ elements can be queried using the `owner` property.
 
 :::warning player vs owner
 Rememeber the difference between `player` and `owner`. They are related but distinct.
-- `player` is a property you set that assigns a game element to that player, and is usually permanent. Think of it like a name tag, or the color of the element.
-- `owner` is a read-only property that indicates where the piece currently resides. A Card might be owned by a player while they hold it, but the card "doesn't have their name on it" so to speak, and may change hands.
+
+- `player` is a property that can be set that assigns a game element to that player. It does not change automatically as a piece moves, so must be set again if you wish it to be assigned to a new player.
+- `owner` is a read-only property that indicates if the piece currently resides in a space assigned to a player. As the piece moves this property is automatically updated to indicate who the current owner is. A Card might be owned by a player while they hold it, but if it moved to another player's hand, then the owner would be updated to reflect that change.
 
 <div style="text-align:center"><img src="/img/owner.svg"/></div>
-:::
+  :::
 
 The Player object also conveniently has methods for retrieving these elements:
 [my](../api/classes/Player#my) and [allMy](../api/classes/Player#allmy) for
 retrieving one or many elements respectively
 
 ```ts
-  // get player 1's tableau
-  game.players[0].my('tableau');
+// get player 1's tableau
+game.players[0].my("tableau");
 
-  // get player 1's cards
-  game.players[0].allMy(Card);
+// get player 1's cards
+game.players[0].allMy(Card);
 ```
 
 ## Visibility
+
 All elements are visible to all players by default. Often a game will require
 that pieces are visible only to some players and hidden from others. In
 Boardzilla, "hiding" a Game Element means that the properties of that element
@@ -198,10 +202,11 @@ properties with the static method
 [`revealWhenHidden`](../api/classes/GameElement#revealwhenhidden), e.g.:
 
 ```ts
-Card.revealWhenHidden('deck');
+Card.revealWhenHidden("deck");
 ```
 
 ## Movement
+
 Pieces can be created in a particular place on the board, but will move around
 as players take their actions. There are several ways to do this but the
 simplest is [`putInto`](../api/classes/Piece#putinto).
@@ -214,8 +219,8 @@ card.putInto($.discard);
 $.deck.first(Card).putInto($.field);
 ```
 
-When cards move from space to space, you may want to change their
-properties. These can be done automatically by adding event handlers to spaces. The most common type is to have spaces that change the visibility of their elements. E.g. when a card enters the deck, it should automatically be turned face down. When it enters a player's hand, it becomes visibile only to that player. This can be done with [`onEnter`](../api/classes/Space#onenter):
+As cards move from space to space, you may want to change their
+properties. These can be done automatically by adding event handlers to spaces. The most common type is to have spaces that change the visibility of their elements. E.g. when a card enters the deck, it should automatically be turned face down, or, when it enters a player's hand, it should be visible only to that player. This can be done with the [`onEnter`](../api/classes/Space#onenter) event handler. For example:
 
 ```ts
 // the deck's cards are always face down
@@ -243,7 +248,7 @@ used. For example, to remove all cards from the deck that are lower than 5, we
 can say:
 
 ```ts
-$.deck.all(Card, card => card.number < 5).remove();
+$.deck.all(Card, (card) => card.number < 5).remove();
 ```
 
 to put all the unused cards from the pile into the deck, we would say:

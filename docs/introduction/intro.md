@@ -6,12 +6,18 @@ id: intro
 
 # Welcome!
 
-To create a game, you create and supply the logic for the game, using
-Boardzilla's API to define the board and the the rules.  Boardzilla translates
-this into a working browser-based client that show each player what the possible
-moves are they have at any given time. It also creates a server that responds to
-these moves and updates everyone's game as the players take moves and progress
-the game. It displays the board in the way you describe, and uses your CSS to
-customize the styling. Boardzilla automatically animates the changes that happen
-on the board, but also provides you with ways to add and customize these
-animations.
+👋 This is Boardzilla, a framework to make writing a digital board game easy. Boardzilla takes care of
+
+- player management
+- structuring game rules
+- persisting game & player state
+- animations
+
+and much more!
+
+These docs will cover everything from creating your first game, defining your rules, creating your UI and
+publishing your game.
+
+:::tip Come say hi!
+While these docs attempt to cover everything you'll need to write your first game, they can of course be incomplete. And if you're struggling with any part, come join us on [Discord](https://discord.gg/rHAVqC3mbe) to get more help.
+:::
