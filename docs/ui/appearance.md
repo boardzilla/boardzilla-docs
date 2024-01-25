@@ -248,7 +248,7 @@ from external URLs in your game as any such requests will fail.
 
 :::
 
-The default build configuration included when you install Boardzilla handles
+The default build configuration included when you created your game handles
 files of types .jpg, .png, .svg, .webp and .ttf. More can be added in the [esbuild
 config](../introduction/development#building).
 

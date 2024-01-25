@@ -2,7 +2,7 @@
 sidebar_position: 2
 ---
 
-# Installation
+# Creating a game
 
 To create a new Boardzilla game, simply run the following:
 
