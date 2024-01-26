@@ -324,7 +324,7 @@ later we want to know what choices the player made in the flow.
 :::tip Action vs playerActions
 
 We can react to a player's action both in the action
-[`do`](actions#other-behaviour) and in the `do` of the playerActions. It can be
+[`do`](actions#other-behavior) and in the `do` of the playerActions. It can be
 confusing which we should use for what.
 
 In general the action `do` is the proper place to react to what a player just did. This
