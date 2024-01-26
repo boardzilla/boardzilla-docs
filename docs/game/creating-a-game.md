@@ -29,3 +29,7 @@ based on the new rules you've entered.
 
 In this way, a game can be created iteratively, testing each rule and revising
 before adding more.
+
+See an example of creating a game using these steps in this video tutorial.
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/vY9y1Qs8jKk?si=rDaUVsAvj5iFKzSL" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
