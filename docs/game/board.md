@@ -107,8 +107,12 @@ $.deck.first(Card)?.showToAll();
 
 :::
 
+:::tip global $
+
 For convenience, all uniquely named spaces are also accessible from a global `$`
 object that contains all spaces by name, e.g. `$.deck`.
+
+:::
 
 There are many more methods and options for finding particular game
 elements. See the [API documentation](../api/classes/GameElement#queries) for

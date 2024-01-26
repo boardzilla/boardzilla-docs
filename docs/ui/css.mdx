@@ -1,0 +1,212 @@
+---
+sidebar_position: 10
+---
+
+# CSS
+
+Boardzilla can be entirely customized through standard CSS. By default many
+styles are included basic positioning and animation that are not intended to
+change. However all Boardzilla CSS is applied using a CSS `@layer` so that any
+CSS you provide will override these.
+
+## DOM element reference
+
+Here you will find a list of all the elements and classes that can be targetted
+for custom CSS. As with any CSS development, it is often best to simply inspect
+the HTML and edit it directly to see what effect your custom CSS will have.
+
+This HTML block is only intended to show the general structure and where
+examples of the main types of elements would appear in the DOM. This is not
+exhaustive and not all of these elements would be present at the same time.
+
+<pre>
+<a href="#html">&lt;html&gt;</a>
+&nbsp;&nbsp;<a href="#body">&lt;body&gt;</a>
+
+&nbsp;&nbsp;&nbsp;&nbsp;<span style={{color: '#888'}}>&lt;!-- if on the setup screen --&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#setup">&lt;div id="setup"&gt;</a> 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#background">&lt;div id="background"/&gt;</a>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div id="seating"&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div id="settings"&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;
+
+&nbsp;&nbsp;&nbsp;&nbsp;<span style={{color: '#888'}}>&lt;-- if on the game screen --&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#game">&lt;div id="game"&gt;</a>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#background">&lt;div id="background"/&gt;</a>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#play-area">&lt;div id="play-area"&gt;</a>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style={{color: '#888'}}>&lt;!-- example Space --&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#transform-wrapper">&lt;div class="transform-wrapper"&gt;</a>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#space-or-piece">&lt;div class="Space"&gt;</a> <span style={{color: '#888'}}>&lt;!-- plus the name of the derived class, if any --&gt;</span>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style={{color: '#888'}}>&lt;!-- Any custom JSX in Space's <a href="appearance#render">render</a> goes here --&gt;</span>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style={{color: '#888'}}>&lt;!-- example nested Piece --&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#transform-wrapper">&lt;div class="transform-wrapper"&gt;</a>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#space-or-piece">&lt;div class="Piece"&gt;</a>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style={{color: '#888'}}>&lt;!-- Any custom JSX in Piece's <a href="appearance#render">render</a> goes here --&gt;</span>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#profile-badge">&lt;div class="profile-badge"&gt;</a>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="avatar"/&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="player-name"/&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#player-controls">&lt;div class="player-controls"&gt;</a>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="prompt"/&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;
+
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;
+&nbsp;&nbsp;&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+
+### &lt;html&gt;
+
+The html element is where dark-mode is set. To target dark mode with specific CSS, use 
+```css
+html.dark {
+```
+
+### &lt;body&gt;
+
+The body element is typically targetted only for global CSS changes, like `font-family`.
+
+### #setup
+
+The game setup page with seating and settings is found here. Target this with
+CSS if you want to style the setup page specifically, e.g. with custom font
+treatment.
+
+### #game
+The top-level element for the game itself. This can have a variety of classes
+applied to it to target particular browsers and devices, namely:
+- `mobile` for mobile browsers
+- `desktop` for desktop browsers
+- `browser-chrome` for Chrome
+- `browser-edge` for Edge
+- `browser-safari` for Safari
+- `browser-firefox` for Firefox
+
+
+### #background
+
+The background element that contains the wood grain. This can be replaced or
+customized by changing `background-image`
+
+### #play-area
+
+The Board is rendered here, as opposed to any player controls. Use this in case
+of CSS selectors that must be scoped to the board only.
+
+### .transform-wrapper
+
+Every Space or Piece has a Wrapper div around it that Boardzilla uses for
+positioning, scaling and animations. Generally, it is inadvisable to target this
+directly with CSS. This element has `font-size` set to a value that scales with
+the size of the element. This means that any CSS applied to the element can use
+`em` units to ensure it stays proportionate to the element.
+
+If the element is currently zoomed, this class will also have a `data-zoomed`
+attribute set. It is sometimes necessary to target this to apply styles only to
+the non-zoomed or zoomed versions of a Piece, e.g.:
+
+```css
+.transform-wrapper[data-zoomed] [
+```
+### .Space or .Piece
+
+Specific Spaces and Pieces of your board are rendered with this element. They
+always a class name of `Space` or `Piece` depending on the base type. They also
+have a class name matching the Typescript class of the element if it is
+subclassed.
+
+There are additional class names that may be present depending on circumstances,
+and are useful for targetting to customize appearance:
+
+- `selected` If this element is selected
+- `selectable` If this element is currently selectable in an available action
+- `droppable` If this element is a valid drop zone for a dragged element
+- `clickable` If this element is clickable for any reason
+
+The properties you give to your Space/Piece class, as well as built-in
+properties like `name` and `player` are also added to the HTML element as `data-`
+attributes, e.g.:
+
+```html
+  <div
+    class="Piece Card"
+    data-name="ace-of-hearts"
+    data-suit="H"
+    data-number="1"
+  >
+```
+
+All JSX supplied in the [`appearance.render`](appearance#render) appears
+immediately inside this element.
+
+Also see [appearance](appearance#css).
+
+### .profile-badge
+
+The &lt;ProfileBadge&gt; component, if it is included on the page, appears here,
+along with children for the avatar image and the player name. This can be
+targetted to customize font treatment, but should generally be left with little
+alteration for consistency's sake. This element additionally may have these
+classes:
+
+- `online` if the player is currently online
+- `current` if the player is the [current player](../game/players#current-player) to act
+
+### .player-controls
+
+Any player input controls or prompts that sit on top of the page are here. They
+may include prompt text, with class name `prompt`. Additionally specific player
+controls can be targeted by using the the name of the [Flow
+command](../game/flow#flow-commands). If a name is present this element will
+additionally have a class name for that step:
+
+```css
+.player-controls.step-<step name> {
+```
+
+## Hover
+
+Applying CSS to elements as players hover them can be done with the standard
+`:hover` pseudo-class on the Piece/Space element.
+
+It is common in the case of stacked elements to have elements next to the
+hovered element splay out to reveal themselves to make it easy to leaf thru the
+stack. A standard, although somewhat complex CSS selector can be used to select
+the elements before and after the hover, e.g.:
+
+```css
+  .transform-wrapper:has(+ .transform-wrapper .Card:hover) .Card {
+    /* the card before the hover */
+  }
+
+  .transform-wrapper:has(.Card:hover) + .transform-wrapper .Card {
+    /* the card after the hover */
+  }
+```
+
+This can be further extended with even more esoteric CSS:
+
+```css
+  .transform-wrapper:has(+ .transform-wrapper + .transform-wrapper .Card:hover) .Card {
+    /* two cards before the hover */
+  }
+  .transform-wrapper:has(.Card:hover) + .transform-wrapper + .transform-wrapper .Card {
+    /* two cards after the hover */
+  }
+```
