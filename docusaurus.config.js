@@ -119,7 +119,7 @@ const config = {
         plugin: ["typedoc-plugin-merge-modules", "typedoc-plugin-no-inherit"],
         theme: "docusaurus",
         frontmatter: {
-          sidebar_position: 7,
+          sidebar_position: 8,
         },
       },
     ],
