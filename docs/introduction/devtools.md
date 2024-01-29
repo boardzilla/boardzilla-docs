@@ -1,12 +1,12 @@
 ---
-sidebar_position: 4
+sidebar_position: 3
 ---
 
 # Devtools
 
 Within the Devtools, you now have access to your game. Any changes you make to your game will be automatically reloaded, and the console you launched it from will contain any additionally diagnostic information. However, for the most part, all information you need to develop you game will be in the web browser.
 
-![Devtools](./devtools.png)
+![Devtools](/img/devtools.png)
 
 Along the top of the devtools you'll have several controls available
 
