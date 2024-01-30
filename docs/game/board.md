@@ -166,7 +166,7 @@ elements can be queried using the `owner` property.
 ```
 
 :::warning player vs owner
-Rememeber the difference between `player` and `owner`. They are related but distinct.
+Remember the difference between `player` and `owner`. They are related but distinct.
 
 - `player` is a property that can be set that assigns a game element to that player. It does not change automatically as a piece moves, so must be set again if you wish it to be assigned to a new player.
 - `owner` is a read-only property that indicates if the piece currently resides in a space assigned to a player. As the piece moves this property is automatically updated to indicate who the current owner is. A Card might be owned by a player while they hold it, but if it moved to another player's hand, then the owner would be updated to reflect that change.
