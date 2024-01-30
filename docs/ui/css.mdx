@@ -66,6 +66,13 @@ exhaustive and not all of these elements would be present at the same time.
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="prompt"/&gt;
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;
 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div id="info-container"&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#info-drawer">&lt;div id="info-drawer"/&gt;</a>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#info-modal">&lt;div id="info-modal"&gt;</a>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="element-zoom"&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;
+
 &nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;
 &nbsp;&nbsp;&lt;/body&gt;
 &lt;/html&gt;
@@ -106,8 +113,10 @@ customized by changing `background-image`
 
 ### #play-area
 
-The Board is rendered here, as opposed to any player controls. Use this in case
-of CSS selectors that must be scoped to the board only.
+The Board is rendered here, as opposed to any player controls or informational
+text. Use this in case of CSS selectors that must be scoped to the board
+only. Remember that elements can appear in modals so element CSS should not be
+restricted to `#play-area`.
 
 ### .transform-wrapper
 
@@ -117,13 +126,6 @@ directly with CSS. This element has `font-size` set to a value that scales with
 the size of the element. This means that any CSS applied to the element can use
 `em` units to ensure it stays proportionate to the element.
 
-If the element is currently zoomed, this class will also have a `data-zoomed`
-attribute set. It is sometimes necessary to target this to apply styles only to
-the non-zoomed or zoomed versions of a Piece, e.g.:
-
-```css
-.transform-wrapper[data-zoomed] [
-```
 ### .Space or .Piece
 
 Specific Spaces and Pieces of your board are rendered with this element. They
@@ -179,6 +181,17 @@ additionally have a class name for that step:
 ```css
 .player-controls.step-<step name> {
 ```
+### #info-drawer
+
+The floating info panel in the top left once it's opened. This can be targetted
+for font and color treatment. For consistency's sake, styling should remain
+close to default.
+
+### #info-modal
+
+When selecting an element to see info, this modal contains the element and
+text. It is important to remember that an element's
+[`appearance.render`](appearance#render) JSX can appear in this context as well.
 
 ## Hover
 
