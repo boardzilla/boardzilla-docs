@@ -60,14 +60,14 @@ class, that might have `suit` and `number` properties, and special methods like
 `isTrump()`.
 
 ```ts title="Example Card class"
-export class Card extends Piece {
-  suit: "S" | "H" | "D" | "C";
-  number: number;
+  export class Card extends Piece {
+    suit: "S" | "H" | "D" | "C";
+    number: number;
 
-  isTrump() {
-    return this.suit === this.game.trump;
+    isTrump() {
+      return this.suit === this.game.trump;
+    }
   }
-}
 ```
 
 Spaces can be subclassed as well. This is less common, but helpful if you have
@@ -101,8 +101,8 @@ Note that `first` can return `undefined` if no matching element is found. When u
 a good reminder to not assume that a piece is always where you expect, e.g.
 
 ```ts
-// flip the top Card of the deck, if there are any
-$.deck.first(Card)?.showToAll();
+  // flip the top Card of the deck, if there are any
+  $.deck.first(Card)?.showToAll();
 ```
 
 :::
@@ -127,9 +127,9 @@ subclasses you've declared. The name can be any string. It is used for searches,
 determining uniqueness, and also appears in the HTML for CSS targetting. e.g.:
 
 ```ts
-const tableau = board.create(Space, "tableau");
-const hand = tableau.create(Space, "hand");
-hand.create(Card, "2C");
+  const tableau = board.create(Space, "tableau");
+  const hand = tableau.create(Space, "hand");
+  hand.create(Card, "2C");
 ```
 
 You can also specify the properties during their creation with a 3rd argument:
@@ -148,12 +148,12 @@ mat, or their unique player token. These elements can be created and queried
 using the `player` property.
 
 ```ts
-// create 2 tableaus for each player
-board.create(Space, "tableau", { player: game.players[0] });
-board.create(Space, "tableau", { player: game.players[1] });
+  // create 2 tableaus for each player
+  board.create(Space, "tableau", { player: game.players[0] });
+  board.create(Space, "tableau", { player: game.players[1] });
 
-// get player 1's tableau
-board.first(Space, "tableau", { player: game.players[0] });
+  // get player 1's tableau
+  board.first(Space, "tableau", { player: game.players[0] });
 ```
 
 Any elements that are contained within an element assigned to a player are also
@@ -179,11 +179,11 @@ The Player object also conveniently has methods for retrieving these elements:
 retrieving one or many elements respectively
 
 ```ts
-// get player 1's tableau
-game.players[0].my("tableau");
+  // get player 1's tableau
+  game.players[0].my("tableau");
 
-// get player 1's cards
-game.players[0].allMy(Card);
+  // get player 1's cards
+  game.players[0].allMy(Card);
 ```
 
 ## Visibility
@@ -206,7 +206,7 @@ properties with the static method
 [`revealWhenHidden`](../api/classes/GameElement#revealwhenhidden), e.g.:
 
 ```ts
-Card.revealWhenHidden("deck");
+  Card.revealWhenHidden("deck");
 ```
 
 ## Movement
@@ -216,23 +216,23 @@ as players take their actions. There are several ways to do this but the
 simplest is [`putInto`](../api/classes/Piece#putinto).
 
 ```ts
-// discard a card
-card.putInto($.discard);
+  // discard a card
+  card.putInto($.discard);
 
-// draw the top card of the deck into the field
-$.deck.first(Card).putInto($.field);
+  // draw the top card of the deck into the field
+  $.deck.first(Card).putInto($.field);
 ```
 
 As cards move from space to space, you may want to change their
 properties. These can be done automatically by adding event handlers to spaces. The most common type is to have spaces that change the visibility of their elements. E.g. when a card enters the deck, it should automatically be turned face down, or, when it enters a player's hand, it should be visible only to that player. This can be done with the [`onEnter`](../api/classes/Space#onenter) event handler. For example:
 
 ```ts
-// the deck's cards are always face down
-$.deck.onEnter(Card, card => card.hideFromAll();
+  // the deck's cards are always face down
+  $.deck.onEnter(Card, card => card.hideFromAll();
 
-// the player's hand always reveals their cards to `player`
-const hand = board.create(Space, 'hand', { player });
-hand.onEnter(Card, card => card.showTo(player));
+  // the player's hand always reveals their cards to `player`
+  const hand = board.create(Space, 'hand', { player });
+  hand.onEnter(Card, card => card.showTo(player));
 ```
 
 There is also a corresponding [`onExit`](../api/classes/Space#onexit) handler.
@@ -252,11 +252,11 @@ used. For example, to remove all cards from the deck that are lower than 5, we
 can say:
 
 ```ts
-$.deck.all(Card, (card) => card.number < 5).remove();
+  $.deck.all(Card, (card) => card.number < 5).remove();
 ```
 
 to put all the unused cards from the pile into the deck, we would say:
 
 ```ts
-board.pile.all(Card).putInto($.deck);
+  board.pile.all(Card).putInto($.deck);
 ```

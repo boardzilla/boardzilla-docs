@@ -112,6 +112,21 @@ them, e.g.:
   );
 ```
 
+:::tip flow visualization
+
+Getting the Flow right is critical, but it can be hard to conceptualize and
+visualize game flow in a formalized way like this.
+
+As an aid to understanding the flow, you can use the debug mode of the devtools
+(the magnifying glass icon in the top left) to open up a visualization of the
+flow showing where the game is currently in the flow at any point.
+
+<div style="text-align:center">
+  <img style="border: 1px solid black; width: clamp(50%, 500px, 100%)" src="/img/flow-debug.png"/>
+</div>
+
+:::
+
 ## Flow commands
 
 All Flow commands are available on
