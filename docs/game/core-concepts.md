@@ -4,7 +4,7 @@ sidebar_position: 1
 
 # Core concepts
 
-These are some of the basic core concepts of Boardzilla that will be refered to
+These are some of the basic core concepts of Boardzilla that will be referred to
 throughout the documentation.
 
 ## Board
@@ -39,7 +39,7 @@ You can read further about this in [Players](./players).
 An Action is a discrete unit of choice for a player. An action has a **name**,
 any possible **selections** for the action, and **behavior**. In Chess, for
 example, an action might be called "move". It has two selections: the piece
-being moved, and space it's moved to. It's behavior would be to move the piece
+being moved, and space it's moved to. Its behavior would be to move the piece
 to its destination and a message to the game log.
 
 You can read further about this in [Actions](./actions).
