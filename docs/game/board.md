@@ -162,7 +162,7 @@ elements can be queried using the `owner` property.
 
 ```ts
   // get player 1's cards
-  board.all(Card { player: game.players[0] });
+  board.all(Card { owner: game.players[0] });
 ```
 
 :::warning player vs owner
