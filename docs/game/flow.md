@@ -186,6 +186,36 @@ This is the sole Flow command for prompting player actions. This command accept
 a list of allowed [actions](actions) that were defined in `defineActions` and
 prompts the current player (or a particular player or players if specified).
 
+Actions can be supplied as strings, corresponging to the names given in
+`defineActions` e.g.:
+
+```ts
+actions: ["take", "pass"]
+```
+
+or as objects if additional properties are needed, e.g.:
+```ts
+actions: [
+  {
+    name: "take",
+    do: Do.repeat,
+  },
+  'pass'
+]
+```
+
+The properties available are:
+
+- `name`: the name of the action
+- `do`: a continuation for the flow if this action is taken. This can contain
+   any number of nested Flow functions.
+- `args`: args to pass to the action. If provided this pre-selects arguments to
+   the action that the player does not select themselves, in the same way as
+   [Follow up's](actions#follow-ups).
+- `prompt`: a string prompt. If provided this overrides the prompt defined in
+   the action. This can be useful if the same action should prompt differently
+   at different points in the game
+
 Note that like all other selections in Boardzilla, this list of actions has
 [tree-shaking and skipping](actions#tree-shaking-and-skipping) behavior. If one
 of the included actions is determined to have no possible valid moves, it will

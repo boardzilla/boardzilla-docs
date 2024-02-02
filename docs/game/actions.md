@@ -63,18 +63,20 @@ As well, an action can have several optional properties.
 - **conditions** on whether an action can be performed at all
 - **validations** on the selections for an action
 - unique **prompts** to help the player understand their action
+- a **description** for other players to see what's happening
 - any additional **confirmations** the player needs for this action
 
 Actions are all created in a single place in `game/index.ts` inside the
 [createGame](../api/modules#creategame) when you call
 [`game.defineActions`](../api/classes/Game#defineactions). Each action is listed
-with its name, and the selections and behaviours of the action are chained onto
+with its name, and the selections and behaviors of the action are chained onto
 it, e.g.:
 
 ```ts title="Chaining action methods"
   game.defineActions({
     bid: player => action({
       prompt: 'Make a bid',
+      description: 'bidding',
       condition: !player.passedThisAuction
     }).chooseNumber(
       'amount', {
@@ -97,13 +99,13 @@ There's quite a bit going on with this action. Let's break it down:
   to the player's `money` and use their name in the message.
 - This action has one **selection** which is named `"amount"`. This is a number
   selection created with [`chooseNumber`](../api/classes/Action#choosenumber).
-- This action has two **behaviour** functions. One is a
+- This action has two **behavior** functions. One is a
   [`do`](../api/classes/Action#do) that records the bid amount as
   `board.lastBid` and one is a [`message`](../api/classes/Action#message) sent
   to the players.
-- This action also has two **properties**. We've added a string `prompt`, and
-  also a `condition` for performing this action, which is that the player must
-  not have been marked as passing this auction.
+- This action also has 3 **properties**. We've added a string `prompt`, a
+  `description`, and also a `condition` for performing this action, which is
+  that the player must not have been marked as passing this auction.
 
 ## Selections
 
@@ -218,7 +220,7 @@ will additionally permit a mouse drag if using a desktop browser.
 :::tip placing pieces
 
 [`placePiece`](../api/classes/Action#placepiece) is a special method that is
-**both** a selection and a behaviour. The player selects the exact position to place
+**both** a selection and a behavior. The player selects the exact position to place
 the element, and Boardzilla moves it to this location as part of the action.
 
 :::
@@ -439,7 +441,8 @@ Often a variety of ways to trigger this follow-up will exist in play with
 variations. Imagine a card game where drawing certain cards lets you take
 resources of your choice, but different cards let you take different
 amounts. Rather than define different actions for each amount, we can pass
-arguments to the follow-up action. The triggering action might look like this:
+arguments to the follow-up action using `args`. The triggering action might look
+like this:
 
 ```ts
   player => action({
@@ -452,7 +455,10 @@ arguments to the follow-up action. The triggering action might look like this:
     ({ card }) => {
       // highlight-start
       if (card.takeResources > 0) {
-        game.followUp({ name: "takeResources", amount: card.takeResources });
+        game.followUp({
+          name: "takeResources",
+          args: { amount: card.takeResources }
+        });
       }
       // highlight-end
     }
