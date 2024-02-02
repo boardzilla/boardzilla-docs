@@ -47,7 +47,7 @@ when letting each player take turns, you will simply use
 [`eachPlayer`](flow#eachplayer) which automatically sets the current player.
 
 It is possible for **multiple** players to be considered current, in which case
-these player can act simultaneously. You can set multiple players by calling
+these players can act simultaneously. You can set multiple players by calling
 [`game.players.setCurrent()`](../api/classes/PlayerCollection#setcurrent) with
 an array. In these cases, you must use
 [`game.players.allCurrent()`](../api/classes/PlayerCollection#allcurrent) to
@@ -70,7 +70,7 @@ uses player passes _your game's_ Player type, and you can access your custom met
 
 ## Player Board elements
 
-As described in [Board Structure](board#ownership), player's can own elements of the board
+As described in [Board Structure](board#ownership), players can own elements of the board
 by setting its `player` property to the player you choose. This marks the
 element as being assigned to this player, e.g. the player mat, the player's
 hand, the player's unique tokens. All elements that enter a space assigned to a
