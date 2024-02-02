@@ -104,8 +104,9 @@ There's quite a bit going on with this action. Let's break it down:
   `board.lastBid` and one is a [`message`](../api/classes/Action#message) sent
   to the players.
 - This action also has 3 **properties**. We've added a string `prompt`, a
-  `description`, and also a `condition` for performing this action, which is
-  that the player must not have been marked as passing this auction.
+  `description`, and also a `condition` for performing this action, namely that
+  the player may not perform this action if they have already passed this
+  auction.
 
 ## Selections
 
