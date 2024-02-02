@@ -1,6 +1,7 @@
 ---
 sidebar_position: 4
 ---
+
 # Testing and Debugging
 
 Boardzilla provides many tools for the all-important task of testing your game
@@ -27,10 +28,10 @@ const runner = new TestRunner(setup);
 const [player1, player2] = runner.start({ players: 2, settings: {} });
 
 // example move
-player1.move('takeCard', { card: player1.board.first(Card) });
+player1.move("takeCard", { card: player1.board.first(Card) });
 
 // example assertion on server board
-console.assert(runner.server.board.someProperty === 'some-value');
+console.assert(runner.server.board.someProperty === "some-value");
 
 // example assertion on player actions
 console.assert(player1.actions().length === 0);

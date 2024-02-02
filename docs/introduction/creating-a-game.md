@@ -4,22 +4,28 @@ sidebar_position: 2
 
 # Creating a game
 
-To create a new Boardzilla game, simply run the following:
+## Before you get started
+
+In order to make a game in Boardzilla you'll need some to have installed:
+
+- [Node 18 or higher](https://nodejs.org/)
+
+As well, a knowledge of the following is essential to writing a game in Boardzilla:
+
+- [TypeScript](https://www.typescriptlang.org/) or [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+- [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
+
+As well, some familiarity with the following is useful:
+
+- [React](https://react.dev/), particularly with [JSX](https://react.dev/learn/writing-markup-with-jsx)
+- [esbuild](https://esbuild.github.io/) which is used to compile and build your game
+
+## Creating your first game
+
+Once you've got Node 18 or higher installed, you're ready to create your first game. Run the following:
 
 ```console
 npx @boardzilla/create-game
 ```
 
-You'll be guided through a series of prompts to scaffold a new game. One of the choices you'll be prompted with is which game template you'd like to use.
-The **[simple template](https://github.com/boardzilla/boardzilla-starter-game)** gives you a very basic game to edit right away. The **[empty template](https://github.com/boardzilla/boardzilla-empty-game)** gives you a completely empty game to use. If this is your first time making a game, the simple template is probably best as it gives you a working example to play with.
-
-## Running your new game
-
-Once you've created your new game, run the following to start your game, where `my-game` is the name of the game you've selected:
-
-```console
-cd my-game
-npm run dev
-```
-
-Congrats! Now you'll be able to go to [http://localhost:8080](http://localhost:8080) to see your new game and start developing.
+You'll be guided through a series of prompts. One of the choices you'll be prompted with is which game template you'd like to use. The **[simple template](https://github.com/boardzilla/boardzilla-starter-game)** gives you a very basic game to edit right away. The **[empty template](https://github.com/boardzilla/boardzilla-empty-game)** gives you a completely empty game to use. If this is your first time making a game, the simple template is probably best as it gives you a working example to play with.

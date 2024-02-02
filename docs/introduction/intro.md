@@ -6,17 +6,11 @@ id: intro
 
 # Welcome!
 
-👋 This is Boardzilla, a framework to make writing a digital board game easy. Boardzilla takes care of
+👋 This is Boardzilla, a framework to make writing a digital board game for the web easy. To make a game all you need is to write Typescript code that extends Boardzilla's powerful base classes and API to to express the rules of your game. Development occurs entirely in your browser. Once your game is complete you can publish it on boardzilla.io to play with friends.
 
-- player management
-- structuring game rules
-- persisting game & player state
-- animations
+Boardzilla.io takes care of player management and persisting game and player state. It also keeps all clients of a game in sync.
 
-and much more!
-
-These docs will cover everything from creating your first game, defining your rules, creating your UI and
-publishing your game.
+These docs will cover everything from creating your first game, defining your rules, creating your UI and publishing your game.
 
 :::tip Come say hi!
 While these docs attempt to cover everything you'll need to write your first game, they can of course be incomplete. And if you're struggling with any part, come join us on [Discord](https://discord.gg/rHAVqC3mbe) to get more help.
