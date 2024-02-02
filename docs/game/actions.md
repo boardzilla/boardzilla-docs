@@ -68,7 +68,7 @@ As well, an action can have several optional properties.
 Actions are all created in a single place in `game/index.ts` inside the
 [createGame](../api/modules#creategame) when you call
 [`game.defineActions`](../api/classes/Game#defineactions). Each action is listed
-with it's name, and the selections and behaviours of the action are chained onto
+with its name, and the selections and behaviours of the action are chained onto
 it, e.g.:
 
 ```ts title="Chaining action methods"
@@ -97,7 +97,7 @@ There's quite a bit going on with this action. Let's break it down:
   to the player's `money` and use their name in the message.
 - This action has one **selection** which is named `"amount"`. This is a number
   selection created with [`chooseNumber`](../api/classes/Action#choosenumber).
-- This action has two **behaviour** function. One is a
+- This action has two **behaviour** functions. One is a
   [`do`](../api/classes/Action#do) that records the bid amount as
   `board.lastBid` and one is a [`message`](../api/classes/Action#message) sent
   to the players.
@@ -149,7 +149,7 @@ argument with key-value pairs for the selections. For example:
 ```
 
 Because of this, selections can use the result of previous selections within a
-single action.  Whenever you're working selections within an action, and a
+single action.  Whenever you're making selections within an action, and a
 property accepts a function, that function will be called with the selections up
 to that point.
 
@@ -188,7 +188,7 @@ time to actually do something!
 
 ### Moving
 
-The most common behaviour is to move a Piece or Pieces into a new location. For
+The most common behavior is to move a Piece or Pieces into a new location. For
 most moves, we can just call [`move`](../api/classes/Action#move) after the
 selections, e.g.
 
@@ -208,8 +208,8 @@ selections, e.g.
 Notice that in this example we use a string as the **first argument**, meaning
 "use the piece(s) the player selected in the selection with this name". For the
 **second argument** we specify a predetermined location with a literal
-Space. Both the piece(s) moved, or the location they're moved to, can either be
-player choices (string names), or predetermined game elements (`GameElement`
+Space. Both the piece(s) moved and the location they're moved to can be either
+player choices (string names) or predetermined game elements (`GameElement`
 expressions).
 
 Boardzilla will make this move when the player has made all their selctions, and
