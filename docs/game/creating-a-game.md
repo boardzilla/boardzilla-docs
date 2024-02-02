@@ -11,7 +11,7 @@ Boardzilla usually follows these steps:
 - Create the [Pieces](core-concepts#piece) for your game and add them onto the board
 - Define some [Actions](core-concepts#action) that the player(s) can take
 - Add these actions into the [Flow](core-concepts#flow)
-- Test the action in the browser
+- Test the actions in the browser
 - Add more actions and then test those
 - Customize the flow to add rounds, phases, turns etc.
 - Finally, customize the [UI](/category/customizing-the-ui) by adding game art, custom HTML/CSS and animations
@@ -23,7 +23,7 @@ It is generally best to customize the UI last. Boardzilla's default UI may not b
 From the moment you create your new Boardzilla game, it is runnable in the browser and
 as you progress through the steps above, the browser will immediately update with your changes.
 You can begin "playing" your game as soon as actions are added. You
-can also run the game backwards and forward to test it. As you progress, the game
+can also run the game backward and forward to test it. As you progress, the game
 updates in real-time, even reflecting how the in-progress game history would change
 based on the new rules you've entered.
 
