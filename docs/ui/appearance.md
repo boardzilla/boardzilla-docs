@@ -180,7 +180,7 @@ absolute CSS units like `px`.
 
 Always use `em` units when you want your CSS to be relative to the element it
 belongs to. CSS attributes that accept a `%` relative to parent size are also
-appropriate. Use `rem` in rare cases where you want the size to be relative to
+appropriate. Use `rem`s in cases where you want the size to be relative to
 the entire game board.
 
 :::

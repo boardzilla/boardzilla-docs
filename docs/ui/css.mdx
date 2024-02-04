@@ -1,5 +1,5 @@
 ---
-sidebar_position: 10
+sidebar_position: 8
 ---
 
 # CSS
@@ -66,9 +66,11 @@ exhaustive and not all of these elements would be present at the same time.
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="prompt"/&gt;
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;
 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div <a href="#announcement">id="announcement"</a> <a href="#modal-popup">class="modal-popup"</a>/&gt;
+
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div id="info-container"&gt;
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#info-drawer">&lt;div id="info-drawer"/&gt;</a>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#info-modal">&lt;div id="info-modal"&gt;</a>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div <a href="#info-modal">id="info-modal"</a> <a href="#modal-popup">class="modal-popup"</a>&gt;
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="element-zoom"&gt;
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;
@@ -77,6 +79,18 @@ exhaustive and not all of these elements would be present at the same time.
 &nbsp;&nbsp;&lt;/body&gt;
 &lt;/html&gt;
 </pre>
+
+:::tip use em or %
+
+Since elements in Boardzilla can change size, it's important to never use
+absolute CSS units like `px`.
+
+Always use `em` units when you want your CSS to be relative to the element it
+belongs to. CSS attributes that accept a `%` relative to parent size are also
+appropriate. Use `rem`s in cases where you want the size to be relative to
+the entire game board.
+
+:::
 
 ### &lt;html&gt;
 
@@ -181,6 +195,16 @@ additionally have a class name for that step:
 ```css
 .player-controls.step-<step name> {
 ```
+
+### .modal-popup
+
+This class applies to all popup modals, whether they be information modals,
+annoucements or the "game finished" annoucement.
+
+### #announcement
+
+The announcement modal. This includes the "game finished" announcement.
+
 ### #info-drawer
 
 The floating info panel in the top left once it's opened. This can be targetted
@@ -189,9 +213,14 @@ close to default.
 
 ### #info-modal
 
-When selecting an element to see info, this modal contains the element and
-text. It is important to remember that an element's
-[`appearance.render`](appearance#render) JSX can appear in this context as well.
+The floating info modal that appears when clicking on an information sidebar
+item or a game element with more info.
+
+When selecting an element to see info, this modal contains the element in its
+`.element-zoom` child div. It is important to remember that an element's
+[`appearance.render`](appearance#render) JSX can appear in this context as well
+so CSS styles applied to elements must allow for this hierarchy, being
+completely outside the [#play-area](#play-area).
 
 ## Hover
 

@@ -261,9 +261,9 @@ We can also add more `{{handlebars}}` variables using the second argument, e.g.:
 :::tip Using {{handlebars}}
 
 Using Boardzilla's `{{handlebars}}` syntax in messages allows references to
-Players or Game objects to have special formatting applied. You can interpolate
-values into the message string directly, but for this reason, using the
-`{{handlebars}}` syntax is recommended.
+Players or Game Element objects to have special formatting applied. You can
+interpolate values into the message string directly, but for this reason, using
+the `{{handlebars}}` syntax is recommended.
 
 :::
 

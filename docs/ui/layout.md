@@ -139,20 +139,36 @@ bounding box. This is an easy way to visually see if your layout is correct.
 ## Customize Controls
 
 The controls (floating boxes with player prompts and inputs) can have their
-location customized to be contextual with the action taken. There are two
+location customized to be contextual with the action taken. There are three
 methods for controlling placement of these, depending on whether you want the
-placement to be specific to an Action or specific to a step in the Flow:
+placement to be specific to an Action or specific to a step in the Flow, or
+general to all:
 
 - [`board.layoutAction`](../api/classes/Board#layoutaction)
 - [`board.layoutStep`](../api/classes/Board#layoutstep)
+- [`board.layoutControls`](../api/classes/Board#layoutcontrols)
 
-Both of these apply layout rules to a control by specifying the
-[`Action`](../game/actions) or the
-[`playerActions.name`](../game/flow#player-actions) respectively and providing
-parameters to anchor it to the board in a particular location. This is to allow
-your game to place these in a suitable location of the board that corresponds to
-the action needed, and does not obscure game elements. See
-[`ActionLayout`](../api/modules#actionlayout) for details.
+These all apply layout rules to a control by specifying the
+[`Action`](../game/actions) in the case of
+[`board.layoutAction`](../api/classes/Board#layoutaction), or the
+[`playerActions.name`](../game/flow#player-actions) in the case of
+[`board.layoutStep`](../api/classes/Board#layoutstep). Finally,
+[`board.layoutControls`](../api/classes/Board#layoutcontrols) applies to all
+steps and actions unless a more specific one applies. Whichever function you use,
+you then provide parameters to anchor it to the board in a particular
+location. This is to allow your game to place these in a suitable location of
+the board that corresponds to the action needed, and does not obscure game
+elements. See [`ActionLayout`](../api/modules#actionlayout) for details.
+
+Example to place all prompts in the top center of the board:
+```ts
+  board.layoutControls({
+    element: board,
+    top: 0,
+    center: 50,
+    width: 20
+  });
+```
 
 The controls can also be targetted with CSS like all Boardzilla elements. The
 controls box always have the HTML class `player-controls` applied, and other
