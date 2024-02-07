@@ -404,9 +404,9 @@ the loop at the next iteration, like the `continue` keyword in C/Javascript.
 Similar to `Do.continue` except this restarts the loop on **the same iteration**
 it's currently on.
 
-These functions can be called in any loop function or action. Often it is the
-only thing you want to call after a particular action, in which case you can
-pass it as the action `do`, e.g.:
+These functions can be called anywhere that is called from a loop. Often it
+is the only thing you want to call after a particular action, in which case you
+can pass it as the action `do`, e.g.:
 
 ```ts
   loop(
@@ -423,6 +423,32 @@ pass it as the action `do`, e.g.:
     })
   );
 ```
+
+All 3 flow interruption commands operate on the "current" loop, just as in
+C/Javascript. If you wish to operate on another loop higher up, you can pass an
+argument to the function with the name of the loop you wish to break out of,
+e.g.:
+
+```ts
+  ...,
+  whileLoop({
+    while: () => true,
+    name: 'outer-loop',
+    do: whileLoop({
+      while: () => true,
+      name: 'inner-loop',
+      // break here
+      // highlight-next-line
+      do: () => Do.break('outer-loop')
+    }),
+    () => { /* will never reach here */ }
+  }),
+  () => { /* will resume here */ }
+```
+
+This operates much the same as a [labelled
+statement](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/label)
+in Javascript.
 
 :::danger These are not javascript keywords
 
