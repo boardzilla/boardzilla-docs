@@ -2,7 +2,7 @@
 sidebar_position: 2
 ---
 
-# Creating a game
+# Getting started
 
 ## Before you get started
 
@@ -22,12 +22,36 @@ As well, some familiarity with the following is useful:
 - [React](https://react.dev/), particularly with [JSX](https://react.dev/learn/writing-markup-with-jsx)
 - [esbuild](https://esbuild.github.io/) which is used to compile and build your game
 
-## Creating your first game
+## Installing the devtools
 
-Once you've got Node 18 or higher installed, you're ready to create your first game. Run the following:
+The devtools provides your interface for creating, developing and submitting games.
+
+### Via homebrew tap
 
 ```console
-npx @boardzilla/create-game
+brew install boardzilla/tap/boardzilla-devtools
 ```
 
-You'll be guided through a series of prompts. One of the choices you'll be prompted with is which game template you'd like to use. The **[simple template](https://github.com/boardzilla/boardzilla-starter-game)** gives you a very basic game to edit right away. The **[empty template](https://github.com/boardzilla/boardzilla-empty-game)** gives you a completely empty game to use. If this is your first time making a game, the simple template is probably best as it gives you a working example to play with.
+### Via go
+
+This requires you have go version >=1.21 installed.
+
+```console
+go install -u github.com/boardzilla/boardzilla-devtools/cmd/bz@latest
+```
+
+### Via bash
+
+```console
+curl -sfL https://raw.githubusercontent.com/boardzilla/boardzilla-devtools/main/scripts/install | bash -s
+```
+
+### Via source
+
+This requires you have go version >=1.21 installed.
+
+```console
+git clone https://github.com/boardzilla/boardzilla-devtools
+cd boardzilla-devtools
+go build -o bz cmd/bz/main.go
+```
