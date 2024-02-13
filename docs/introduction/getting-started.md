@@ -34,7 +34,7 @@ brew install boardzilla/tap/boardzilla-devtools
 
 ### Via go
 
-This requires you have go version >=1.21 installed.
+This requires you have go version >=1.21 installed which can be obtained from here [https://go.dev/dl/](https://go.dev/dl/).
 
 ```console
 go install -u github.com/boardzilla/boardzilla-devtools/cmd/bz@latest
@@ -48,7 +48,7 @@ curl -sfL https://raw.githubusercontent.com/boardzilla/boardzilla-devtools/main/
 
 ### Via source
 
-This requires you have go version >=1.21 installed.
+This requires you have go version >=1.21 installed which can be obtained from here [https://go.dev/dl/](https://go.dev/dl/).
 
 ```console
 git clone https://github.com/boardzilla/boardzilla-devtools
