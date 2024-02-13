@@ -56,4 +56,4 @@ cd boardzilla-devtools
 go build -o bz cmd/bz/main.go
 ```
 
-After building you'll need to place the `bz` somewhere in your path.
+After building you'll need to place the `bz` binary in your path.
