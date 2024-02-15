@@ -15,3 +15,7 @@ These docs will cover everything from creating your first game, defining your ru
 :::tip Come say hi!
 While these docs attempt to cover everything you'll need to write your first game, they can of course be incomplete. And if you're struggling with any part, come join us on [Discord](https://discord.gg/rHAVqC3mbe) to get more help.
 :::
+
+To get a taste of what it's like to make a game in Boardzilla, please watch this tutorial.
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/vY9y1Qs8jKk?si=EeLtfVRJicotOPNv" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
