@@ -75,11 +75,11 @@ it, e.g.:
 ```ts title="Chaining action methods"
   game.defineActions({
     bid: player => action({
-      prompt: 'Make a bid',
-      description: 'bidding',
+      prompt: "Make a bid",
+      description: "bidding",
       condition: !player.passedThisAuction
     }).chooseNumber(
-      'amount', {
+      "amount", {
         min: board.lastBid ?? 1
         max: player.money,
       }

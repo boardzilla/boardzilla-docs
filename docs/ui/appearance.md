@@ -314,16 +314,23 @@ apply the effect with `appearance.effect`, e.g.:
   board.all(Card).appearance({
     effects: [{
       attributes: { isTrump: true },
-      className: "newly-trump",
+      name: "newly-trump",
     }],
   });
 ```
 
-The `"newly-trump"` CSS class will be applied to your `Card` DOM element only
-when a game change causes the `isTrump` property to become true. You can attach
-a [one-time animation in this CSS
+Now, when a game change causes the `isTrump` property to become true on this
+`Card`, its DOM element will have an attribute named `data-bz-effect` set on it
+to the provided string `"newly-trump"`. This attribute can be targetted with a
+CSS selector. You can attach a [one-time animation in this CSS
 class](https://www.w3schools.com/css/css3_animations.asp) to cause the card to
-flash or highlight in some way only when a card change to become trump.
+flash or highlight in some way only when a card change to become trump, e.g.:
+
+```
+  .Card[data-bz-effect="newly-trump"] {
+    animation: flash .5s;
+  }
+```
 
 :::tip Disable default
 

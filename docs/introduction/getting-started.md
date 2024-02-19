@@ -9,7 +9,6 @@ sidebar_position: 2
 In order to make a game in Boardzilla you'll need to have:
 
 - [Node 18 or higher](https://nodejs.org/)
-- A Linux or Mac environment to develop on
 - A code editor of your choice
 
 As well, a knowledge of the following is essential to writing a game in Boardzilla:
