@@ -376,6 +376,15 @@ should be pruned from the player's choices, which we do by adding the following:
   })...
 ```
 
+You can also provide custom validation on the individual selections. Each
+selection has a `validate` option that you can use to check all the player
+choices up until that point to see if the selections are valid, and supply error
+text if desired. This can be useful for moves where there are several choices
+that are potentially allowed, but in combination are not allowed. It is also
+useful for times when you want to provide a specific message to players' about
+*why* a selection is invalid, rather than relying on Boardzilla to automatically
+remove invalid options via tree-shaking.
+
 ### Skipping
 
 Boardzilla has 3 different strategies it follows for choosing what to skip and
