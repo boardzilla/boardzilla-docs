@@ -6,15 +6,15 @@ You do! You own the copyright for any game you make.
 
 ## If I make my game available on boardzilla.io, do I need publish the source as well?
 
-If your game uses the `@boardzilla/core` library, and no other AGPL licensed software, you do not need to publish the game source code.
+If your game uses the `@boardzilla/core` library you do not need to publish the game source code. However, if you're using other libraries which require you to publish the source code, you'll need to comply with those.
 
 ## Can I monetize my game?
 
-You can do anything the AGPL provides, including monetizing it however you'd like.
+You can do anything the AGPL provides, including monetizing it however you'd like. For an overview of your rights under the AGPL license, take a look at https://choosealicense.com/licenses/agpl-3.0/.
 
 ## What If I want to monetize my game but not publish the source code?
 
-If you'd like to do, you're probably interested in a license other than the AGPL. Please contact us at info@boardzilla.io to arrange for an alternate license.
+You probably want a different license other than the AGPL. Please contact us at info@boardzilla.io to arrange for an alternate license. As well, we're planning to offer a way to monetize games on boardzilla.io.
 
 ## What if i want to improve `@boardzilla/core` on my own?
 
