@@ -223,6 +223,17 @@ When selecting an element to see info, this modal contains the element in its
 so CSS styles applied to elements must allow for this hierarchy, being
 completely outside the [#play-area](#play-area).
 
+## CSS Variables
+
+There are a few CSS variables set for convenience to access player's chosen
+colors. These are set on the `#game` or on the relevant `.Space` or `.Piece`
+element so that they cascade down to any relevant child elements:
+
+- `--player-color`: the color of the owner player for this element
+- `--my-player-color`: the color of the player viewing the game
+- `--current-player-color`: the color of the player who's turn it currently is,
+  provided only a single player can act.
+
 ## Hover
 
 Applying CSS to elements as players hover them can be done with the standard
