@@ -234,6 +234,14 @@ element so that they cascade down to any relevant child elements:
 - `--current-player-color`: the color of the player who's turn it currently is,
   provided only a single player can act.
 
+These can be accessed using the CSS `var` keyword, e.g.:
+
+```css
+  .Token {
+    background: var(--player-color);
+  }
+```
+
 ## Hover
 
 Applying CSS to elements as players hover them can be done with the standard
