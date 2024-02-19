@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.1.0">
 <title data-rh="true">Class: Board&lt;P, B&gt; | Boardzilla docs</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://docs.boardzilla.io/api/classes/Board"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Class: Board&lt;P, B&gt; | Boardzilla docs"><meta data-rh="true" name="description" content="Base class for the board. Represents the current state of the game and"><meta data-rh="true" property="og:description" content="Base class for the board. Represents the current state of the game and"><link data-rh="true" rel="icon" href="/img/favicon.png"><link data-rh="true" rel="canonical" href="https://docs.boardzilla.io/api/classes/Board"><link data-rh="true" rel="alternate" href="https://docs.boardzilla.io/api/classes/Board" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.boardzilla.io/api/classes/Board" hreflang="x-default"><link rel="stylesheet" href="/assets/css/styles.17c4d9ad.css">
-<script src="/assets/js/runtime~main.c594aa08.js" defer="defer"></script>
-<script src="/assets/js/main.a32e421c.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.45f9ea69.js" defer="defer"></script>
+<script src="/assets/js/main.b13915ee.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
 <script>!function(){function t(t){document.documentElement.setAttribute("data-theme",t)}var e=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return localStorage.getItem("theme")}catch(t){}}();t(null!==e?e:"light")}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="navbar navbar--fixed-top"><div class="navbar__inner"><div class="navbar__items"><a class="navbar__brand" href="/"><div class="navbar__logo"><img src="/img/logo.svg" alt="RAR!" class="themedComponent_mlkZ themedComponent--light_NVdE"><img src="/img/logo.svg" alt="RAR!" class="themedComponent_mlkZ themedComponent--dark_xIcU"></div><b class="navbar__title text--truncate">Boardzilla docs</b></a></div><div class="navbar__items navbar__items--right"><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="Switch between dark and light mode (currently light mode)" aria-label="Switch between dark and light mode (currently light mode)" aria-live="polite"><svg viewBox="0 0 24 24" width="24" height="24" class="lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" class="darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"><div class="navbar__search"><span aria-label="expand searchbar" role="button" class="search-icon" tabindex="0"></span><input id="search_input_react" type="search" placeholder="Loading..." aria-label="Search" class="navbar__search-input search-bar" disabled=""></div></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" aria-expanded="false" href="/">Introduction</a><button aria-label="Expand sidebar category &#x27;Introduction&#x27;" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" aria-expanded="false" href="/category/building-a-game">Building a game</a><button aria-label="Expand sidebar category &#x27;Building a game&#x27;" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" aria-expanded="false" href="/category/customizing-the-ui">Customizing the UI</a><button aria-label="Expand sidebar category &#x27;Customizing the UI&#x27;" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/publishing/publish">Publishing</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/examples/examples">Examples</a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--active" aria-expanded="true" href="/api">API</a><button aria-label="Collapse sidebar category &#x27;API&#x27;" type="button" class="clean-btn menu__caret"></button></div><ul style="display:block;overflow:visible;height:auto" class="menu__list"><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" aria-expanded="true" tabindex="0" href="/api/classes/Action">Classes</a></div><ul style="display:block;overflow:visible;height:auto" class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/api/classes/Action">Action</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/api/classes/Board">Board</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/api/classes/Die">Die</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/api/classes/ElementCollection">ElementCollection</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/api/classes/Game">Game</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/api/classes/GameElement">GameElement</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/api/classes/Piece">Piece</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/api/classes/Player">Player</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/api/classes/PlayerCollection">PlayerCollection</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/api/classes/Space">Space</a></li></ul></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/api/modules">Table of Contents</a></li></ul></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/faq">index</a></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="Breadcrumbs"><ul class="breadcrumbs" itemscope="" itemtype="https://schema.org/BreadcrumbList"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_YNFT"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li itemscope="" itemprop="itemListElement" itemtype="https://schema.org/ListItem" class="breadcrumbs__item"><a class="breadcrumbs__link" itemprop="item" href="/api"><span itemprop="name">API</span></a><meta itemprop="position" content="1"></li><li class="breadcrumbs__item"><span class="breadcrumbs__link">Classes</span><meta itemprop="position" content="2"></li><li itemscope="" itemprop="itemListElement" itemtype="https://schema.org/ListItem" class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link" itemprop="name">Board</span><meta itemprop="position" content="3"></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>Class: Board&lt;P, B&gt;</h1></header><p>Base class for the board. Represents the current state of the game and
@@ -47,7 +47,7 @@ searching of elements.</p>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="inherited-from">Inherited from<a href="#inherited-from" class="hash-link" aria-label="Direct link to Inherited from" title="Direct link to Inherited from">​</a></h4>
 <p><a href="/api/classes/Space">Space</a>.<a href="/api/classes/Space#name">name</a></p>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="defined-in">Defined in<a href="#defined-in" class="hash-link" aria-label="Direct link to Defined in" title="Direct link to Defined in">​</a></h4>
-<p><a href="https://github.com/boardzilla/boardzilla-core/blob/cdeddfa/src/board/element.ts#L277" target="_blank" rel="noopener noreferrer">boardzilla-core/src/board/element.ts:277</a></p>
+<p><a href="https://github.com/boardzilla/boardzilla-core/blob/e600879/src/board/element.ts#L277" target="_blank" rel="noopener noreferrer">boardzilla-core/src/board/element.ts:277</a></p>
 <hr>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="player">player<a href="#player" class="hash-link" aria-label="Direct link to player" title="Direct link to player">​</a></h3>
 <p>• <code>Optional</code> <strong>player</strong>: <code>P</code></p>
@@ -58,7 +58,7 @@ viewed by a given player.).</p>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="inherited-from-1">Inherited from<a href="#inherited-from-1" class="hash-link" aria-label="Direct link to Inherited from" title="Direct link to Inherited from">​</a></h4>
 <p><a href="/api/classes/Space">Space</a>.<a href="/api/classes/Space#player">player</a></p>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="defined-in-1">Defined in<a href="#defined-in-1" class="hash-link" aria-label="Direct link to Defined in" title="Direct link to Defined in">​</a></h4>
-<p><a href="https://github.com/boardzilla/boardzilla-core/blob/cdeddfa/src/board/element.ts#L286" target="_blank" rel="noopener noreferrer">boardzilla-core/src/board/element.ts:286</a></p>
+<p><a href="https://github.com/boardzilla/boardzilla-core/blob/e600879/src/board/element.ts#L286" target="_blank" rel="noopener noreferrer">boardzilla-core/src/board/element.ts:286</a></p>
 <hr>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="all">all<a href="#all" class="hash-link" aria-label="Direct link to all" title="Direct link to all">​</a></h3>
 <p>▸ <strong>all</strong>&lt;<code>F</code>&gt;(<code>className</code>, <code>...finders</code>): <a href="/api/classes/ElementCollection"><code>ElementCollection</code></a>&lt;<code>F</code>&gt;</p>
@@ -109,7 +109,7 @@ provided.</p>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="inherited-from-2">Inherited from<a href="#inherited-from-2" class="hash-link" aria-label="Direct link to Inherited from" title="Direct link to Inherited from">​</a></h4>
 <p><a href="/api/classes/Space">Space</a>.<a href="/api/classes/Space#all">all</a></p>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="defined-in-2">Defined in<a href="#defined-in-2" class="hash-link" aria-label="Direct link to Defined in" title="Direct link to Defined in">​</a></h4>
-<p><a href="https://github.com/boardzilla/boardzilla-core/blob/cdeddfa/src/board/element.ts#L390" target="_blank" rel="noopener noreferrer">boardzilla-core/src/board/element.ts:390</a></p>
+<p><a href="https://github.com/boardzilla/boardzilla-core/blob/e600879/src/board/element.ts#L390" target="_blank" rel="noopener noreferrer">boardzilla-core/src/board/element.ts:390</a></p>
 <hr>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="first">first<a href="#first" class="hash-link" aria-label="Direct link to first" title="Direct link to first">​</a></h3>
 <p>▸ <strong>first</strong>&lt;<code>F</code>&gt;(<code>className</code>, <code>...finders</code>): <code>undefined</code> | <code>F</code></p>
@@ -155,7 +155,7 @@ provided. See <a href="/api/classes/Board#all">all</a> for parameter details.</p
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="inherited-from-3">Inherited from<a href="#inherited-from-3" class="hash-link" aria-label="Direct link to Inherited from" title="Direct link to Inherited from">​</a></h4>
 <p><a href="/api/classes/Space">Space</a>.<a href="/api/classes/Space#first">first</a></p>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="defined-in-3">Defined in<a href="#defined-in-3" class="hash-link" aria-label="Direct link to Defined in" title="Direct link to Defined in">​</a></h4>
-<p><a href="https://github.com/boardzilla/boardzilla-core/blob/cdeddfa/src/board/element.ts#L406" target="_blank" rel="noopener noreferrer">boardzilla-core/src/board/element.ts:406</a></p>
+<p><a href="https://github.com/boardzilla/boardzilla-core/blob/e600879/src/board/element.ts#L406" target="_blank" rel="noopener noreferrer">boardzilla-core/src/board/element.ts:406</a></p>
 <hr>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="firstn">firstN<a href="#firstn" class="hash-link" aria-label="Direct link to firstN" title="Direct link to firstN">​</a></h3>
 <p>▸ <strong>firstN</strong>&lt;<code>F</code>&gt;(<code>n</code>, <code>className</code>, <code>...finders</code>): <a href="/api/classes/ElementCollection"><code>ElementCollection</code></a>&lt;<code>F</code>&gt;</p>
@@ -211,7 +211,7 @@ if one was provided.</p>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="inherited-from-4">Inherited from<a href="#inherited-from-4" class="hash-link" aria-label="Direct link to Inherited from" title="Direct link to Inherited from">​</a></h4>
 <p><a href="/api/classes/Space">Space</a>.<a href="/api/classes/Space#firstn">firstN</a></p>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="defined-in-4">Defined in<a href="#defined-in-4" class="hash-link" aria-label="Direct link to Defined in" title="Direct link to Defined in">​</a></h4>
-<p><a href="https://github.com/boardzilla/boardzilla-core/blob/cdeddfa/src/board/element.ts#L426" target="_blank" rel="noopener noreferrer">boardzilla-core/src/board/element.ts:426</a></p>
+<p><a href="https://github.com/boardzilla/boardzilla-core/blob/e600879/src/board/element.ts#L426" target="_blank" rel="noopener noreferrer">boardzilla-core/src/board/element.ts:426</a></p>
 <hr>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="last">last<a href="#last" class="hash-link" aria-label="Direct link to last" title="Direct link to last">​</a></h3>
 <p>▸ <strong>last</strong>&lt;<code>F</code>&gt;(<code>className</code>, <code>...finders</code>): <code>undefined</code> | <code>F</code></p>
@@ -257,7 +257,7 @@ provided. See <a href="/api/classes/Board#all">all</a> for parameter details.</p
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="inherited-from-5">Inherited from<a href="#inherited-from-5" class="hash-link" aria-label="Direct link to Inherited from" title="Direct link to Inherited from">​</a></h4>
 <p><a href="/api/classes/Space">Space</a>.<a href="/api/classes/Space#last">last</a></p>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="defined-in-5">Defined in<a href="#defined-in-5" class="hash-link" aria-label="Direct link to Defined in" title="Direct link to Defined in">​</a></h4>
-<p><a href="https://github.com/boardzilla/boardzilla-core/blob/cdeddfa/src/board/element.ts#L443" target="_blank" rel="noopener noreferrer">boardzilla-core/src/board/element.ts:443</a></p>
+<p><a href="https://github.com/boardzilla/boardzilla-core/blob/e600879/src/board/element.ts#L443" target="_blank" rel="noopener noreferrer">boardzilla-core/src/board/element.ts:443</a></p>
 <hr>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="lastn">lastN<a href="#lastn" class="hash-link" aria-label="Direct link to lastN" title="Direct link to lastN">​</a></h3>
 <p>▸ <strong>lastN</strong>&lt;<code>F</code>&gt;(<code>n</code>, <code>className</code>, <code>...finders</code>): <a href="/api/classes/ElementCollection"><code>ElementCollection</code></a>&lt;<code>F</code>&gt;</p>
@@ -313,7 +313,7 @@ if one was provided.</p>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="inherited-from-6">Inherited from<a href="#inherited-from-6" class="hash-link" aria-label="Direct link to Inherited from" title="Direct link to Inherited from">​</a></h4>
 <p><a href="/api/classes/Space">Space</a>.<a href="/api/classes/Space#lastn">lastN</a></p>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="defined-in-6">Defined in<a href="#defined-in-6" class="hash-link" aria-label="Direct link to Defined in" title="Direct link to Defined in">​</a></h4>
-<p><a href="https://github.com/boardzilla/boardzilla-core/blob/cdeddfa/src/board/element.ts#L463" target="_blank" rel="noopener noreferrer">boardzilla-core/src/board/element.ts:463</a></p>
+<p><a href="https://github.com/boardzilla/boardzilla-core/blob/e600879/src/board/element.ts#L463" target="_blank" rel="noopener noreferrer">boardzilla-core/src/board/element.ts:463</a></p>
 <hr>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="top">top<a href="#top" class="hash-link" aria-label="Direct link to top" title="Direct link to top">​</a></h3>
 <p>▸ <strong>top</strong>&lt;<code>F</code>&gt;(<code>className</code>, <code>...finders</code>): <code>undefined</code> | <code>F</code></p>
@@ -357,7 +357,7 @@ if one was provided.</p>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="inherited-from-7">Inherited from<a href="#inherited-from-7" class="hash-link" aria-label="Direct link to Inherited from" title="Direct link to Inherited from">​</a></h4>
 <p><a href="/api/classes/Space">Space</a>.<a href="/api/classes/Space#top">top</a></p>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="defined-in-7">Defined in<a href="#defined-in-7" class="hash-link" aria-label="Direct link to Defined in" title="Direct link to Defined in">​</a></h4>
-<p><a href="https://github.com/boardzilla/boardzilla-core/blob/cdeddfa/src/board/element.ts#L478" target="_blank" rel="noopener noreferrer">boardzilla-core/src/board/element.ts:478</a></p>
+<p><a href="https://github.com/boardzilla/boardzilla-core/blob/e600879/src/board/element.ts#L478" target="_blank" rel="noopener noreferrer">boardzilla-core/src/board/element.ts:478</a></p>
 <hr>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="topn">topN<a href="#topn" class="hash-link" aria-label="Direct link to topN" title="Direct link to topN">​</a></h3>
 <p>▸ <strong>topN</strong>&lt;<code>F</code>&gt;(<code>n</code>, <code>className</code>, <code>...finders</code>): <a href="/api/classes/ElementCollection"><code>ElementCollection</code></a>&lt;<code>F</code>&gt;</p>
@@ -405,7 +405,7 @@ if one was provided.</p>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="inherited-from-8">Inherited from<a href="#inherited-from-8" class="hash-link" aria-label="Direct link to Inherited from" title="Direct link to Inherited from">​</a></h4>
 <p><a href="/api/classes/Space">Space</a>.<a href="/api/classes/Space#topn">topN</a></p>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="defined-in-8">Defined in<a href="#defined-in-8" class="hash-link" aria-label="Direct link to Defined in" title="Direct link to Defined in">​</a></h4>
-<p><a href="https://github.com/boardzilla/boardzilla-core/blob/cdeddfa/src/board/element.ts#L492" target="_blank" rel="noopener noreferrer">boardzilla-core/src/board/element.ts:492</a></p>
+<p><a href="https://github.com/boardzilla/boardzilla-core/blob/e600879/src/board/element.ts#L492" target="_blank" rel="noopener noreferrer">boardzilla-core/src/board/element.ts:492</a></p>
 <hr>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="bottom">bottom<a href="#bottom" class="hash-link" aria-label="Direct link to bottom" title="Direct link to bottom">​</a></h3>
 <p>▸ <strong>bottom</strong>&lt;<code>F</code>&gt;(<code>className</code>, <code>...finders</code>): <code>undefined</code> | <code>F</code></p>
@@ -449,7 +449,7 @@ if one was provided.</p>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="inherited-from-9">Inherited from<a href="#inherited-from-9" class="hash-link" aria-label="Direct link to Inherited from" title="Direct link to Inherited from">​</a></h4>
 <p><a href="/api/classes/Space">Space</a>.<a href="/api/classes/Space#bottom">bottom</a></p>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="defined-in-9">Defined in<a href="#defined-in-9" class="hash-link" aria-label="Direct link to Defined in" title="Direct link to Defined in">​</a></h4>
-<p><a href="https://github.com/boardzilla/boardzilla-core/blob/cdeddfa/src/board/element.ts#L507" target="_blank" rel="noopener noreferrer">boardzilla-core/src/board/element.ts:507</a></p>
+<p><a href="https://github.com/boardzilla/boardzilla-core/blob/e600879/src/board/element.ts#L507" target="_blank" rel="noopener noreferrer">boardzilla-core/src/board/element.ts:507</a></p>
 <hr>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="bottomn">bottomN<a href="#bottomn" class="hash-link" aria-label="Direct link to bottomN" title="Direct link to bottomN">​</a></h3>
 <p>▸ <strong>bottomN</strong>&lt;<code>F</code>&gt;(<code>n</code>, <code>className</code>, <code>...finders</code>): <a href="/api/classes/ElementCollection"><code>ElementCollection</code></a>&lt;<code>F</code>&gt;</p>
@@ -497,7 +497,7 @@ if one was provided.</p>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="inherited-from-10">Inherited from<a href="#inherited-from-10" class="hash-link" aria-label="Direct link to Inherited from" title="Direct link to Inherited from">​</a></h4>
 <p><a href="/api/classes/Space">Space</a>.<a href="/api/classes/Space#bottomn">bottomN</a></p>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="defined-in-10">Defined in<a href="#defined-in-10" class="hash-link" aria-label="Direct link to Defined in" title="Direct link to Defined in">​</a></h4>
-<p><a href="https://github.com/boardzilla/boardzilla-core/blob/cdeddfa/src/board/element.ts#L521" target="_blank" rel="noopener noreferrer">boardzilla-core/src/board/element.ts:521</a></p>
+<p><a href="https://github.com/boardzilla/boardzilla-core/blob/e600879/src/board/element.ts#L521" target="_blank" rel="noopener noreferrer">boardzilla-core/src/board/element.ts:521</a></p>
 <hr>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="others">others<a href="#others" class="hash-link" aria-label="Direct link to others" title="Direct link to others">​</a></h3>
 <p>▸ <strong>others</strong>&lt;<code>F</code>&gt;(<code>className</code>, <code>...finders</code>): <a href="/api/classes/ElementCollection"><code>ElementCollection</code></a>&lt;<code>F</code>&gt;</p>
@@ -542,7 +542,7 @@ provided. See <a href="/api/classes/Board#all">all</a> for parameter details.</p
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="inherited-from-11">Inherited from<a href="#inherited-from-11" class="hash-link" aria-label="Direct link to Inherited from" title="Direct link to Inherited from">​</a></h4>
 <p><a href="/api/classes/Space">Space</a>.<a href="/api/classes/Space#others">others</a></p>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="defined-in-11">Defined in<a href="#defined-in-11" class="hash-link" aria-label="Direct link to Defined in" title="Direct link to Defined in">​</a></h4>
-<p><a href="https://github.com/boardzilla/boardzilla-core/blob/cdeddfa/src/board/element.ts#L537" target="_blank" rel="noopener noreferrer">boardzilla-core/src/board/element.ts:537</a></p>
+<p><a href="https://github.com/boardzilla/boardzilla-core/blob/e600879/src/board/element.ts#L537" target="_blank" rel="noopener noreferrer">boardzilla-core/src/board/element.ts:537</a></p>
 <hr>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="has">has<a href="#has" class="hash-link" aria-label="Direct link to has" title="Direct link to has">​</a></h3>
 <p>▸ <strong>has</strong>&lt;<code>F</code>&gt;(<code>className</code>, <code>...finders</code>): <code>boolean</code></p>
@@ -587,7 +587,7 @@ provided. See <a href="/api/classes/Board#all">all</a> for parameter details.</p
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="inherited-from-12">Inherited from<a href="#inherited-from-12" class="hash-link" aria-label="Direct link to Inherited from" title="Direct link to Inherited from">​</a></h4>
 <p><a href="/api/classes/Space">Space</a>.<a href="/api/classes/Space#has">has</a></p>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="defined-in-12">Defined in<a href="#defined-in-12" class="hash-link" aria-label="Direct link to Defined in" title="Direct link to Defined in">​</a></h4>
-<p><a href="https://github.com/boardzilla/boardzilla-core/blob/cdeddfa/src/board/element.ts#L555" target="_blank" rel="noopener noreferrer">boardzilla-core/src/board/element.ts:555</a></p>
+<p><a href="https://github.com/boardzilla/boardzilla-core/blob/e600879/src/board/element.ts#L555" target="_blank" rel="noopener noreferrer">boardzilla-core/src/board/element.ts:555</a></p>
 <hr>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="adjacencies">adjacencies<a href="#adjacencies" class="hash-link" aria-label="Direct link to adjacencies" title="Direct link to adjacencies">​</a></h3>
 <p>▸ <strong>adjacencies</strong>&lt;<code>F</code>&gt;(<code>className</code>, <code>...finders</code>): <a href="/api/classes/ElementCollection"><code>ElementCollection</code></a>&lt;<code>F</code>&gt;</p>
@@ -633,7 +633,7 @@ parameters as <a href="/api/classes/GameElement#all">GameElement#all</a></p>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="inherited-from-13">Inherited from<a href="#inherited-from-13" class="hash-link" aria-label="Direct link to Inherited from" title="Direct link to Inherited from">​</a></h4>
 <p><a href="/api/classes/Space">Space</a>.<a href="/api/classes/Space#adjacencies">adjacencies</a></p>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="defined-in-13">Defined in<a href="#defined-in-13" class="hash-link" aria-label="Direct link to Defined in" title="Direct link to Defined in">​</a></h4>
-<p><a href="https://github.com/boardzilla/boardzilla-core/blob/cdeddfa/src/board/element.ts#L593" target="_blank" rel="noopener noreferrer">boardzilla-core/src/board/element.ts:593</a></p>
+<p><a href="https://github.com/boardzilla/boardzilla-core/blob/e600879/src/board/element.ts#L593" target="_blank" rel="noopener noreferrer">boardzilla-core/src/board/element.ts:593</a></p>
 <hr>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="container">container<a href="#container" class="hash-link" aria-label="Direct link to container" title="Direct link to container">​</a></h3>
 <p>▸ <strong>container</strong>&lt;<code>T</code>&gt;(<code>className?</code>): <code>undefined</code> | <code>T</code></p>
@@ -675,7 +675,7 @@ parameters as <a href="/api/classes/GameElement#all">GameElement#all</a></p>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="inherited-from-14">Inherited from<a href="#inherited-from-14" class="hash-link" aria-label="Direct link to Inherited from" title="Direct link to Inherited from">​</a></h4>
 <p><a href="/api/classes/Space">Space</a>.<a href="/api/classes/Space#container">container</a></p>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="defined-in-14">Defined in<a href="#defined-in-14" class="hash-link" aria-label="Direct link to Defined in" title="Direct link to Defined in">​</a></h4>
-<p><a href="https://github.com/boardzilla/boardzilla-core/blob/cdeddfa/src/board/element.ts#L645" target="_blank" rel="noopener noreferrer">boardzilla-core/src/board/element.ts:645</a></p>
+<p><a href="https://github.com/boardzilla/boardzilla-core/blob/e600879/src/board/element.ts#L645" target="_blank" rel="noopener noreferrer">boardzilla-core/src/board/element.ts:645</a></p>
 <hr>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="mine">mine<a href="#mine" class="hash-link" aria-label="Direct link to mine" title="Direct link to mine">​</a></h3>
 <p>• <code>get</code> <strong>mine</strong>(): <code>boolean</code></p>
@@ -691,7 +691,7 @@ true/false</p>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="inherited-from-15">Inherited from<a href="#inherited-from-15" class="hash-link" aria-label="Direct link to Inherited from" title="Direct link to Inherited from">​</a></h4>
 <p>Space.mine</p>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="defined-in-15">Defined in<a href="#defined-in-15" class="hash-link" aria-label="Direct link to Defined in" title="Direct link to Defined in">​</a></h4>
-<p><a href="https://github.com/boardzilla/boardzilla-core/blob/cdeddfa/src/board/element.ts#L700" target="_blank" rel="noopener noreferrer">boardzilla-core/src/board/element.ts:700</a></p>
+<p><a href="https://github.com/boardzilla/boardzilla-core/blob/e600879/src/board/element.ts#L700" target="_blank" rel="noopener noreferrer">boardzilla-core/src/board/element.ts:700</a></p>
 <hr>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="atposition">atPosition<a href="#atposition" class="hash-link" aria-label="Direct link to atPosition" title="Direct link to atPosition">​</a></h3>
 <p>▸ <strong>atPosition</strong>(<code>«destructured»</code>): <code>undefined</code> | <a href="/api/classes/GameElement"><code>GameElement</code></a>&lt;<code>P</code>, <code>B</code>&gt;</p>
@@ -724,7 +724,7 @@ true/false</p>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="inherited-from-16">Inherited from<a href="#inherited-from-16" class="hash-link" aria-label="Direct link to Inherited from" title="Direct link to Inherited from">​</a></h4>
 <p><a href="/api/classes/Space">Space</a>.<a href="/api/classes/Space#atposition">atPosition</a></p>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="defined-in-16">Defined in<a href="#defined-in-16" class="hash-link" aria-label="Direct link to Defined in" title="Direct link to Defined in">​</a></h4>
-<p><a href="https://github.com/boardzilla/boardzilla-core/blob/cdeddfa/src/board/element.ts#L942" target="_blank" rel="noopener noreferrer">boardzilla-core/src/board/element.ts:942</a></p>
+<p><a href="https://github.com/boardzilla/boardzilla-core/blob/e600879/src/board/element.ts#L942" target="_blank" rel="noopener noreferrer">boardzilla-core/src/board/element.ts:942</a></p>
 <hr>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="closest">closest<a href="#closest" class="hash-link" aria-label="Direct link to closest" title="Direct link to closest">​</a></h3>
 <p>▸ <strong>closest</strong>&lt;<code>F</code>&gt;(<code>className</code>, <code>...finders</code>): <code>undefined</code> | <code>F</code></p>
@@ -769,7 +769,7 @@ the same parameters as <a href="/api/classes/GameElement#first">GameElement#firs
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="inherited-from-17">Inherited from<a href="#inherited-from-17" class="hash-link" aria-label="Direct link to Inherited from" title="Direct link to Inherited from">​</a></h4>
 <p><a href="/api/classes/Space">Space</a>.<a href="/api/classes/Space#closest">closest</a></p>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="defined-in-17">Defined in<a href="#defined-in-17" class="hash-link" aria-label="Direct link to Defined in" title="Direct link to Defined in">​</a></h4>
-<p><a href="https://github.com/boardzilla/boardzilla-core/blob/cdeddfa/src/board/space.ts#L187" target="_blank" rel="noopener noreferrer">boardzilla-core/src/board/space.ts:187</a></p>
+<p><a href="https://github.com/boardzilla/boardzilla-core/blob/e600879/src/board/space.ts#L187" target="_blank" rel="noopener noreferrer">boardzilla-core/src/board/space.ts:187</a></p>
 <hr>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="withindistance">withinDistance<a href="#withindistance" class="hash-link" aria-label="Direct link to withinDistance" title="Direct link to withinDistance">​</a></h3>
 <p>▸ <strong>withinDistance</strong>(<code>distance</code>): <a href="/api/classes/ElementCollection"><code>ElementCollection</code></a>&lt;<a href="/api/classes/Space"><code>Space</code></a>&lt;<code>P</code>, <code>B</code>&gt;&gt;</p>
@@ -795,7 +795,7 @@ the same parameters as <a href="/api/classes/GameElement#first">GameElement#firs
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="inherited-from-18">Inherited from<a href="#inherited-from-18" class="hash-link" aria-label="Direct link to Inherited from" title="Direct link to Inherited from">​</a></h4>
 <p><a href="/api/classes/Space">Space</a>.<a href="/api/classes/Space#withindistance">withinDistance</a></p>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="defined-in-18">Defined in<a href="#defined-in-18" class="hash-link" aria-label="Direct link to Defined in" title="Direct link to Defined in">​</a></h4>
-<p><a href="https://github.com/boardzilla/boardzilla-core/blob/cdeddfa/src/board/space.ts#L210" target="_blank" rel="noopener noreferrer">boardzilla-core/src/board/space.ts:210</a></p>
+<p><a href="https://github.com/boardzilla/boardzilla-core/blob/e600879/src/board/space.ts#L210" target="_blank" rel="noopener noreferrer">boardzilla-core/src/board/space.ts:210</a></p>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="structure">Structure<a href="#structure" class="hash-link" aria-label="Direct link to Structure" title="Direct link to Structure">​</a></h2>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="pile">pile<a href="#pile" class="hash-link" aria-label="Direct link to pile" title="Direct link to pile">​</a></h3>
 <p>• <strong>pile</strong>: <a href="/api/classes/GameElement"><code>GameElement</code></a>&lt;<code>P</code>, <code>any</code>&gt;</p>
@@ -804,7 +804,7 @@ play. When elements are removed from the game, they go here, and can be
 retrieved, using
 e.g. <code>board.pile.first(&#x27;removed-element&#x27;).putInto(&#x27;destination-area&#x27;)</code>.</p>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="defined-in-19">Defined in<a href="#defined-in-19" class="hash-link" aria-label="Direct link to Defined in" title="Direct link to Defined in">​</a></h4>
-<p><a href="https://github.com/boardzilla/boardzilla-core/blob/cdeddfa/src/board/board.ts#L100" target="_blank" rel="noopener noreferrer">boardzilla-core/src/board/board.ts:100</a></p>
+<p><a href="https://github.com/boardzilla/boardzilla-core/blob/e600879/src/board/board.ts#L100" target="_blank" rel="noopener noreferrer">boardzilla-core/src/board/board.ts:100</a></p>
 <hr>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="registerclasses">registerClasses<a href="#registerclasses" class="hash-link" aria-label="Direct link to registerClasses" title="Direct link to registerClasses">​</a></h3>
 <p>▸ <strong>registerClasses</strong>(<code>...classList</code>): <code>void</code></p>
@@ -828,7 +828,7 @@ and Piece class declared in your game.</p>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="returns-17">Returns<a href="#returns-17" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns">​</a></h4>
 <p><code>void</code></p>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="defined-in-20">Defined in<a href="#defined-in-20" class="hash-link" aria-label="Direct link to Defined in" title="Direct link to Defined in">​</a></h4>
-<p><a href="https://github.com/boardzilla/boardzilla-core/blob/cdeddfa/src/board/board.ts#L114" target="_blank" rel="noopener noreferrer">boardzilla-core/src/board/board.ts:114</a></p>
+<p><a href="https://github.com/boardzilla/boardzilla-core/blob/e600879/src/board/board.ts#L114" target="_blank" rel="noopener noreferrer">boardzilla-core/src/board/board.ts:114</a></p>
 <hr>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="board">board<a href="#board" class="hash-link" aria-label="Direct link to board" title="Direct link to board">​</a></h3>
 <p>• <strong>board</strong>: <code>B</code></p>
@@ -836,7 +836,7 @@ and Piece class declared in your game.</p>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="inherited-from-19">Inherited from<a href="#inherited-from-19" class="hash-link" aria-label="Direct link to Inherited from" title="Direct link to Inherited from">​</a></h4>
 <p><a href="/api/classes/Space">Space</a>.<a href="/api/classes/Space#board">board</a></p>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="defined-in-21">Defined in<a href="#defined-in-21" class="hash-link" aria-label="Direct link to Defined in" title="Direct link to Defined in">​</a></h4>
-<p><a href="https://github.com/boardzilla/boardzilla-core/blob/cdeddfa/src/board/element.ts#L296" target="_blank" rel="noopener noreferrer">boardzilla-core/src/board/element.ts:296</a></p>
+<p><a href="https://github.com/boardzilla/boardzilla-core/blob/e600879/src/board/element.ts#L296" target="_blank" rel="noopener noreferrer">boardzilla-core/src/board/element.ts:296</a></p>
 <hr>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="game">game<a href="#game" class="hash-link" aria-label="Direct link to game" title="Direct link to game">​</a></h3>
 <p>• <strong>game</strong>: <a href="/api/classes/Game"><code>Game</code></a>&lt;<code>P</code>, <code>B</code>&gt;</p>
@@ -844,7 +844,7 @@ and Piece class declared in your game.</p>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="inherited-from-20">Inherited from<a href="#inherited-from-20" class="hash-link" aria-label="Direct link to Inherited from" title="Direct link to Inherited from">​</a></h4>
 <p><a href="/api/classes/Space">Space</a>.<a href="/api/classes/Space#game">game</a></p>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="defined-in-22">Defined in<a href="#defined-in-22" class="hash-link" aria-label="Direct link to Defined in" title="Direct link to Defined in">​</a></h4>
-<p><a href="https://github.com/boardzilla/boardzilla-core/blob/cdeddfa/src/board/element.ts#L302" target="_blank" rel="noopener noreferrer">boardzilla-core/src/board/element.ts:302</a></p>
+<p><a href="https://github.com/boardzilla/boardzilla-core/blob/e600879/src/board/element.ts#L302" target="_blank" rel="noopener noreferrer">boardzilla-core/src/board/element.ts:302</a></p>
 <hr>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="tostring">toString<a href="#tostring" class="hash-link" aria-label="Direct link to toString" title="Direct link to toString">​</a></h3>
 <p>▸ <strong>toString</strong>(): <code>string</code></p>
@@ -856,7 +856,7 @@ chooseOnBoard choice.</p>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="inherited-from-21">Inherited from<a href="#inherited-from-21" class="hash-link" aria-label="Direct link to Inherited from" title="Direct link to Inherited from">​</a></h4>
 <p><a href="/api/classes/Space">Space</a>.<a href="/api/classes/Space#tostring">toString</a></p>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="defined-in-23">Defined in<a href="#defined-in-23" class="hash-link" aria-label="Direct link to Defined in" title="Direct link to Defined in">​</a></h4>
-<p><a href="https://github.com/boardzilla/boardzilla-core/blob/cdeddfa/src/board/element.ts#L370" target="_blank" rel="noopener noreferrer">boardzilla-core/src/board/element.ts:370</a></p>
+<p><a href="https://github.com/boardzilla/boardzilla-core/blob/e600879/src/board/element.ts#L370" target="_blank" rel="noopener noreferrer">boardzilla-core/src/board/element.ts:370</a></p>
 <hr>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="isadjacentto">isAdjacentTo<a href="#isadjacentto" class="hash-link" aria-label="Direct link to isAdjacentTo" title="Direct link to isAdjacentTo">​</a></h3>
 <p>▸ <strong>isAdjacentTo</strong>(<code>element</code>): <code>boolean</code></p>
@@ -883,7 +883,7 @@ Space#connectTo.</p>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="inherited-from-22">Inherited from<a href="#inherited-from-22" class="hash-link" aria-label="Direct link to Inherited from" title="Direct link to Inherited from">​</a></h4>
 <p><a href="/api/classes/Space">Space</a>.<a href="/api/classes/Space#isadjacentto">isAdjacentTo</a></p>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="defined-in-24">Defined in<a href="#defined-in-24" class="hash-link" aria-label="Direct link to Defined in" title="Direct link to Defined in">​</a></h4>
-<p><a href="https://github.com/boardzilla/boardzilla-core/blob/cdeddfa/src/board/element.ts#L571" target="_blank" rel="noopener noreferrer">boardzilla-core/src/board/element.ts:571</a></p>
+<p><a href="https://github.com/boardzilla/boardzilla-core/blob/e600879/src/board/element.ts#L571" target="_blank" rel="noopener noreferrer">boardzilla-core/src/board/element.ts:571</a></p>
 <hr>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="setorder">setOrder<a href="#setorder" class="hash-link" aria-label="Direct link to setOrder" title="Direct link to setOrder">​</a></h3>
 <p>▸ <strong>setOrder</strong>(<code>order</code>): <code>void</code></p>
@@ -910,7 +910,7 @@ Space#connectTo.</p>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="inherited-from-23">Inherited from<a href="#inherited-from-23" class="hash-link" aria-label="Direct link to Inherited from" title="Direct link to Inherited from">​</a></h4>
 <p><a href="/api/classes/Space">Space</a>.<a href="/api/classes/Space#setorder">setOrder</a></p>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="defined-in-25">Defined in<a href="#defined-in-25" class="hash-link" aria-label="Direct link to Defined in" title="Direct link to Defined in">​</a></h4>
-<p><a href="https://github.com/boardzilla/boardzilla-core/blob/cdeddfa/src/board/element.ts#L633" target="_blank" rel="noopener noreferrer">boardzilla-core/src/board/element.ts:633</a></p>
+<p><a href="https://github.com/boardzilla/boardzilla-core/blob/e600879/src/board/element.ts#L633" target="_blank" rel="noopener noreferrer">boardzilla-core/src/board/element.ts:633</a></p>
 <hr>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="isempty">isEmpty<a href="#isempty" class="hash-link" aria-label="Direct link to isEmpty" title="Direct link to isEmpty">​</a></h3>
 <p>▸ <strong>isEmpty</strong>(): <code>boolean</code></p>
@@ -920,7 +920,7 @@ Space#connectTo.</p>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="inherited-from-24">Inherited from<a href="#inherited-from-24" class="hash-link" aria-label="Direct link to Inherited from" title="Direct link to Inherited from">​</a></h4>
 <p><a href="/api/classes/Space">Space</a>.<a href="/api/classes/Space#isempty">isEmpty</a></p>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="defined-in-26">Defined in<a href="#defined-in-26" class="hash-link" aria-label="Direct link to Defined in" title="Direct link to Defined in">​</a></h4>
-<p><a href="https://github.com/boardzilla/boardzilla-core/blob/cdeddfa/src/board/element.ts#L656" target="_blank" rel="noopener noreferrer">boardzilla-core/src/board/element.ts:656</a></p>
+<p><a href="https://github.com/boardzilla/boardzilla-core/blob/e600879/src/board/element.ts#L656" target="_blank" rel="noopener noreferrer">boardzilla-core/src/board/element.ts:656</a></p>
 <hr>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="sortby">sortBy<a href="#sortby" class="hash-link" aria-label="Direct link to sortBy" title="Direct link to sortBy">​</a></h3>
 <p>▸ <strong>sortBy</strong>(<code>key</code>, <code>direction?</code>): <a href="/api/classes/ElementCollection"><code>ElementCollection</code></a>&lt;<a href="/api/classes/GameElement"><code>GameElement</code></a>&lt;<code>P</code>, <code>B</code>&gt;&gt;</p>
@@ -949,7 +949,7 @@ Space#connectTo.</p>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="inherited-from-25">Inherited from<a href="#inherited-from-25" class="hash-link" aria-label="Direct link to Inherited from" title="Direct link to Inherited from">​</a></h4>
 <p><a href="/api/classes/Space">Space</a>.<a href="/api/classes/Space#sortby">sortBy</a></p>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="defined-in-27">Defined in<a href="#defined-in-27" class="hash-link" aria-label="Direct link to Defined in" title="Direct link to Defined in">​</a></h4>
-<p><a href="https://github.com/boardzilla/boardzilla-core/blob/cdeddfa/src/board/element.ts#L664" target="_blank" rel="noopener noreferrer">boardzilla-core/src/board/element.ts:664</a></p>
+<p><a href="https://github.com/boardzilla/boardzilla-core/blob/e600879/src/board/element.ts#L664" target="_blank" rel="noopener noreferrer">boardzilla-core/src/board/element.ts:664</a></p>
 <hr>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="shuffle">shuffle<a href="#shuffle" class="hash-link" aria-label="Direct link to shuffle" title="Direct link to shuffle">​</a></h3>
 <p>▸ <strong>shuffle</strong>(): <code>void</code></p>
@@ -959,7 +959,7 @@ Space#connectTo.</p>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="inherited-from-26">Inherited from<a href="#inherited-from-26" class="hash-link" aria-label="Direct link to Inherited from" title="Direct link to Inherited from">​</a></h4>
 <p><a href="/api/classes/Space">Space</a>.<a href="/api/classes/Space#shuffle">shuffle</a></p>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="defined-in-28">Defined in<a href="#defined-in-28" class="hash-link" aria-label="Direct link to Defined in" title="Direct link to Defined in">​</a></h4>
-<p><a href="https://github.com/boardzilla/boardzilla-core/blob/cdeddfa/src/board/element.ts#L672" target="_blank" rel="noopener noreferrer">boardzilla-core/src/board/element.ts:672</a></p>
+<p><a href="https://github.com/boardzilla/boardzilla-core/blob/e600879/src/board/element.ts#L672" target="_blank" rel="noopener noreferrer">boardzilla-core/src/board/element.ts:672</a></p>
 <hr>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="owner">owner<a href="#owner" class="hash-link" aria-label="Direct link to owner" title="Direct link to owner">​</a></h3>
 <p>• <code>get</code> <strong>owner</strong>(): <code>undefined</code> | <code>P</code></p>
@@ -974,7 +974,7 @@ card.owner() will equal the player in whose hand the card is placed.</p>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="inherited-from-27">Inherited from<a href="#inherited-from-27" class="hash-link" aria-label="Direct link to Inherited from" title="Direct link to Inherited from">​</a></h4>
 <p>Space.owner</p>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="defined-in-29">Defined in<a href="#defined-in-29" class="hash-link" aria-label="Direct link to Defined in" title="Direct link to Defined in">​</a></h4>
-<p><a href="https://github.com/boardzilla/boardzilla-core/blob/cdeddfa/src/board/element.ts#L685" target="_blank" rel="noopener noreferrer">boardzilla-core/src/board/element.ts:685</a></p>
+<p><a href="https://github.com/boardzilla/boardzilla-core/blob/e600879/src/board/element.ts#L685" target="_blank" rel="noopener noreferrer">boardzilla-core/src/board/element.ts:685</a></p>
 <hr>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="createmany">createMany<a href="#createmany" class="hash-link" aria-label="Direct link to createMany" title="Direct link to createMany">​</a></h3>
 <p>▸ <strong>createMany</strong>&lt;<code>T</code>&gt;(<code>n</code>, <code>className</code>, <code>name</code>, <code>attributes?</code>): <a href="/api/classes/ElementCollection"><code>ElementCollection</code></a>&lt;<code>T</code>&gt;</p>
@@ -1035,7 +1035,7 @@ or made invisible.</p>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="inherited-from-28">Inherited from<a href="#inherited-from-28" class="hash-link" aria-label="Direct link to Inherited from" title="Direct link to Inherited from">​</a></h4>
 <p><a href="/api/classes/Space">Space</a>.<a href="/api/classes/Space#createmany">createMany</a></p>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="defined-in-30">Defined in<a href="#defined-in-30" class="hash-link" aria-label="Direct link to Defined in" title="Direct link to Defined in">​</a></h4>
-<p><a href="https://github.com/boardzilla/boardzilla-core/blob/cdeddfa/src/board/element.ts#L862" target="_blank" rel="noopener noreferrer">boardzilla-core/src/board/element.ts:862</a></p>
+<p><a href="https://github.com/boardzilla/boardzilla-core/blob/e600879/src/board/element.ts#L862" target="_blank" rel="noopener noreferrer">boardzilla-core/src/board/element.ts:862</a></p>
 <hr>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="destroy">destroy<a href="#destroy" class="hash-link" aria-label="Direct link to destroy" title="Direct link to destroy">​</a></h3>
 <p>▸ <strong>destroy</strong>(): <code>void</code></p>
@@ -1048,7 +1048,7 @@ are not needed.</p>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="inherited-from-29">Inherited from<a href="#inherited-from-29" class="hash-link" aria-label="Direct link to Inherited from" title="Direct link to Inherited from">​</a></h4>
 <p><a href="/api/classes/Space">Space</a>.<a href="/api/classes/Space#destroy">destroy</a></p>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="defined-in-31">Defined in<a href="#defined-in-31" class="hash-link" aria-label="Direct link to Defined in" title="Direct link to Defined in">​</a></h4>
-<p><a href="https://github.com/boardzilla/boardzilla-core/blob/cdeddfa/src/board/element.ts#L890" target="_blank" rel="noopener noreferrer">boardzilla-core/src/board/element.ts:890</a></p>
+<p><a href="https://github.com/boardzilla/boardzilla-core/blob/e600879/src/board/element.ts#L890" target="_blank" rel="noopener noreferrer">boardzilla-core/src/board/element.ts:890</a></p>
 <hr>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="isdescendantof">isDescendantOf<a href="#isdescendantof" class="hash-link" aria-label="Direct link to isDescendantOf" title="Direct link to isDescendantOf">​</a></h3>
 <p>▸ <strong>isDescendantOf</strong>(<code>el</code>): <code>boolean</code></p>
@@ -1073,7 +1073,7 @@ are not needed.</p>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="inherited-from-30">Inherited from<a href="#inherited-from-30" class="hash-link" aria-label="Direct link to Inherited from" title="Direct link to Inherited from">​</a></h4>
 <p><a href="/api/classes/Space">Space</a>.<a href="/api/classes/Space#isdescendantof">isDescendantOf</a></p>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="defined-in-32">Defined in<a href="#defined-in-32" class="hash-link" aria-label="Direct link to Defined in" title="Direct link to Defined in">​</a></h4>
-<p><a href="https://github.com/boardzilla/boardzilla-core/blob/cdeddfa/src/board/element.ts#L950" target="_blank" rel="noopener noreferrer">boardzilla-core/src/board/element.ts:950</a></p>
+<p><a href="https://github.com/boardzilla/boardzilla-core/blob/e600879/src/board/element.ts#L950" target="_blank" rel="noopener noreferrer">boardzilla-core/src/board/element.ts:950</a></p>
 <hr>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="onenter">onEnter<a href="#onenter" class="hash-link" aria-label="Direct link to onEnter" title="Direct link to onEnter">​</a></h3>
 <p>▸ <strong>onEnter</strong>&lt;<code>T</code>&gt;(<code>type</code>, <code>callback</code>): <code>void</code></p>
@@ -1123,7 +1123,7 @@ within.</p>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="inherited-from-31">Inherited from<a href="#inherited-from-31" class="hash-link" aria-label="Direct link to Inherited from" title="Direct link to Inherited from">​</a></h4>
 <p><a href="/api/classes/Space">Space</a>.<a href="/api/classes/Space#onenter">onEnter</a></p>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="defined-in-33">Defined in<a href="#defined-in-33" class="hash-link" aria-label="Direct link to Defined in" title="Direct link to Defined in">​</a></h4>
-<p><a href="https://github.com/boardzilla/boardzilla-core/blob/cdeddfa/src/board/space.ts#L51" target="_blank" rel="noopener noreferrer">boardzilla-core/src/board/space.ts:51</a></p>
+<p><a href="https://github.com/boardzilla/boardzilla-core/blob/e600879/src/board/space.ts#L51" target="_blank" rel="noopener noreferrer">boardzilla-core/src/board/space.ts:51</a></p>
 <hr>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="onexit">onExit<a href="#onexit" class="hash-link" aria-label="Direct link to onExit" title="Direct link to onExit">​</a></h3>
 <p>▸ <strong>onExit</strong>&lt;<code>T</code>&gt;(<code>type</code>, <code>callback</code>): <code>void</code></p>
@@ -1173,7 +1173,7 @@ space.</p>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="inherited-from-32">Inherited from<a href="#inherited-from-32" class="hash-link" aria-label="Direct link to Inherited from" title="Direct link to Inherited from">​</a></h4>
 <p><a href="/api/classes/Space">Space</a>.<a href="/api/classes/Space#onexit">onExit</a></p>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="defined-in-34">Defined in<a href="#defined-in-34" class="hash-link" aria-label="Direct link to Defined in" title="Direct link to Defined in">​</a></h4>
-<p><a href="https://github.com/boardzilla/boardzilla-core/blob/cdeddfa/src/board/space.ts#L67" target="_blank" rel="noopener noreferrer">boardzilla-core/src/board/space.ts:67</a></p>
+<p><a href="https://github.com/boardzilla/boardzilla-core/blob/e600879/src/board/space.ts#L67" target="_blank" rel="noopener noreferrer">boardzilla-core/src/board/space.ts:67</a></p>
 <hr>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="creategrid">createGrid<a href="#creategrid" class="hash-link" aria-label="Direct link to createGrid" title="Direct link to createGrid">​</a></h3>
 <p>▸ <strong>createGrid</strong>&lt;<code>T</code>&gt;(<code>gridConfig</code>, <code>className</code>, <code>name</code>, <code>attributes?</code>): <a href="/api/classes/ElementCollection"><code>ElementCollection</code></a>&lt;<code>T</code>&gt;</p>
@@ -1252,7 +1252,7 @@ of all adjacency and distance methods and queries.</p>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="inherited-from-33">Inherited from<a href="#inherited-from-33" class="hash-link" aria-label="Direct link to Inherited from" title="Direct link to Inherited from">​</a></h4>
 <p><a href="/api/classes/Space">Space</a>.<a href="/api/classes/Space#creategrid">createGrid</a></p>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="defined-in-35">Defined in<a href="#defined-in-35" class="hash-link" aria-label="Direct link to Defined in" title="Direct link to Defined in">​</a></h4>
-<p><a href="https://github.com/boardzilla/boardzilla-core/blob/cdeddfa/src/board/space.ts#L102" target="_blank" rel="noopener noreferrer">boardzilla-core/src/board/space.ts:102</a></p>
+<p><a href="https://github.com/boardzilla/boardzilla-core/blob/e600879/src/board/space.ts#L102" target="_blank" rel="noopener noreferrer">boardzilla-core/src/board/space.ts:102</a></p>
 <hr>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="connectto">connectTo<a href="#connectto" class="hash-link" aria-label="Direct link to connectTo" title="Direct link to connectTo">​</a></h3>
 <p>▸ <strong>connectTo</strong>(<code>space</code>, <code>distance?</code>): <a href="/api/classes/Board"><code>Board</code></a>&lt;<code>P</code>, <code>B</code>&gt;</p>
@@ -1290,7 +1290,7 @@ standard adjacency based on the built-in row/column placement.</p>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="inherited-from-34">Inherited from<a href="#inherited-from-34" class="hash-link" aria-label="Direct link to Inherited from" title="Direct link to Inherited from">​</a></h4>
 <p><a href="/api/classes/Space">Space</a>.<a href="/api/classes/Space#connectto">connectTo</a></p>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="defined-in-36">Defined in<a href="#defined-in-36" class="hash-link" aria-label="Direct link to Defined in" title="Direct link to Defined in">​</a></h4>
-<p><a href="https://github.com/boardzilla/boardzilla-core/blob/cdeddfa/src/board/space.ts#L145" target="_blank" rel="noopener noreferrer">boardzilla-core/src/board/space.ts:145</a></p>
+<p><a href="https://github.com/boardzilla/boardzilla-core/blob/e600879/src/board/space.ts#L145" target="_blank" rel="noopener noreferrer">boardzilla-core/src/board/space.ts:145</a></p>
 <hr>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="distanceto">distanceTo<a href="#distanceto" class="hash-link" aria-label="Direct link to distanceTo" title="Direct link to distanceTo">​</a></h3>
 <p>▸ <strong>distanceTo</strong>(<code>space</code>): <code>undefined</code> | <code>number</code></p>
@@ -1320,7 +1320,7 @@ connection in <a href="/api/classes/Board#connectto">connectTo</a></p>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="inherited-from-35">Inherited from<a href="#inherited-from-35" class="hash-link" aria-label="Direct link to Inherited from" title="Direct link to Inherited from">​</a></h4>
 <p><a href="/api/classes/Space">Space</a>.<a href="/api/classes/Space#distanceto">distanceTo</a></p>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="defined-in-37">Defined in<a href="#defined-in-37" class="hash-link" aria-label="Direct link to Defined in" title="Direct link to Defined in">​</a></h4>
-<p><a href="https://github.com/boardzilla/boardzilla-core/blob/cdeddfa/src/board/space.ts#L167" target="_blank" rel="noopener noreferrer">boardzilla-core/src/board/space.ts:167</a></p>
+<p><a href="https://github.com/boardzilla/boardzilla-core/blob/e600879/src/board/space.ts#L167" target="_blank" rel="noopener noreferrer">boardzilla-core/src/board/space.ts:167</a></p>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="ui">UI<a href="#ui" class="hash-link" aria-label="Direct link to UI" title="Direct link to UI">​</a></h2>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="layoutcontrols">layoutControls<a href="#layoutcontrols" class="hash-link" aria-label="Direct link to layoutControls" title="Direct link to layoutControls">​</a></h3>
 <p>▸ <strong>layoutControls</strong>(<code>attributes</code>): <code>void</code></p>
@@ -1346,7 +1346,7 @@ choices, in relation to the board</p>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="returns-33">Returns<a href="#returns-33" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns">​</a></h4>
 <p><code>void</code></p>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="defined-in-38">Defined in<a href="#defined-in-38" class="hash-link" aria-label="Direct link to Defined in" title="Direct link to Defined in">​</a></h4>
-<p><a href="https://github.com/boardzilla/boardzilla-core/blob/cdeddfa/src/board/board.ts#L212" target="_blank" rel="noopener noreferrer">boardzilla-core/src/board/board.ts:212</a></p>
+<p><a href="https://github.com/boardzilla/boardzilla-core/blob/e600879/src/board/board.ts#L212" target="_blank" rel="noopener noreferrer">boardzilla-core/src/board/board.ts:212</a></p>
 <hr>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="layoutstep">layoutStep<a href="#layoutstep" class="hash-link" aria-label="Direct link to layoutStep" title="Direct link to layoutStep">​</a></h3>
 <p>▸ <strong>layoutStep</strong>(<code>step</code>, <code>attributes</code>): <code>void</code></p>
@@ -1377,7 +1377,7 @@ player prompts and choices appear in relation to the board</p>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="returns-34">Returns<a href="#returns-34" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns">​</a></h4>
 <p><code>void</code></p>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="defined-in-39">Defined in<a href="#defined-in-39" class="hash-link" aria-label="Direct link to Defined in" title="Direct link to Defined in">​</a></h4>
-<p><a href="https://github.com/boardzilla/boardzilla-core/blob/cdeddfa/src/board/board.ts#L225" target="_blank" rel="noopener noreferrer">boardzilla-core/src/board/board.ts:225</a></p>
+<p><a href="https://github.com/boardzilla/boardzilla-core/blob/e600879/src/board/board.ts#L225" target="_blank" rel="noopener noreferrer">boardzilla-core/src/board/board.ts:225</a></p>
 <hr>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="layoutaction">layoutAction<a href="#layoutaction" class="hash-link" aria-label="Direct link to layoutAction" title="Direct link to layoutAction">​</a></h3>
 <p>▸ <strong>layoutAction</strong>(<code>action</code>, <code>attributes</code>): <code>void</code></p>
@@ -1408,7 +1408,7 @@ and choices appear in relation to the board</p>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="returns-35">Returns<a href="#returns-35" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns">​</a></h4>
 <p><code>void</code></p>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="defined-in-40">Defined in<a href="#defined-in-40" class="hash-link" aria-label="Direct link to Defined in" title="Direct link to Defined in">​</a></h4>
-<p><a href="https://github.com/boardzilla/boardzilla-core/blob/cdeddfa/src/board/board.ts#L239" target="_blank" rel="noopener noreferrer">boardzilla-core/src/board/board.ts:239</a></p>
+<p><a href="https://github.com/boardzilla/boardzilla-core/blob/e600879/src/board/board.ts#L239" target="_blank" rel="noopener noreferrer">boardzilla-core/src/board/board.ts:239</a></p>
 <hr>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="disabledefaultappearance">disableDefaultAppearance<a href="#disabledefaultappearance" class="hash-link" aria-label="Direct link to disableDefaultAppearance" title="Direct link to disableDefaultAppearance">​</a></h3>
 <p>▸ <strong>disableDefaultAppearance</strong>(): <code>void</code></p>
@@ -1417,7 +1417,7 @@ custom appearance, this causes them to be hidden.</p>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="returns-36">Returns<a href="#returns-36" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns">​</a></h4>
 <p><code>void</code></p>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="defined-in-41">Defined in<a href="#defined-in-41" class="hash-link" aria-label="Direct link to Defined in" title="Direct link to Defined in">​</a></h4>
-<p><a href="https://github.com/boardzilla/boardzilla-core/blob/cdeddfa/src/board/board.ts#L249" target="_blank" rel="noopener noreferrer">boardzilla-core/src/board/board.ts:249</a></p>
+<p><a href="https://github.com/boardzilla/boardzilla-core/blob/e600879/src/board/board.ts#L249" target="_blank" rel="noopener noreferrer">boardzilla-core/src/board/board.ts:249</a></p>
 <hr>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="layout">layout<a href="#layout" class="hash-link" aria-label="Direct link to layout" title="Direct link to layout">​</a></h3>
 <p>▸ <strong>layout</strong>&lt;<code>T</code>&gt;(<code>this</code>, <code>applyTo</code>, <code>attributes</code>): <code>void</code></p>
@@ -1470,7 +1470,7 @@ element. See also <a href="/api/classes/ElementCollection#layout">ElementCollect
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="inherited-from-36">Inherited from<a href="#inherited-from-36" class="hash-link" aria-label="Direct link to Inherited from" title="Direct link to Inherited from">​</a></h4>
 <p><a href="/api/classes/Space">Space</a>.<a href="/api/classes/Space#layout">layout</a></p>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="defined-in-42">Defined in<a href="#defined-in-42" class="hash-link" aria-label="Direct link to Defined in" title="Direct link to Defined in">​</a></h4>
-<p><a href="https://github.com/boardzilla/boardzilla-core/blob/cdeddfa/src/board/element.ts#L1128" target="_blank" rel="noopener noreferrer">boardzilla-core/src/board/element.ts:1128</a></p>
+<p><a href="https://github.com/boardzilla/boardzilla-core/blob/e600879/src/board/element.ts#L1128" target="_blank" rel="noopener noreferrer">boardzilla-core/src/board/element.ts:1128</a></p>
 <hr>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="appearance">appearance<a href="#appearance" class="hash-link" aria-label="Direct link to appearance" title="Direct link to appearance">​</a></h3>
 <p>▸ <strong>appearance</strong>(<code>appearance</code>): <code>void</code></p>
@@ -1558,7 +1558,7 @@ previous ones. See also <a href="/api/classes/ElementCollection#appearance">Elem
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="inherited-from-37">Inherited from<a href="#inherited-from-37" class="hash-link" aria-label="Direct link to Inherited from" title="Direct link to Inherited from">​</a></h4>
 <p><a href="/api/classes/Space">Space</a>.<a href="/api/classes/Space#appearance">appearance</a></p>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="defined-in-43">Defined in<a href="#defined-in-43" class="hash-link" aria-label="Direct link to Defined in" title="Direct link to Defined in">​</a></h4>
-<p><a href="https://github.com/boardzilla/boardzilla-core/blob/cdeddfa/src/board/element.ts#L1683" target="_blank" rel="noopener noreferrer">boardzilla-core/src/board/element.ts:1683</a></p>
+<p><a href="https://github.com/boardzilla/boardzilla-core/blob/e600879/src/board/element.ts#L1683" target="_blank" rel="noopener noreferrer">boardzilla-core/src/board/element.ts:1683</a></p>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="visibility">Visibility<a href="#visibility" class="hash-link" aria-label="Direct link to Visibility" title="Direct link to Visibility">​</a></h2>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="showtoall">showToAll<a href="#showtoall" class="hash-link" aria-label="Direct link to showToAll" title="Direct link to showToAll">​</a></h3>
 <p>▸ <strong>showToAll</strong>(): <code>void</code></p>
@@ -1568,7 +1568,7 @@ previous ones. See also <a href="/api/classes/ElementCollection#appearance">Elem
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="inherited-from-38">Inherited from<a href="#inherited-from-38" class="hash-link" aria-label="Direct link to Inherited from" title="Direct link to Inherited from">​</a></h4>
 <p><a href="/api/classes/Space">Space</a>.<a href="/api/classes/Space#showtoall">showToAll</a></p>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="defined-in-44">Defined in<a href="#defined-in-44" class="hash-link" aria-label="Direct link to Defined in" title="Direct link to Defined in">​</a></h4>
-<p><a href="https://github.com/boardzilla/boardzilla-core/blob/cdeddfa/src/board/element.ts#L709" target="_blank" rel="noopener noreferrer">boardzilla-core/src/board/element.ts:709</a></p>
+<p><a href="https://github.com/boardzilla/boardzilla-core/blob/e600879/src/board/element.ts#L709" target="_blank" rel="noopener noreferrer">boardzilla-core/src/board/element.ts:709</a></p>
 <hr>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="showonlyto">showOnlyTo<a href="#showonlyto" class="hash-link" aria-label="Direct link to showOnlyTo" title="Direct link to showOnlyTo">​</a></h3>
 <p>▸ <strong>showOnlyTo</strong>(<code>player</code>): <code>void</code></p>
@@ -1593,7 +1593,7 @@ previous ones. See also <a href="/api/classes/ElementCollection#appearance">Elem
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="inherited-from-39">Inherited from<a href="#inherited-from-39" class="hash-link" aria-label="Direct link to Inherited from" title="Direct link to Inherited from">​</a></h4>
 <p><a href="/api/classes/Space">Space</a>.<a href="/api/classes/Space#showonlyto">showOnlyTo</a></p>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="defined-in-45">Defined in<a href="#defined-in-45" class="hash-link" aria-label="Direct link to Defined in" title="Direct link to Defined in">​</a></h4>
-<p><a href="https://github.com/boardzilla/boardzilla-core/blob/cdeddfa/src/board/element.ts#L717" target="_blank" rel="noopener noreferrer">boardzilla-core/src/board/element.ts:717</a></p>
+<p><a href="https://github.com/boardzilla/boardzilla-core/blob/e600879/src/board/element.ts#L717" target="_blank" rel="noopener noreferrer">boardzilla-core/src/board/element.ts:717</a></p>
 <hr>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="showto">showTo<a href="#showto" class="hash-link" aria-label="Direct link to showTo" title="Direct link to showTo">​</a></h3>
 <p>▸ <strong>showTo</strong>(<code>...player</code>): <code>void</code></p>
@@ -1619,7 +1619,7 @@ any other players.</p>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="inherited-from-40">Inherited from<a href="#inherited-from-40" class="hash-link" aria-label="Direct link to Inherited from" title="Direct link to Inherited from">​</a></h4>
 <p><a href="/api/classes/Space">Space</a>.<a href="/api/classes/Space#showto">showTo</a></p>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="defined-in-46">Defined in<a href="#defined-in-46" class="hash-link" aria-label="Direct link to Defined in" title="Direct link to Defined in">​</a></h4>
-<p><a href="https://github.com/boardzilla/boardzilla-core/blob/cdeddfa/src/board/element.ts#L730" target="_blank" rel="noopener noreferrer">boardzilla-core/src/board/element.ts:730</a></p>
+<p><a href="https://github.com/boardzilla/boardzilla-core/blob/e600879/src/board/element.ts#L730" target="_blank" rel="noopener noreferrer">boardzilla-core/src/board/element.ts:730</a></p>
 <hr>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="hidefromall">hideFromAll<a href="#hidefromall" class="hash-link" aria-label="Direct link to hideFromAll" title="Direct link to hideFromAll">​</a></h3>
 <p>▸ <strong>hideFromAll</strong>(): <code>void</code></p>
@@ -1629,7 +1629,7 @@ any other players.</p>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="inherited-from-41">Inherited from<a href="#inherited-from-41" class="hash-link" aria-label="Direct link to Inherited from" title="Direct link to Inherited from">​</a></h4>
 <p><a href="/api/classes/Space">Space</a>.<a href="/api/classes/Space#hidefromall">hideFromAll</a></p>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="defined-in-47">Defined in<a href="#defined-in-47" class="hash-link" aria-label="Direct link to Defined in" title="Direct link to Defined in">​</a></h4>
-<p><a href="https://github.com/boardzilla/boardzilla-core/blob/cdeddfa/src/board/element.ts#L745" target="_blank" rel="noopener noreferrer">boardzilla-core/src/board/element.ts:745</a></p>
+<p><a href="https://github.com/boardzilla/boardzilla-core/blob/e600879/src/board/element.ts#L745" target="_blank" rel="noopener noreferrer">boardzilla-core/src/board/element.ts:745</a></p>
 <hr>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="hidefrom">hideFrom<a href="#hidefrom" class="hash-link" aria-label="Direct link to hideFrom" title="Direct link to hideFrom">​</a></h3>
 <p>▸ <strong>hideFrom</strong>(<code>...player</code>): <code>void</code></p>
@@ -1655,7 +1655,7 @@ any other players.</p>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="inherited-from-42">Inherited from<a href="#inherited-from-42" class="hash-link" aria-label="Direct link to Inherited from" title="Direct link to Inherited from">​</a></h4>
 <p><a href="/api/classes/Space">Space</a>.<a href="/api/classes/Space#hidefrom">hideFrom</a></p>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="defined-in-48">Defined in<a href="#defined-in-48" class="hash-link" aria-label="Direct link to Defined in" title="Direct link to Defined in">​</a></h4>
-<p><a href="https://github.com/boardzilla/boardzilla-core/blob/cdeddfa/src/board/element.ts#L754" target="_blank" rel="noopener noreferrer">boardzilla-core/src/board/element.ts:754</a></p>
+<p><a href="https://github.com/boardzilla/boardzilla-core/blob/e600879/src/board/element.ts#L754" target="_blank" rel="noopener noreferrer">boardzilla-core/src/board/element.ts:754</a></p>
 <hr>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="isvisibleto">isVisibleTo<a href="#isvisibleto" class="hash-link" aria-label="Direct link to isVisibleTo" title="Direct link to isVisibleTo">​</a></h3>
 <p>▸ <strong>isVisibleTo</strong>(<code>player</code>): <code>boolean</code></p>
@@ -1680,7 +1680,7 @@ any other players.</p>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="inherited-from-43">Inherited from<a href="#inherited-from-43" class="hash-link" aria-label="Direct link to Inherited from" title="Direct link to Inherited from">​</a></h4>
 <p><a href="/api/classes/Space">Space</a>.<a href="/api/classes/Space#isvisibleto">isVisibleTo</a></p>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="defined-in-49">Defined in<a href="#defined-in-49" class="hash-link" aria-label="Direct link to Defined in" title="Direct link to Defined in">​</a></h4>
-<p><a href="https://github.com/boardzilla/boardzilla-core/blob/cdeddfa/src/board/element.ts#L772" target="_blank" rel="noopener noreferrer">boardzilla-core/src/board/element.ts:772</a></p>
+<p><a href="https://github.com/boardzilla/boardzilla-core/blob/e600879/src/board/element.ts#L772" target="_blank" rel="noopener noreferrer">boardzilla-core/src/board/element.ts:772</a></p>
 <hr>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="isvisible">isVisible<a href="#isvisible" class="hash-link" aria-label="Direct link to isVisible" title="Direct link to isVisible">​</a></h3>
 <p>▸ <strong>isVisible</strong>(): <code>boolean</code></p>
@@ -1692,7 +1692,7 @@ player or while the board is viewed by a given player.)</p>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="inherited-from-44">Inherited from<a href="#inherited-from-44" class="hash-link" aria-label="Direct link to Inherited from" title="Direct link to Inherited from">​</a></h4>
 <p><a href="/api/classes/Space">Space</a>.<a href="/api/classes/Space#isvisible">isVisible</a></p>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="defined-in-50">Defined in<a href="#defined-in-50" class="hash-link" aria-label="Direct link to Defined in" title="Direct link to Defined in">​</a></h4>
-<p><a href="https://github.com/boardzilla/boardzilla-core/blob/cdeddfa/src/board/element.ts#L788" target="_blank" rel="noopener noreferrer">boardzilla-core/src/board/element.ts:788</a></p>
+<p><a href="https://github.com/boardzilla/boardzilla-core/blob/e600879/src/board/element.ts#L788" target="_blank" rel="noopener noreferrer">boardzilla-core/src/board/element.ts:788</a></p>
 <hr>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="revealwhenhidden">revealWhenHidden<a href="#revealwhenhidden" class="hash-link" aria-label="Direct link to revealWhenHidden" title="Direct link to revealWhenHidden">​</a></h3>
 <p>▸ <strong>revealWhenHidden</strong>&lt;<code>T</code>&gt;(<code>this</code>, <code>...attrs</code>): <code>void</code></p>
@@ -1743,6 +1743,6 @@ it is.</p>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="inherited-from-45">Inherited from<a href="#inherited-from-45" class="hash-link" aria-label="Direct link to Inherited from" title="Direct link to Inherited from">​</a></h4>
 <p><a href="/api/classes/Space">Space</a>.<a href="/api/classes/Space#revealwhenhidden">revealWhenHidden</a></p>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="defined-in-51">Defined in<a href="#defined-in-51" class="hash-link" aria-label="Direct link to Defined in" title="Direct link to Defined in">​</a></h4>
-<p><a href="https://github.com/boardzilla/boardzilla-core/blob/cdeddfa/src/board/element.ts#L804" target="_blank" rel="noopener noreferrer">boardzilla-core/src/board/element.ts:804</a></p></div></article><nav class="pagination-nav docusaurus-mt-lg" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/api/classes/Action"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Action</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/api/classes/Die"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Die</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#type-parameters" class="table-of-contents__link toc-highlight">Type parameters</a></li><li><a href="#hierarchy" class="table-of-contents__link toc-highlight">Hierarchy</a></li><li><a href="#queries" class="table-of-contents__link toc-highlight">Queries</a><ul><li><a href="#name" class="table-of-contents__link toc-highlight">name</a></li><li><a href="#player" class="table-of-contents__link toc-highlight">player</a></li><li><a href="#all" class="table-of-contents__link toc-highlight">all</a></li><li><a href="#first" class="table-of-contents__link toc-highlight">first</a></li><li><a href="#firstn" class="table-of-contents__link toc-highlight">firstN</a></li><li><a href="#last" class="table-of-contents__link toc-highlight">last</a></li><li><a href="#lastn" class="table-of-contents__link toc-highlight">lastN</a></li><li><a href="#top" class="table-of-contents__link toc-highlight">top</a></li><li><a href="#topn" class="table-of-contents__link toc-highlight">topN</a></li><li><a href="#bottom" class="table-of-contents__link toc-highlight">bottom</a></li><li><a href="#bottomn" class="table-of-contents__link toc-highlight">bottomN</a></li><li><a href="#others" class="table-of-contents__link toc-highlight">others</a></li><li><a href="#has" class="table-of-contents__link toc-highlight">has</a></li><li><a href="#adjacencies" class="table-of-contents__link toc-highlight">adjacencies</a></li><li><a href="#container" class="table-of-contents__link toc-highlight">container</a></li><li><a href="#mine" class="table-of-contents__link toc-highlight">mine</a></li><li><a href="#atposition" class="table-of-contents__link toc-highlight">atPosition</a></li><li><a href="#closest" class="table-of-contents__link toc-highlight">closest</a></li><li><a href="#withindistance" class="table-of-contents__link toc-highlight">withinDistance</a></li></ul></li><li><a href="#structure" class="table-of-contents__link toc-highlight">Structure</a><ul><li><a href="#pile" class="table-of-contents__link toc-highlight">pile</a></li><li><a href="#registerclasses" class="table-of-contents__link toc-highlight">registerClasses</a></li><li><a href="#board" class="table-of-contents__link toc-highlight">board</a></li><li><a href="#game" class="table-of-contents__link toc-highlight">game</a></li><li><a href="#tostring" class="table-of-contents__link toc-highlight">toString</a></li><li><a href="#isadjacentto" class="table-of-contents__link toc-highlight">isAdjacentTo</a></li><li><a href="#setorder" class="table-of-contents__link toc-highlight">setOrder</a></li><li><a href="#isempty" class="table-of-contents__link toc-highlight">isEmpty</a></li><li><a href="#sortby" class="table-of-contents__link toc-highlight">sortBy</a></li><li><a href="#shuffle" class="table-of-contents__link toc-highlight">shuffle</a></li><li><a href="#owner" class="table-of-contents__link toc-highlight">owner</a></li><li><a href="#createmany" class="table-of-contents__link toc-highlight">createMany</a></li><li><a href="#destroy" class="table-of-contents__link toc-highlight">destroy</a></li><li><a href="#isdescendantof" class="table-of-contents__link toc-highlight">isDescendantOf</a></li><li><a href="#onenter" class="table-of-contents__link toc-highlight">onEnter</a></li><li><a href="#onexit" class="table-of-contents__link toc-highlight">onExit</a></li><li><a href="#creategrid" class="table-of-contents__link toc-highlight">createGrid</a></li><li><a href="#connectto" class="table-of-contents__link toc-highlight">connectTo</a></li><li><a href="#distanceto" class="table-of-contents__link toc-highlight">distanceTo</a></li></ul></li><li><a href="#ui" class="table-of-contents__link toc-highlight">UI</a><ul><li><a href="#layoutcontrols" class="table-of-contents__link toc-highlight">layoutControls</a></li><li><a href="#layoutstep" class="table-of-contents__link toc-highlight">layoutStep</a></li><li><a href="#layoutaction" class="table-of-contents__link toc-highlight">layoutAction</a></li><li><a href="#disabledefaultappearance" class="table-of-contents__link toc-highlight">disableDefaultAppearance</a></li><li><a href="#layout" class="table-of-contents__link toc-highlight">layout</a></li><li><a href="#appearance" class="table-of-contents__link toc-highlight">appearance</a></li></ul></li><li><a href="#visibility" class="table-of-contents__link toc-highlight">Visibility</a><ul><li><a href="#showtoall" class="table-of-contents__link toc-highlight">showToAll</a></li><li><a href="#showonlyto" class="table-of-contents__link toc-highlight">showOnlyTo</a></li><li><a href="#showto" class="table-of-contents__link toc-highlight">showTo</a></li><li><a href="#hidefromall" class="table-of-contents__link toc-highlight">hideFromAll</a></li><li><a href="#hidefrom" class="table-of-contents__link toc-highlight">hideFrom</a></li><li><a href="#isvisibleto" class="table-of-contents__link toc-highlight">isVisibleTo</a></li><li><a href="#isvisible" class="table-of-contents__link toc-highlight">isVisible</a></li><li><a href="#revealwhenhidden" class="table-of-contents__link toc-highlight">revealWhenHidden</a></li></ul></li></ul></div></div></div></div></main></div></div></div><footer class="footer footer--dark"><div class="container container-fluid"><div class="row footer__links"><div class="col footer__col"><div class="footer__title">Community</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://github.com/boardzilla" target="_blank" rel="noopener noreferrer" class="footer__link-item">GitHub<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li><li class="footer__item"><a href="https://discord.gg/bdjpdmuZpH" target="_blank" rel="noopener noreferrer" class="footer__link-item">Discord<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2024 Meow Inc. Built with Docusaurus.</div></div></div></footer></div>
+<p><a href="https://github.com/boardzilla/boardzilla-core/blob/e600879/src/board/element.ts#L804" target="_blank" rel="noopener noreferrer">boardzilla-core/src/board/element.ts:804</a></p></div></article><nav class="pagination-nav docusaurus-mt-lg" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/api/classes/Action"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Action</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/api/classes/Die"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Die</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#type-parameters" class="table-of-contents__link toc-highlight">Type parameters</a></li><li><a href="#hierarchy" class="table-of-contents__link toc-highlight">Hierarchy</a></li><li><a href="#queries" class="table-of-contents__link toc-highlight">Queries</a><ul><li><a href="#name" class="table-of-contents__link toc-highlight">name</a></li><li><a href="#player" class="table-of-contents__link toc-highlight">player</a></li><li><a href="#all" class="table-of-contents__link toc-highlight">all</a></li><li><a href="#first" class="table-of-contents__link toc-highlight">first</a></li><li><a href="#firstn" class="table-of-contents__link toc-highlight">firstN</a></li><li><a href="#last" class="table-of-contents__link toc-highlight">last</a></li><li><a href="#lastn" class="table-of-contents__link toc-highlight">lastN</a></li><li><a href="#top" class="table-of-contents__link toc-highlight">top</a></li><li><a href="#topn" class="table-of-contents__link toc-highlight">topN</a></li><li><a href="#bottom" class="table-of-contents__link toc-highlight">bottom</a></li><li><a href="#bottomn" class="table-of-contents__link toc-highlight">bottomN</a></li><li><a href="#others" class="table-of-contents__link toc-highlight">others</a></li><li><a href="#has" class="table-of-contents__link toc-highlight">has</a></li><li><a href="#adjacencies" class="table-of-contents__link toc-highlight">adjacencies</a></li><li><a href="#container" class="table-of-contents__link toc-highlight">container</a></li><li><a href="#mine" class="table-of-contents__link toc-highlight">mine</a></li><li><a href="#atposition" class="table-of-contents__link toc-highlight">atPosition</a></li><li><a href="#closest" class="table-of-contents__link toc-highlight">closest</a></li><li><a href="#withindistance" class="table-of-contents__link toc-highlight">withinDistance</a></li></ul></li><li><a href="#structure" class="table-of-contents__link toc-highlight">Structure</a><ul><li><a href="#pile" class="table-of-contents__link toc-highlight">pile</a></li><li><a href="#registerclasses" class="table-of-contents__link toc-highlight">registerClasses</a></li><li><a href="#board" class="table-of-contents__link toc-highlight">board</a></li><li><a href="#game" class="table-of-contents__link toc-highlight">game</a></li><li><a href="#tostring" class="table-of-contents__link toc-highlight">toString</a></li><li><a href="#isadjacentto" class="table-of-contents__link toc-highlight">isAdjacentTo</a></li><li><a href="#setorder" class="table-of-contents__link toc-highlight">setOrder</a></li><li><a href="#isempty" class="table-of-contents__link toc-highlight">isEmpty</a></li><li><a href="#sortby" class="table-of-contents__link toc-highlight">sortBy</a></li><li><a href="#shuffle" class="table-of-contents__link toc-highlight">shuffle</a></li><li><a href="#owner" class="table-of-contents__link toc-highlight">owner</a></li><li><a href="#createmany" class="table-of-contents__link toc-highlight">createMany</a></li><li><a href="#destroy" class="table-of-contents__link toc-highlight">destroy</a></li><li><a href="#isdescendantof" class="table-of-contents__link toc-highlight">isDescendantOf</a></li><li><a href="#onenter" class="table-of-contents__link toc-highlight">onEnter</a></li><li><a href="#onexit" class="table-of-contents__link toc-highlight">onExit</a></li><li><a href="#creategrid" class="table-of-contents__link toc-highlight">createGrid</a></li><li><a href="#connectto" class="table-of-contents__link toc-highlight">connectTo</a></li><li><a href="#distanceto" class="table-of-contents__link toc-highlight">distanceTo</a></li></ul></li><li><a href="#ui" class="table-of-contents__link toc-highlight">UI</a><ul><li><a href="#layoutcontrols" class="table-of-contents__link toc-highlight">layoutControls</a></li><li><a href="#layoutstep" class="table-of-contents__link toc-highlight">layoutStep</a></li><li><a href="#layoutaction" class="table-of-contents__link toc-highlight">layoutAction</a></li><li><a href="#disabledefaultappearance" class="table-of-contents__link toc-highlight">disableDefaultAppearance</a></li><li><a href="#layout" class="table-of-contents__link toc-highlight">layout</a></li><li><a href="#appearance" class="table-of-contents__link toc-highlight">appearance</a></li></ul></li><li><a href="#visibility" class="table-of-contents__link toc-highlight">Visibility</a><ul><li><a href="#showtoall" class="table-of-contents__link toc-highlight">showToAll</a></li><li><a href="#showonlyto" class="table-of-contents__link toc-highlight">showOnlyTo</a></li><li><a href="#showto" class="table-of-contents__link toc-highlight">showTo</a></li><li><a href="#hidefromall" class="table-of-contents__link toc-highlight">hideFromAll</a></li><li><a href="#hidefrom" class="table-of-contents__link toc-highlight">hideFrom</a></li><li><a href="#isvisibleto" class="table-of-contents__link toc-highlight">isVisibleTo</a></li><li><a href="#isvisible" class="table-of-contents__link toc-highlight">isVisible</a></li><li><a href="#revealwhenhidden" class="table-of-contents__link toc-highlight">revealWhenHidden</a></li></ul></li></ul></div></div></div></div></main></div></div></div><footer class="footer footer--dark"><div class="container container-fluid"><div class="row footer__links"><div class="col footer__col"><div class="footer__title">Community</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://github.com/boardzilla" target="_blank" rel="noopener noreferrer" class="footer__link-item">GitHub<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li><li class="footer__item"><a href="https://discord.gg/bdjpdmuZpH" target="_blank" rel="noopener noreferrer" class="footer__link-item">Discord<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2024 Meow Inc. Built with Docusaurus.</div></div></div></footer></div>
 </body>
 </html>
