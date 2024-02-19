@@ -179,7 +179,7 @@ vectors for the `offsetRow`, or `offsetColumn` or both. See the "hex" preset in
 ### Custom adjacency
 
 For all other styles of adjacency, a
-[`Space#connectTo`](../classes/Space#connectto) method is provided to permit
+[`Space#connectTo`](../api/classes/Space#connectto) method is provided to permit
 creating custom adjacencies, either on top of one of the grids above, or from
 scratch. These can have custom distances applied to them to use for distance
 calculations. This is basically an [undirected

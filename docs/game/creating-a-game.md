@@ -4,7 +4,7 @@ sidebar_position: 2
 
 # Creating a game
 
-After [creating](../introduction/creating-a-game) a new Boardzilla game, writing a game in
+After [creating](../introduction/create-a-game) a new Boardzilla game, writing a game in
 Boardzilla usually follows these steps:
 
 - Create the [Spaces](core-concepts#space) for your board
