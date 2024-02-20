@@ -11,3 +11,4 @@ Want to see some examples? Check out this list of example games to get inspired.
 - [Powergrid](https://github.com/boardzilla/powergrid)
 - [Hex](https://github.com/boardzilla/hex)
 - [Cursed](https://github.com/boardzilla/bz-cursed)
+- [Hearts](https://github.com/boardzilla/hearts)
