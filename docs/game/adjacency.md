@@ -5,9 +5,9 @@ sidebar_position: 7
 # Adjacency and Grids
 
 Boardzilla provides a few tools to help determine adjacency or distance between
-elements on the Board. This can be complicated since different games might have
-wildly different needs for measuring distance and adjacency. So what is provided
-in Boardzilla is intended to cover a few basic scenarios while affording
+game elements. This can be complicated since different games might have wildly
+different needs for measuring distance and adjacency. So what is provided in
+Boardzilla is intended to cover a few basic scenarios while affording
 flexibility for a variety of non-traditional concepts of adjacency.
 
 It's also important that we distinguish between the concept of positioning from
@@ -38,7 +38,7 @@ of game.
 ## Fixed grid
 
 A fixed grid is a grid of [Spaces](../api/classes/Space) that are created when
-we define our Board. These come in a few flavors: square, hex and custom. For
+we define our Game. These come in a few flavors: square, hex and custom. For
 the square and hex grids, we start with the
 [`createGrid`](../api/classes/Space#creategrid) method.
 
@@ -47,7 +47,7 @@ the square and hex grids, we start with the
 For a typical chessboard, we would say:
 
 ```ts
-  board.createGrid({ rows: 8, columns: 8}, Space, 'chess-square');
+  game.createGrid({ rows: 8, columns: 8}, Space, 'chess-square');
 ```
 
 <div style="textAlign: center; width: 30%"><img src="/img/chess.svg"/></div>
@@ -57,7 +57,7 @@ each. We can query these like any other property, e.g.
 
 ```ts
   // the top-left corner
-  const corner = board.first(Space, { row: 1, column: 1 })!;
+  const corner = game.first(Space, { row: 1, column: 1 })!;
 ```
 
 <div style="textAlign: center; width: 30%"><img src="/img/chess2.svg"/></div>
@@ -77,7 +77,7 @@ We can also measure distance, for example a knight's move is a distance of 3
 spaces:
 
 ```ts
-  const knight = board.first(Space, { row: 3, column: 2 })!;
+  const knight = game.first(Space, { row: 3, column: 2 })!;
 
   corner.distanceTo(knight); // 3
 ```
@@ -99,13 +99,13 @@ If diagonals need to be treated as adjacent, this can be done in the
 distance measurements, e.g.:
 
 ```ts
-  board.createGrid({ rows: 8, columns: 8, diagonalDistance: 1.5 }, Space, 'square');
+  game.createGrid({ rows: 8, columns: 8, diagonalDistance: 1.5 }, Space, 'square');
 ```
 
 This affects both adjacency:
 
 ```ts
-  const corner = board.first(Space, { row: 1, column: 1 })!;
+  const corner = game.first(Space, { row: 1, column: 1 })!;
 
   corner.adjacencies(); // now 3 Spaces
 ```
@@ -115,8 +115,8 @@ This affects both adjacency:
 and distance:
 
 ```ts
-  const corner = board.first(Space, { row: 1, column: 1 })!;
-  const knight = board.first(Space, { row: 3, column: 2 })!;
+  const corner = game.first(Space, { row: 1, column: 1 })!;
+  const knight = game.first(Space, { row: 3, column: 2 })!;
 
   corner.distanceTo(knight); // 2.5
 ```
@@ -140,8 +140,8 @@ is create a grid with non-orthogonal rows and columns where adjacency applies in
 direction of adjacency.
 
 ```ts
-  board.createGrid({ rows: 3, columns: 3, style: 'hex'}, Space, 'cell');
-  board.createGrid({ rows: 3, columns: 3, style: 'hex-inverse'}, Space, 'cell');
+  game.createGrid({ rows: 3, columns: 3, style: 'hex'}, Space, 'cell');
+  game.createGrid({ rows: 3, columns: 3, style: 'hex-inverse'}, Space, 'cell');
 ```
 
 <div style="textAlign: center; width: 100%"><img src="/img/hex.svg"/></div>
@@ -150,9 +150,9 @@ Adjacency now applies in 6 directions, depending on the whether `"hex"` or
 `"hex-inverse"` was used.
 
 ```ts
-  board.createGrid({ rows: 3, columns: 3, style: 'hex'}, Space, 'cell');
+  game.createGrid({ rows: 3, columns: 3, style: 'hex'}, Space, 'cell');
 
-  const middle = board.first(Space, { row: 2, column: 2 })!;
+  const middle = game.first(Space, { row: 2, column: 2 })!;
 
   middle.adjacencies(Space); // 6 such Spaces
 ```
@@ -188,9 +188,9 @@ too many possibilities to describe fully. A simple example would be creating a
 graph of spaces with travel distances:
 
 ```ts
-  const space1 = board.create(Space, 'space1');
-  const space2 = board.create(Space, 'space2');
-  const space3 = board.create(Space, 'space3');
+  const space1 = game.create(Space, 'space1');
+  const space2 = game.create(Space, 'space2');
+  const space3 = game.create(Space, 'space3');
 
   space1.connectTo(space2, 2);
   space2.connectTo(space3, 3);

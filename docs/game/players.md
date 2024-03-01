@@ -68,11 +68,11 @@ subclass for your game is passed as an argument to
 [createGame](../api/modules.md#creategame) so that every method and object that
 uses player passes _your game's_ Player type, and you can access your custom methods and properties.
 
-## Player Board elements
+## Player Game elements
 
-As described in [Board Structure](board#ownership), players can own elements of the board
-by setting its `player` property to the player you choose. This marks the
-element as being assigned to this player, e.g. the player mat, the player's
+As described in [Board Structure](board#ownership), players can own game
+elements by setting their `player` property to a particular player. This marks
+the element as being assigned to this player, e.g. the player mat, the player's
 hand, the player's unique tokens. All elements that enter a space assigned to a
 player are considered to be "owned" by that player, and are accessible using the
 [player.my](../api/classes/Player#my) and
@@ -82,8 +82,8 @@ or many owned elements.
 ## Profile badge
 
 It is generally good practice to place the
-[&lt;ProfileBadge/&gt;](../api/modules#profilebadge) component into the UI to mark the
-player's area of the board and show information about the player, such as
-score. This automatically displays if it's the player's turn, whether they're
+[&lt;ProfileBadge/&gt;](../api/modules#profilebadge) component into the UI to
+mark the player's area of the game and show information about the player, such
+as score. This automatically displays if it's the player's turn, whether they're
 online, and links to their profile, if any. It can be further customized with
 CSS.

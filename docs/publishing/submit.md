@@ -9,4 +9,4 @@ To submit a game to Boardzilla.io, you can now use the `submit` command in your 
 
 ## Assets for your game
 
-Your new game requires some metadata and assets before it can be published. Once you've submitted your game you'll be directed to a page on boardzilla.io to finish game submission. Write here once this process is cleaned up.
+Your new game requires some metadata and assets before it can be published. Once you've submitted your game you'll be directed to a page on Boardzilla.io to finish game submission. Write here once this process is cleaned up.

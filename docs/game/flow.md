@@ -41,7 +41,7 @@ any order. Let's look at a simple example from the Boardzilla starter game:
 ```
 
 This flow contains exactly two items: a function call that shuffles the pool,
-and the main play loop. The first function makes a single change to the board:
+and the main play loop. The first function makes a single change:
 
 ```ts
   () => $.pool.shuffle(),
@@ -58,7 +58,7 @@ or just changing state on the board or players (e.g. updating the score).
 One thing you cannot do in the flow is create new elements. All Spaces and
 Pieces in your game must be [created](board#creation) before calling
 `defineFlow`. If pieces are only needed later in the game, they can be created
-on the [`pile`](../api/classes/Board#pile) using `board.pile.create()` and moved
+on the [`pile`](../api/classes/Game#pile) using `game.pile.create()` and moved
 from the `pile` when needed. Similarly when elements are
 [`removed`](../api/classes/Piece#remove) they actually are put into the `pile`.
 
@@ -74,8 +74,11 @@ In the example above the main loop itself includes other Flow commands, namely
 `eachPlayer` and `playerActions`. This is an important distinction between the
 two types of flow steps, plain functions and Flow commands:
 
-:::warning Please note!
-Flow commands can **_only_** be added directly by other Flow commands.
+:::warning Flow commands must be separated
+
+Each Flow command is its own "step" in the flow. You cannot include flow
+commands inside functions.
+
 :::
 
 For example, imagine you have a flow function that does some things, setting up
@@ -92,7 +95,23 @@ the deck, dealing some cards, and then cleaning up after the hand:
   );
 ```
 
-If you now want to insert a Flow command in the middle to add a player action,
+If you now want to insert a Flow command in the middle to add a player action, you cannot just add it to the function, e.g.:
+
+```ts Sample flow
+  game.defineFlow(
+    () => {
+      // shuffle the deck
+      // deal cards
+
+      // highlight-next-line
+      playerAction({ actions: ['playCard'] }); // ❌ wrong
+
+      // put the cards back in the deck
+    })
+  );
+```
+
+
 you must break the function into two pieces and insert the flow function between
 them, e.g.:
 
@@ -104,7 +123,7 @@ them, e.g.:
     },
 
     // highlight-next-line
-    playerAction({ actions: ['playCard'] }),
+    playerAction({ actions: ['playCard'] }), // ✅ correct
 
     () => {
       // put the cards back in the deck
@@ -124,6 +143,9 @@ flow showing where the game is currently in the flow at any point.
 <div style="text-align:center">
   <img style="border: 1px solid black; width: clamp(50%, 500px, 100%)" src="/img/flow-debug.png"/>
 </div>
+
+Since the Flow is evaluated only once, what you see is what you get. If the flow
+is missing something, it is likely defined in the wrong place.
 
 :::
 
@@ -252,8 +274,8 @@ being played, Flow commands are created **at the beginning** of the game. Be
 careful with passing expressions directly to Flow commands that rely on game
 state.
 
-For example if you want to loop through some cards laid out in a board Space
-called "field", something like the following is probably **not** what you want:
+For example if you want to loop through some cards laid out in a Space called
+"field", something like the following is probably **not** what you want:
 
 ```ts
   forEach({

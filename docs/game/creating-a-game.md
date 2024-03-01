@@ -7,9 +7,9 @@ sidebar_position: 2
 After [creating](../introduction/create-a-game) a new Boardzilla game, writing a
 game in Boardzilla usually follows these steps:
 
-- Create the [Spaces](core-concepts#space) for your board
-- Create the [Pieces](core-concepts#piece) for your game and add them onto the
-  board
+- Create the [Spaces](core-concepts#space) for your game
+- Create the [Pieces](core-concepts#piece) for your game and add into the
+  appropriate Spaces
 - Define some [Actions](core-concepts#action) that the player(s) can take
 - Add these actions into the [Flow](core-concepts#flow)
 - Test the actions in the browser
@@ -25,6 +25,33 @@ be pretty but it's the easiest way to see exactly what's going on, or why a rule
 is not behaving as you expect.
 
 :::
+
+The game creator provides a few base files where you will work.
+- `src/game/index.ts`
+- `src/ui/index.tsx`
+- `src/ui/styles.scss`
+
+The game index file is where you will create the Spaces, Pieces and rules of the
+game. At this file's top level is your game class, your player class and this is
+also where you will create any Piece or Space classes you need. These should be
+at the top level so they can be exported and used elsewhere, e.g. in the UI. Any
+classes you create besides the base Game and Player classes must be registered
+in the provided [game.registerClasses](../api/classes/game#registerclasses)
+function, e.g.:
+
+```ts
+  game.registerClasses(Card, Hand);
+```
+
+It also contains a call to a function
+[`createGame`](../api/modules#creategame). Inside the body of this function is
+where you will create actions and flow with
+[`game#defineActions`](../api/classes/game#defineactions) and
+[`game#defineFlow`](../api/classes/game#defineflow) respectively.
+
+The ui index file is where the [layout](../ui/layout) and
+[appearance](../ui/appearance) of the game will be defined. And the provided
+SCSS file is where you will put your [styles](../ui/css).
 
 From the moment you create your new Boardzilla game, it is runnable in the
 browser and as you progress through the steps above, the browser will

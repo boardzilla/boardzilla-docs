@@ -37,7 +37,7 @@ to set the aspect ratio of all `Card`'s, but then call
   $.deck.all(Card).appearance({ render: ... })
 ```
 
-to set the appearance of cards more specifically in different board regions.
+to set the appearance of cards more specifically in different game regions.
 
 ## Aspect ratio
 
@@ -62,7 +62,7 @@ element. Here's a simple example of JSX to show a Card that has `name`, `cost`
 and `description`:
 
 ```jsx
-  board.all(Card).appearance({
+  game.all(Card).appearance({
     aspectRatio: 3 / 4,
     render: (card) => (
       <div>
@@ -181,13 +181,13 @@ absolute CSS units like `px`.
 Always use `em` units when you want your CSS to be relative to the element it
 belongs to. CSS attributes that accept a `%` relative to parent size are also
 appropriate. Use `rem`s in cases where you want the size to be relative to
-the entire game board.
+the entire game view.
 
 :::
 
 ### Child elements
 
-The data tree of the Board is also mapped to the DOM tree in HTML. For example,
+The data tree of the Game is also mapped to the DOM tree in HTML. For example,
 if you define a `Space` named `"deck"`, with `Card`s in them, then the `Card`
 elements will be HTML DOM children of the `"deck"` element. If you want to
 target CSS for specifically the `Card`s in the `"deck"` you can simply use:
@@ -208,7 +208,7 @@ HTML element, e.g.:
 
   ...
 
-  board.all(Card).appearance({
+  game.all(Card).appearance({
     aspectRatio: 3 / 4,
     render: card => (
       <div>
@@ -311,7 +311,7 @@ effect applied to it when `isTrump` transitions from `false` to `true`, you can
 apply the effect with `appearance.effect`, e.g.:
 
 ```ts
-  board.all(Card).appearance({
+  game.all(Card).appearance({
     effects: [{
       attributes: { isTrump: true },
       name: "newly-trump",
@@ -342,19 +342,19 @@ elements that have no custom appearance will then be left unrendered. To turn
 off default rendering, simply add in the layout block:
 
 ```
-board.disableDefaultAppearance();
+game.disableDefaultAppearance();
 ```
 
 :::
 
 # Board size
 
-You may notice that by default the board starts as a perfect square and
+You may notice that by default the playing area starts as a perfect square and
 adjusting the size of the browser window causes the square to change size to be
 as large as it can be and still fit in the viewport. You can customize the
-aspect ratio of the board to something other than 1 (a square). This is done by
-adding a `boardSizes` function to the main [`render`](../api/modules#render)
-function, e.g.:
+aspect ratio of the playing area to something other than 1:1 (a square). This is
+done by adding a `boardSizes` function to the main
+[`render`](../api/modules#render) function, e.g.:
 
 ```ts
   render({
@@ -409,7 +409,7 @@ provide, e.g.:
 ```ts
   render({
     ...
-    layout: (board, player, boardSize) => {
+    layout: (game, player, boardSize) => {
       if (boardSize === "mobile") {
 
         // mobile layout here

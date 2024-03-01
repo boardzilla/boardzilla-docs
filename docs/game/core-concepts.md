@@ -7,22 +7,30 @@ sidebar_position: 1
 These are some of the basic core concepts of Boardzilla that will be referred to
 throughout the documentation.
 
-## Board
+## Game
 
-The Board is the class that defines the overall layout of the game. It is
-composed of **Spaces** and **Pieces**. Together these are called
-**Elements**. The board itself is a Space but with special behaviour.
+The Game is the main class that defines the behaviour of the the game and it's
+layout. The first order of business when creating a game is to subclass Game so
+you can add your own methods. The Game class includes all the **Spaces** and
+**Pieces** of the board. Together these are called **Elements**. The Game is
+itself a Space but with special behaviour.
 
 ### Space
 
 Spaces are regions of the Board. They are **fixed** and never change once the
-game starts. They can contain both other spaces and pieces.
+game starts. A Space can also contain other Spaces and Pieces.
 
 ### Piece
 
-Pieces are **movable** objects in the game. They can move to other spaces or can
-be moved inside other Pieces, such as for instance, when tokens are placed onto
-a card.
+Pieces are **movable** objects in the game. They can move from Space to Space
+and can also be moved inside other Pieces, such as for instance, when tokens are
+placed onto a card.
+
+### Pile
+
+The Pile is a holding area for pieces that are not in use. Pieces can be moved
+into and out of the Pile. It is never visible. Think of it as the box sitting
+off to the side of the game.
 
 You can read further about this in [Board Structure](./board).
 

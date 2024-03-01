@@ -75,10 +75,10 @@ provided and might look like:
 
 ```jsx
   announcements: {
-    newPhase: board => (
+    newPhase: game => (
       <div>
         <h1>New phase</h1>
-        The game has entered phase {board.phase}!
+        The game has entered phase {game.phase}!
       </div>
     )
   }
@@ -108,10 +108,10 @@ and in the [`render`](../api/modules#render) method:
 
 ```jsx
   announcements: {
-    victory: board => (
+    victory: game => (
       <div>
         <h1>Victory</h1>
-        {board.game.winner.name} wins the game with a score of {board.game.winner.score()}!
+        {game.getWinners()!.[0].name} wins the game with a score of {game.getWinners()!.[0].score()}!
       </div>
     )
   }
@@ -134,7 +134,7 @@ see this additional info.
 Information modals are informational content that is always available for
 players to help them along with the game. These might include score tables, or
 more detailed information about the game state that you'd prefer not take up
-room on the board at all times.
+room on the playing area at all times.
 
 Information modals are supplied in the [`render`](../api/modules#render) method,
 under `infoModals`. These appear in the information sidebar that is available by

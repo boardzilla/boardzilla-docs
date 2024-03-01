@@ -31,7 +31,7 @@ And somewhere in your UI code you will lookup the game's setting to see if this
 value is turned on to determine whether to show VP:
 
 ```ts
-  if (board.game.setting("realtimeVp")) {
+  if (game.setting("realtimeVp")) {
     // show VP
   }
 ```

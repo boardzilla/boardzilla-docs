@@ -5,21 +5,30 @@ sidebar_position: 3
 # Layout
 
 Customizing the game UI probably requires declaring several layouts. Each layout
-provides a strategy how items are visually laid out. Each layout declaration has
-3 parts:
+provides a strategy how a given Space visually lays out the elements inside
+it. Each layout declaration has 3 parts:
 
 1. The **container** that uses this layout
 2. The **contents** that it applies to
 3. The **rules** for the layout
 
-For example, in the following layout declaration:
+The **container** could be the Game, or any Element or group of elements in the
+game. These are usually Spaces, but can also be Pieces if you ever put Pieces on
+top of other Pieces. The **contents** are always _immediate_ children of the
+**container**. Often the layout applies to all Pieces in the **container**, but
+sometimes just to a subset, or even just to one particular element. The
+**rules** are the meat of the layout, and contain all the declarations for
+sizing, overlapping, stretching, alignment, etc.
+
+Here's a typical example of a layout declaration:
 
 ```ts
   $.deck.layout(Card, { alignment: 'left' }
 ```
 
-The **container** is the deck space `$.deck`, the **contents** are any `Card`s
-in the deck, and the **rules** are that these cards should left align.
+In this example, the **container** is the deck space `$.deck`, the **contents**
+are any `Card`s in the deck, and the **rules** are that these cards should left
+align.
 
 Layout declarations might declare that for a given area, items should be laid
 out in a row, or a stack, or a grid. When many items enter the same space, it
@@ -32,20 +41,29 @@ All layout declarations go in the `layout` of the main
 ```ts
   render(setup, {
     ...
-    layout: (board) => {
+    layout: game => {
       // layout declarations go here
     }
 
   });
 ```
 
-The Boardzilla layout engine works by applying different layout strategies to
-game elements on the board. By default, each element has a simple layout that
-divides up its space equally to hold as many items as it has and fits them
-exactly within the allotted space. This is the layout you see when you start
-building your board. Each layout strategy you apply creates a new invisible grid
-layer on top in which things can fit. This invisible grid will grow or shrink as
-needed to fill as much of the area as it can. Layouts are applied by calling
+:::tip experiment
+
+The Boardzilla layout engine is powerful and can be complicated, but it is easy
+to just try things and observe their effects in real-time as you play test. The
+[sandbox](layout-sandbox) is also available as a means of experiementing to get
+a feel for how it works.
+
+:::
+
+The layout engine works by applying different layout strategies to different
+game elements. By default, each element has a simple layout that divides up its
+space equally to hold as many items as it has and fits them exactly within the
+allotted space. This is the layout you see when you start building your
+board. Each layout strategy you apply creates a new invisible grid layer on top
+in which things can fit. This invisible grid will grow or shrink as needed to
+fill as much of the area as it can. Layouts are applied by calling
 [`layout`](../api/classes/GameElement#layout) on an element or [group of
 elements](../api/classes/ElementCollection#layout). When you apply a new layout
 to a space, you declare what element(s), or class of elements, it should apply
@@ -103,9 +121,9 @@ values. These are generally percentages of the container element's layout, so
 e.g.
 
 ```ts
-$.deck.layout(Card, {
-  area: { left: 25, top: 25, width: 50, height: 50 },
-});
+  $.deck.layout(Card, {
+    area: { left: 25, top: 25, width: 50, height: 50 },
+  });
 ```
 
 Would place the `Card`s in the `deck` space into an inner region that is 50% of
@@ -117,11 +135,11 @@ e.g. you have a layout on `$.field` for _only_ the cards for which `card.color`
 is `"red"`, then the `layout` declaration might look like:
 
 ```ts
-$.field.layout(
-  $.field.all(Card, {color: "red"}), {
-    ...
-  }
-);
+  $.field.layout(
+    $.field.all(Card, {color: "red"}), {
+      ...
+    }
+  );
 ```
 
 This will be applied to each `Card` in the `field` Space with `color` equal to
@@ -132,9 +150,22 @@ automatically be re-applied given the new set of red cards in the field.
 
 While working on a particular layout declaration, adding a `showBoundingBox`
 attribute causes the layout's area to visibly appear on screen as a dotted
-bounding box. This is an easy way to visually see if your layout is correct.
+bounding box. You can give every layout a bounding box by calling
+`game.showLayoutBoundingBoxes()`. This is an easy way to visually see if your
+layout is correct.
 
 :::
+
+Layouts can also be applied to multiple elements at once by calling `layout` on
+an `ElementCollection`. For example, in a card game you would typically supply
+layout for all the player's hands with some common rules, e.g.:
+
+```ts
+  game.all('hand').layout(Card, {
+    columns: { min: 8 },
+    rows: 1,
+  });
+```
 
 ## Customize Controls
 
@@ -144,26 +175,27 @@ methods for controlling placement of these, depending on whether you want the
 placement to be specific to an Action or specific to a step in the Flow, or
 general to all:
 
-- [`board.layoutAction`](../api/classes/Board#layoutaction)
-- [`board.layoutStep`](../api/classes/Board#layoutstep)
-- [`board.layoutControls`](../api/classes/Board#layoutcontrols)
+- [`game.layoutAction`](../api/classes/Game#layoutaction)
+- [`game.layoutStep`](../api/classes/Game#layoutstep)
+- [`game.layoutControls`](../api/classes/Game#layoutcontrols)
 
 These all apply layout rules to a control by specifying the
 [`Action`](../game/actions) in the case of
-[`board.layoutAction`](../api/classes/Board#layoutaction), or the
+[`game.layoutAction`](../api/classes/Game#layoutaction), or the
 [`playerActions.name`](../game/flow#player-actions) in the case of
-[`board.layoutStep`](../api/classes/Board#layoutstep). Finally,
-[`board.layoutControls`](../api/classes/Board#layoutcontrols) applies to all
-steps and actions unless a more specific one applies. Whichever function you use,
-you then provide parameters to anchor it to the board in a particular
-location. This is to allow your game to place these in a suitable location of
-the board that corresponds to the action needed, and does not obscure game
-elements. See [`ActionLayout`](../api/modules#actionlayout) for details.
+[`game.layoutStep`](../api/classes/Game#layoutstep). Finally,
+[`game.layoutControls`](../api/classes/Game#layoutcontrols) applies to all steps
+and actions unless a more specific one applies. Whichever function you use, you
+then provide parameters to anchor it to the player's view of the game in a
+particular location. This is to allow your game to place these in a suitable
+location of the playing area that corresponds to the action needed, and does not
+obscure game elements. See [`ActionLayout`](../api/modules#actionlayout) for
+details.
 
-Example to place all prompts in the top center of the board:
+Example to place all prompts in the top center of the overall playing area:
 ```ts
-  board.layoutControls({
-    element: board,
+  game.layoutControls({
+    element: game,
     top: 0,
     center: 50,
     width: 20
