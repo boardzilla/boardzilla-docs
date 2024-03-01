@@ -15,8 +15,8 @@ server plus a prescribed number of players all sending actions to the game so
 you can set up automated tests that run through example games and test
 assertions on the game state.
 
-The test runner exposes both the player versions of the board and the server
-version of the board which was complete knowledge of all hidden
+The test runner exposes both the player versions of the game and the server
+version of the game which was complete knowledge of all hidden
 information. It's important when testing player moves to use the correct version
 for the given player.
 
@@ -28,10 +28,10 @@ const runner = new TestRunner(setup);
 const [player1, player2] = runner.start({ players: 2, settings: {} });
 
 // example move
-player1.move("takeCard", { card: player1.board.first(Card) });
+player1.move("takeCard", { card: player1.game.first(Card) });
 
-// example assertion on server board
-console.assert(runner.server.board.someProperty === "some-value");
+// example assertion on server game
+console.assert(runner.server.game.someProperty === "some-value");
 
 // example assertion on player actions
 console.assert(player1.actions().length === 0);
@@ -44,7 +44,7 @@ using `vitest`.
 
 ## Browser developer tools
 
-Boardzilla outputs some debug info about the current state of the board and the
+Boardzilla outputs some debug info about the current state of the game and the
 current available actions at every step of the game flow into the console. To
 see all these messages, set the console output levels to include `Verbose` or
 `debug`.
@@ -55,14 +55,14 @@ inserting `debugger` into your game code is often useful. But even without
 breakpoints, you can inspect the state of the game at any given point by opening
 the console tab in your browser developer tools and switching the Javascript
 context to `ui.html`. While in this context, you have access to the player's
-[`game`](../api/classes/Game) and [`board`](../api/classes/Board) objects, as
-well as all custom classes registered for your game.
+[`game`](../api/classes/Game) object, as well as all custom classes registered
+for your game.
 
 <img src="/img/console.png" style="width: 60%"/>
 
 As well, the DOM inspector in the browser developer tools is a useful tool for
-quickly inspecting the state of the board. Since the board is output in a DOM
-tree that matches the [Board structure](../game/board), it can be used to
+quickly inspecting the state of the game. Since the game structure is output in
+a DOM tree that matches the [Board structure](../game/board), it can be used to
 quickly see if pieces and spaces are where they should be. As well the
 properties of all elements are output as `data-` attributes on the DOM elements
 so you can further see the state of inidividual game elements. See
@@ -73,9 +73,9 @@ so you can further see the state of inidividual game elements. See
 The history controls in devtools are useful for checking the state at any point
 in the game's move history. You can switch between different points in the game
 using the 'View' button on each history action. While viewing a different point
-in history, the console object can be used as above to query the game and board
-states at each step of the game. You can also press 'Revert' to return the game
-to a previous state and make different actions.
+in history, the console object can be used as above to query the game state at
+each step of the game. You can also press 'Revert' to return the game to a
+previous state and make different actions.
 
 As well, the save states in devtools can be used to record and reload various
 points in your game to test a variety of conditions. The save state controls in

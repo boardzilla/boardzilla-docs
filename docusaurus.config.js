@@ -99,7 +99,6 @@ const config = {
       {
         entryPoints: [
           "../boardzilla-core/src",
-          "../boardzilla-core/src/game.ts",
           "../boardzilla-core/src/board",
           "../boardzilla-core/src/flow",
           "../boardzilla-core/src/action",
