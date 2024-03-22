@@ -85,7 +85,7 @@ devtools can be accessed by pressing 'Shift-S' while focusing the game frame.
 
 God mode is another method of testing, allowing any game element to be moved or
 modified in any way. It can be enabled by setting
-[Game#godMode](../api/classes/Game#godmode) to true. It is a powerful but
+[GameManager#godMode](../api/classes/GameManager#godmode) to true. It is a powerful but
 dangerous tool as it can easily allow you to put the game into an invalid
 state. Use with caution. It can be easier and safer to modify your game rules
 temporarily to permit testing a scenario that is outside the game rules, by
