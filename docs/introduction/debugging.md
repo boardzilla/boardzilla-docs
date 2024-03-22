@@ -42,6 +42,22 @@ your choice. The starter game includes an [example working test
 suite](https://github.com/boardzilla/boardzilla-starter-game/tree/main/test)
 using `vitest`.
 
+### Manipulating data in the test runner
+It's often useful to be able to manipulate data within the test runner to 
+set up specific scenarios. Because you're in the test runner rather than inside
+the game's logic, some things are not in the same locations.
+
+```ts
+// if you want to manipulate anything about the game from the server's pespective use `runner.server.game`
+const top3cards = runner.server.game.first('drawPile')?.firstN(3, Card);
+
+// if you want to manipulate anything from a player perspective, use `player1.player`
+const player1hand = player1.player.my('hand')?.all();
+
+// putting the above 2 together
+player1.player.my('hand')?.first(Card)!.putInto(runner.server.game.first('discard')!);
+```
+
 ## Browser developer tools
 
 Boardzilla outputs some debug info about the current state of the game and the
