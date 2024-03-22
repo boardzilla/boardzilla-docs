@@ -34,14 +34,7 @@ The game creator provides a few base files where you will work.
 The game index file is where you will create the Spaces, Pieces and rules of the
 game. At this file's top level is your game class, your player class and this is
 also where you will create any Piece or Space classes you need. These should be
-at the top level so they can be exported and used elsewhere, e.g. in the UI. Any
-classes you create besides the base Game and Player classes must be registered
-in the provided [game.registerClasses](../api/classes/game#registerclasses)
-function, e.g.:
-
-```ts
-  game.registerClasses(Card, Hand);
-```
+at the top level so they can be exported and used elsewhere, e.g. in the UI.
 
 It also contains a call to a function
 [`createGame`](../api/modules#creategame). Inside the body of this function is

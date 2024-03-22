@@ -123,9 +123,9 @@ selections available in Boardzilla.
 
 In addition there is an additional select `chooseGroup` which allows you to combine these selections into a single selection
 
-| Type  | Method                                             | Description                                                                               | Appearance                        |
-| :---- | :------------------------------------------------- | :---------------------------------------------------------------------------------------- | :-------------------------------- |
-| group | [`chooseGroup`](../api/classes/Action#choosegroup) | Combination of `chooseNumber`, `enterText`, `chooseFrom`, `chooseOnBoard` or `placePiece` | Combined based on the combination |
+| Type  | Method                                             | Description                                                              | Appearance                        |
+|:------|:---------------------------------------------------|:-------------------------------------------------------------------------|:----------------------------------|
+| group | [`chooseGroup`](../api/classes/Action#choosegroup) | Combination of `chooseNumber`, `enterText`, `chooseFrom` or `placePiece` | Combined based on the combination |
 
 Each selection added to an Action must be one of these types, and must have a
 name unique to this action. The methods above are called one by one, chained
