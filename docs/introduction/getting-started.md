@@ -30,13 +30,18 @@ The devtools provides your interface for creating, developing and submitting gam
 ```console
 brew install boardzilla/tap/boardzilla-devtools
 ```
+And to upgrade:
+```console
+brew upgrade boardzilla-devtools
+```
+
 
 ### Via go
 
 This requires you have go version >=1.21 installed which can be obtained from here [https://go.dev/dl/](https://go.dev/dl/).
 
 ```console
-go install -u github.com/boardzilla/boardzilla-devtools/cmd/bz@latest
+go install github.com/boardzilla/boardzilla-devtools/cmd/bz@latest
 ```
 
 ### Via bash
