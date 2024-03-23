@@ -32,6 +32,7 @@ brew install boardzilla/tap/boardzilla-devtools
 ```
 And to upgrade:
 ```console
+brew update
 brew upgrade boardzilla-devtools
 ```
 
