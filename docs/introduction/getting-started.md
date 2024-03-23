@@ -43,12 +43,17 @@ This requires you have go version >=1.21 installed which can be obtained from he
 ```console
 go install github.com/boardzilla/boardzilla-devtools/cmd/bz@latest
 ```
+And to upgrade:
+```console
+GOPROXY=direct go install github.com/boardzilla/boardzilla-devtools/cmd/bz@latest
+```
 
 ### Via bash
 
 ```console
 curl -sfL https://raw.githubusercontent.com/boardzilla/boardzilla-devtools/main/scripts/install | bash -s
 ```
+And to upgrade re-run the same command.
 
 ### Via source
 
