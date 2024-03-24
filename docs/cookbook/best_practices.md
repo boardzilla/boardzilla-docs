@@ -5,6 +5,11 @@ import TOCInline from "@theme/TOCInline";
 # Best Practices
 Recipies that will help you achieve success easier.
 
+
+## Build the Game Before the UI
+The default UI will likely be sufficient to develop your game. Spend type implementing the rules to your game before you spend a bunch of time on UI layout.
+
+
 ## Break Pieces Into Modules
 Turn your lists of game pieces, such as Cards into modules. This will keep your main game code less cluttered and easier to follow:
 

@@ -50,7 +50,7 @@ render(setup, {
 })
 ```
 
-## Space Debugging
+## Space Layout Debugging
 When you are positioning `Space`s and have turned off the default display it can sometimes be hard to see where those spaces are. You can enable an outline on all spaces and pieces by adding `showLayoutBoundingBoxes()` to your `layout`.
 
 ```ts
@@ -73,7 +73,7 @@ Often spaces only need to be visibile to a player if the `Space` is owned by tha
 
 ```ts
 game.all('hand', { mine: false }).appearance({ render: false });
-``
+```
 
 
 ## Drawers
