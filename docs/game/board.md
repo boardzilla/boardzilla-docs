@@ -60,7 +60,7 @@ that you can use in the rules of game. E.g. a `Card` class, that might have
 `suit` and `number` properties, and special methods like `isTrump()`.
 
 ```ts title="Example Card class"
-  export class Card extends Piece {
+  export class Card extends Piece<MyGame> {
     suit: "S" | "H" | "D" | "C";
     number: number;
 
@@ -70,11 +70,45 @@ that you can use in the rules of game. E.g. a `Card` class, that might have
   }
 ```
 
+You can add any properties and methods you like. Properties added will also be
+visible to the player unless hidden (See [visibility](#visibility)).
+
+:::warning property types
+
+There are some restriction for what type your properties can be in order to be
+serializable for the player. They must be one of:
+- number
+- string
+- boolean
+- [GameElement](../api/classes/GameElement) (i.e. any [Space](../api/classes/Space) or [Piece](../api/classes/Piece))
+- [Player](../api/classes/Player)
+- any array or object containing any combination the above
+
+Notably they _cannot_ be instances of some other class or arrow functions (normal methods are of course fine). Any such
+properties will throw an error.
+
+:::
+
 Spaces can be subclassed as well. This is less common, but helpful if you have
-several spaces of a particular type that have special properties or behavior.
+several spaces of a particular type that have special properties or
+behavior. There are also several builtin subclasses of Space for specialized
+grid and adjacency rules. See [Adjacency and Grids](adjacency.md).
 
 Defining subclasses like this also makes it easy to customize their appearance
 later and give the different classes of Pieces entirely different visuals.
+
+:::info Generic
+
+When subclassing `Space` and `Piece`, your game class must be used as the
+generic for the type, e.g.:
+
+```ts
+  export class Token extends Piece<MyGame> {
+    ...
+  }
+```
+
+:::
 
 ## Querying
 
@@ -113,7 +147,8 @@ a good reminder to not assume that a piece is always where you expect, e.g.
 :::tip global $
 
 For convenience, all uniquely named spaces are also accessible from a global `$`
-object that contains all spaces by name, e.g. `$.deck`.
+object that contains all spaces by name, e.g. `$.deck`. These will be typed as
+`Space` and may need to be cast to more specific types.
 
 :::
 
