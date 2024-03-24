@@ -2,7 +2,7 @@ import TOCInline from "@theme/TOCInline";
 
 <TOCInline toc={toc} />
 
-# UI
+# UI Development
 Recipies related to formatting the UI.
 
 

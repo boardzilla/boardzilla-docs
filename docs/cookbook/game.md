@@ -2,5 +2,6 @@ import TOCInline from "@theme/TOCInline";
 
 <TOCInline toc={toc} />
 
-# Game
+# Game Development
 Recipies about game development.
+
