@@ -41,7 +41,7 @@ of game.
 A fixed grid is a grid of [Spaces](../api/classes/Space) that are created when
 we define our Game. These come in a few flavors:
 [SquareGrid](../api/classes/SquareGrid), [HexGrid](../api/classes/HexGrid) and
-[ConnectedSpaceMap](../api/classes/CommectedSpaceMap).
+[ConnectedSpaceMap](../api/classes/ConnectedSpaceMap).
 
 ### Square grids
 
@@ -188,9 +188,9 @@ layer on more layouts, you modify the base layout by calling
 ### Custom adjacency
 
 For all other styles of adjacency, use the base class
-[ConnectedSpaceMap](../api/classes/CommectedSpaceMap). Using this we can add
+[ConnectedSpaceMap](../api/classes/ConnectedSpaceMap). Using this we can add
 Spaces and connect them in whatever adjacency configuration is needed by calling
-[connect](../api/classes/CommectedSpaceMap#connect). These can have custom
+[connect](../api/classes/ConnectedSpaceMap#connect). These can have custom
 distances applied to them to use for distance calculations. This is actually
 just a [directed
 graph](https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)). There are
@@ -215,7 +215,7 @@ graph of spaces with travel distances:
 
 Note that any connection is considered "adjacent" but the distance provided as
 the 2nd argument is used in any queries or methods that measure distance, e.g.
-[`distanceBetween`](../api/classes/ConnectedSpaceMap#distanceBetween) or
+[`distanceBetween`](../api/classes/ConnectedSpaceMap#distancebetween) or
 [`allWithinDistanceOf`](../api/classes/ConnectedSpaceMap#allwithindistanceof).
 
 ## Flexible Grid
@@ -256,7 +256,7 @@ actually want a limited playing field by setting `extendableGrid` to `false`.
 ### Irregular Shapes
 
 Pieces can be given irregular shapes by calling
-[`setShape`](../api/classes/Piece#setShape). The shapes are represented as
+[`setShape`](../api/classes/Piece#setshape). The shapes are represented as
 strings with non-space characters to show filled in areas of the shape, and
 spaces to show gaps. E.g. the squiggle tetris piece might look like this:
 
