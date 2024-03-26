@@ -1,11 +1,6 @@
-import TOCInline from "@theme/TOCInline";
-
-<TOCInline toc={toc} />
-
 # Miscellaneuous
 
 Recipes that don't fit in elsewhere, or that apply everywhere.
-
 
 ## Coding in Javascript rather than Typescript
 
