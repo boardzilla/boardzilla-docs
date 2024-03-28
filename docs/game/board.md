@@ -236,8 +236,9 @@ All elements are visible to all players by default. Often a game will require
 that pieces are visible only to some players and hidden from others. In
 Boardzilla, "hiding" a Game Element means that the properties of that element
 are no longer visible. For example if one of our example `Card` instances was
-flipped over, the player would be able to see that it was an instance of the
-`Card` class, but `card.suit` and `card.number` would be `undefined`.
+flipped over, the player would be able to see only that it was an instance of
+the `Card` class, but it's properties, like `name`, `suit` and `number` or any
+others would be `undefined`.
 
 This can be accomplished in a number of ways, the simplest being
 [`hideFromAll`](../api/classes/GameElement#hidefromall). There are many [other
@@ -251,6 +252,20 @@ properties with the static method
 
 ```ts
   Card.revealWhenHidden("deck");
+```
+
+Players can also have invisible properties, such as hidden roles. To make a
+property of your Player class invisible to other players, simple call the static
+method [`Player#hide`](../api/classes/Player#hide). This property will be
+undefined on other players when seen from a specific player's perspective
+(i.e. in an action choice or in UI code).
+
+```ts
+  class MyPlayer extends Player<MyGame, MyPlayer> {
+    secretRole: 'normie' | 'killer';
+  }
+  
+  MyPlayer.hide('secretRole');
 ```
 
 ## Movement

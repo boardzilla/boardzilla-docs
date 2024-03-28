@@ -258,6 +258,25 @@ We can also add more `{{handlebars}}` variables using the second argument, e.g.:
   )
 ```
 
+To message only a specific player or players, use the
+[`messageTo`](../api/classes/Action#messageto) method instead. This is important
+since the messages may include information that is otherwise invisible to some
+players. E.g.:
+
+```ts
+  .messageTo(
+    player, "You drew {{card}}"
+  ).messageTo(
+    player.others(), "{{player}} drew a card"
+  )
+```
+
+Besides chaining the `message`/`messageTo` on to the actions, these can also be
+called at any point using [`game.message`](../api/classes/Game#message) and
+[`game.messageTo`](../api/classes/Game#messageto). This is useful if the rules
+of the game generate messages outside of players taking specific actions. These
+calls are the same but don't have any pre-supplied `player` or action arguments.
+
 :::tip Using {{handlebars}}
 
 Using Boardzilla's `{{handlebars}}` syntax in messages allows references to

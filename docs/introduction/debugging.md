@@ -8,6 +8,30 @@ Boardzilla provides many tools for the all-important task of testing your game
 code, and troubleshooting issues that might arise. You should be familiar with
 these tools as you develop so you can constantly check your work.
 
+## Debug overlay
+
+While working in devtools, a debug overlay is provided by clicking on the
+magnifying glass icon in the upper left. This provides access to a breakdown of
+the current state of the game.
+
+<img src="/img/debug-overlay.png" style="width: 100%"/>
+
+On the left half on the overlay is a snapshot of the flow defined in the game,
+showing the current block highlighted in yellow, and any variables populated in
+the colored headers of the flow block that provided them. See
+[Flow](../game/flow.md) for a full understanding of what's in here. One thing to
+note is that flow is defined once when the game is created and never changes, so
+the structure here is always the same. Only the current position and the
+populated variables change during game play. That also means if this structure
+looks wrong, there is a problem in the flow definition that shouldbe resolved
+first.
+
+On the right half is a snapshot of the current actions available to the viewing
+player. Actions are further broken down by the choices on each action that are
+presented to the player in order for them to complete the action. If an action
+in unavailable or one it's choices has been skipped, this view will explain
+why. See [Actions](../game/actions.md) for more information on these.
+
 ## Test runner
 
 Boardzilla includes a test runner class that mocks the playing environment of a
@@ -15,48 +39,76 @@ server plus a prescribed number of players all sending actions to the game so
 you can set up automated tests that run through example games and test
 assertions on the game state.
 
+```ts
+import { TestRunner } from "@boardzilla/core";
+import setup from '../src/game/index.js';
+
+const runner = new TestRunner(setup);
+
+const [ui1, ui2] = runner.start({ players: 2, settings: {} });
+```
+
+If you need to create mock components that do not exist in the game already, You
+can add additional setup when you create the test runner as a 2nd argument:
+
+```ts
+  runner = new TestRunner(setup, game => {
+    game.create(Card, 'some-custom-card');
+  });
+```
+
 The test runner exposes both the player versions of the game and the server
 version of the game which was complete knowledge of all hidden
 information. It's important when testing player moves to use the correct version
 for the given player.
 
 ```ts
-import { TestRunner } from "@boardzilla/core";
+// example move from player 1's perspective
+ui1.move("takeCard", { card: ui1.game.first(Card) });
 
-const runner = new TestRunner(setup);
-
-const [player1, player2] = runner.start({ players: 2, settings: {} });
-
-// example move
-player1.move("takeCard", { card: player1.game.first(Card) });
-
-// example assertion on server game
+// example assertion on the game accessing a property that may be hidden
 console.assert(runner.server.game.someProperty === "some-value");
 
 // example assertion on player actions
-console.assert(player1.actions().length === 0);
+console.assert(ui1.actions().length === 0);
 ```
 
-You can import the test runner and set up tests using the testing library of
-your choice. The starter game includes an [example working test
-suite](https://github.com/boardzilla/boardzilla-starter-game/tree/main/test)
-using `vitest`.
-
-### Manipulating data in the test runner
-It's often useful to be able to manipulate data within the test runner to 
-set up specific scenarios. Because you're in the test runner rather than inside
-the game's logic, some things are not in the same locations.
+When you call `runner.start` the players are updated with the game state. You
+can inspect the player view and even manipulate the game state from their
+perspective by using `ui1.game`. This is equivalent to a player looking at the
+board and attempting a move, e.g.:
 
 ```ts
-// if you want to manipulate anything about the game from the server's pespective use `runner.server.game`
-const top3cards = runner.server.game.first('drawPile')?.firstN(3, Card);
-
-// if you want to manipulate anything from a player perspective, use `player1.player`
-const player1hand = player1.player.my('hand')?.all();
-
-// putting the above 2 together
-player1.player.my('hand')?.first(Card)!.putInto(runner.server.game.first('discard')!);
+  ui1.player.first(Card)?.putInto(ui1.game.first('discard')!);
+  ui1.player.first('discard')!.first(Card) // => the Card just discarded
 ```
+
+You can perform actions with `ui1.move` and test the results. After calling
+`ui1.move` the players states are updated to reflect the results of the move.
+
+```ts
+  ui1.move("takeCard", { card: ui1.game.first(Card) });
+  ui1.allMy(Card); // => includes the Card just drawn
+```
+
+You can also manipulate the state on the game using `runner.server.game`
+as above and test the results. This is equivalent to the flow of the game making
+an update, e.g.
+
+```ts
+const top3cards = runner.server.game.first('drawPile')?.firstN(3, Card);
+runner.server.game.first('drawPile')!.all(Card).length // => 3
+```
+
+However these changes are not automatically propagated to the players
+for viewing and cannot be immediately tested from a players perspective. You
+must call `runner.updatePlayers()` in order to update the players view of the
+game with whatever changes you have made.
+
+You can import the test runner and set up tests using the testing library of
+your choice. The token starter game includes an [example working test
+suite](https://github.com/boardzilla/boardzilla-starter-game/tree/main/test)
+using `vitest`.
 
 ## Browser developer tools
 
