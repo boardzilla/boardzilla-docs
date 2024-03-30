@@ -110,6 +110,59 @@ your choice. The token starter game includes an [example working test
 suite](https://github.com/boardzilla/boardzilla-starter-game/tree/main/test)
 using `vitest`.
 
+## Writing Unit Tests
+You can create mock components for writing unit tests for things like scoring,
+pathing, or other functions you'd like to test outside of a running game.
+
+Imagine you had a function such the one below that could make sure you had 7 cards
+in a hand that were all the same number, aka 'a set of 7' and return a score if it 
+was a set of 7, or zero if it isn't a set of 7.
+
+```ts
+export const scoreSetOf7 = (hand: Card[]) => {
+    const sorted = hand.sortedBy('value');
+    if (sorted[0].value == sorted[6].value)
+        return 6;
+    return 0;
+}
+```
+
+To test this you might want to generate various hands of cards. First you'll need
+to import the relevant classes from your game.
+
+```ts
+import { MyGame, Space, Card } from '../src/game/index.js';
+```
+
+Then you can create a mock game object:
+
+```ts
+const game = new MyGame({ classRegistry: [Space, Card] });
+```
+Then use that mock game object to create mock components with whatever
+properties they need for testing:
+
+```ts
+const card1 = game.create(Card, 'card1', { value: 2 });
+const card2 = game.create(Card, 'card2', { value: 3 });
+const card3 = game.create(Card, 'card3', { value: 2 });
+const card4 = game.create(Card, 'card4', { value: 2 });
+const card5 = game.create(Card, 'card5', { value: 2 });
+const card6 = game.create(Card, 'card6', { value: 2 });
+const card7 = game.create(Card, 'card7', { value: 2 });
+```
+
+And finally you can write your tests:
+
+```ts
+// no score, because only 6 of them are the same number
+console.assert(scoreSetOf7(game.all(Card)) == 0);
+card2.value = 2;
+// score, because all are the same number
+console.assert(scoreSetOf7(game.all(Card)) == 6);
+```
+
+
 ## Browser developer tools
 
 Boardzilla outputs some debug info about the current state of the game and the
