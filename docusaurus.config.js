@@ -104,6 +104,7 @@ const config = {
           "../boardzilla-core/src/action",
           "../boardzilla-core/src/player",
           "../boardzilla-core/src/ui",
+          "../boardzilla-core/src/components",
         ],
         sort: "source-order",
         excludeInternal: true,

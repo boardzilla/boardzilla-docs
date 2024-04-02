@@ -17,8 +17,8 @@ itself a Space but with special behaviour.
 
 ### Space
 
-Spaces are regions of the Board. They are **fixed** and never change once the
-game starts. A Space can also contain other Spaces and Pieces.
+Spaces are regions or zones of the Board. They are **fixed** and never change
+once the game starts. A Space can also contain other Spaces and Pieces.
 
 ### Piece
 
