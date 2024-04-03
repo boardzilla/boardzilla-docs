@@ -218,11 +218,50 @@ expressions).
 Boardzilla will make this move when the player has made all their selctions, and
 will additionally permit a mouse drag if using a desktop browser.
 
-:::tip placing pieces
+There are two other speicialized types of moves available. Use
+[`swap`](../api/classes/Action#swap) when you want a player to select Pieces and
+swap their location, e.g.:
 
-[`placePiece`](../api/classes/Action#placepiece) is a special method that is
-**both** a selection and a behavior. The player selects the exact position to place
-the element, and Boardzilla moves it to this location as part of the action.
+```ts
+  player => action({
+    prompt: "Choose a card from hand to exchange for the top card of the deck",
+  }).chooseOnBoard(
+    "card", player.allMy(Card)
+    // highlight-start
+  ).swap(
+    // swap the card selected with the top card of the deck
+    "card", $.deck.first(Card)!
+  );
+  // highlight-end
+```
+
+Similarly, [`reorder`](../api/classes/Action#reorder) can be used to changed the
+location of selected Pieces, but this operates on a collection of objects,
+i.e. allowing players to rearrange a set of cards, e.g.
+
+```ts
+  player => action({
+    prompt: "Reorder the cards in field",
+    // highlight-start
+  }).reorder(
+    // Choose a card in field and reorder it
+    $.field.all(Card)
+  );
+  // highlight-end
+```
+
+The `reorder` action allows the player to choose one item in the collection and
+place it into a new position, while the other elements of the collection retain
+their relative order. It is common to allow this action repeatedly so a player
+can freely reorder the entire collection, using
+e.g. [`playerActions.repeatUntil`](flow#playeractions).
+
+:::tip
+
+Note that [`placePiece`](../api/classes/Action#placepiece) and
+[`reorder`](../api/classes/Action#reorder) are special methods that are **both**
+selection and behavior. The player make the selections necessary and Boardzilla
+makes the appropriate moves as part of the action.
 
 :::
 

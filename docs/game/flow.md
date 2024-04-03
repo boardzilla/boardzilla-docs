@@ -267,6 +267,22 @@ the list of `playerActions` but let each action definition take responsibility
 for determining whether it is actually playable at the time based on its
 selections and/or `condition` parameter.
 
+The Player Actions step in the flow can be further customized with a few optional paramters:
+
+- `prompt`: A prompting message for the player to decide between multiple
+actions that involve clicking on the board.
+- `description`: A description of this step from a 3rd person perspective, used
+to inform other players as to what the current player is doing.
+- `player`: Which player can perform this action, if someone other than the current player
+- `players`: Same as above, for multiple players that can act.
+- `optional`: Make this action optional with a "Pass"
+- `condition`: Skip this action completely if condition fails
+- `skipIf`: One of 'always', 'never' or 'only-one' (Default
+'always'). See [Skipping](../actions#skipping).
+- `repeatUntil`: Make this action repeatable until the player passes
+- `continueIfImpossible`: Skip this action completely if none of the actions are
+  possible.
+
 :::danger Flow commands are created once
 
 Unlike [`Actions`](actions) that are created for each player **at the time** of
