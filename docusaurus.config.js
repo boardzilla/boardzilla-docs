@@ -36,6 +36,13 @@ const config = {
     format: "detect",
     mermaid: true,
   },
+  scripts: [
+    {
+      src: "https://plausible.io/js/script.js",
+      defer: true,
+      "data-domain": "docs.boardzilla.io",
+    },
+  ],
   presets: [
     [
       "classic",
