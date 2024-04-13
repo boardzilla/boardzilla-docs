@@ -95,7 +95,8 @@ the deck, dealing some cards, and then cleaning up after the hand:
   );
 ```
 
-If you now want to insert a Flow command in the middle to add a player action, you cannot just add it to the function, e.g.:
+If you now want to insert a Flow command in the middle to add a player action,
+you cannot just add it to the function, e.g.:
 
 ```ts Sample flow
   game.defineFlow(
@@ -148,6 +149,73 @@ Since the Flow is evaluated only once, what you see is what you get. If the flow
 is missing something, it is likely defined in the wrong place.
 
 :::
+
+## Flow arguments
+
+Each flow function modifies the game state in some way. But how do you check the
+current state? The board state can simply be read by using the methods and
+properties on `game`, either ones that you've defined or the query functions,
+e.g. `game.first('deck')!.all(Card).length`. Using these you can access all the
+properties of the game and all the game elements within.
+
+You can also access the flow arguments in any flow function. The arguments
+provide the current values for the parts of the flow that are currently being
+evaluated. There are two main types of flow arguments:
+- loop variables
+- player actions
+
+While the flow is executing steps inside of loops and player actions, these
+values are provided to the each of these steps using the flow arguments, e.g.
+
+```ts
+  forEach({
+    name: "card",
+    collection: () => $.field.all(Card),
+    do: playerAction({
+      name: "choose",
+      actions: [
+        {
+          name: "chooseCard",
+          do: forLoop({
+            name: "tokens",
+            initial: 1,
+            next: tokens => tokens + 1,
+            while: tokens => tokens < 5
+            // highlight-next-line
+            do: ({ card, choose, tokens }) => {
+              // here we have access to 3 values from the 3 steps we're inside of:
+              // `card` will be the card being looped over in the list of Card's on the field
+              // `choose` will be the choices the player made when they made the `chooseCard` action
+              // `tokens` will be the value of the tokens loop, from 1 to 4.
+            }
+          })
+        },
+        "pass"
+      ]
+    }),
+  });
+```
+
+These arguments are also available for several of the properties in new flow
+steps. As just one example, the [`playerAction`](../api/modules#playeraction)
+has a `player` property that can be either a `Player` or a function that returns
+a `Player`. We can use the function form to access the flow arguments, if we
+need to check the current flow to decide who the starting player is, e.g.:
+
+```ts Sample flow
+  forEach({
+    name: 'player',
+    collection: () => [game.playerWithHighestScore(), game.playerWithMostCities()],
+    do: playerActions({
+      // Here 2 players get to vote, first the one with high score, then the player
+      // with the most cities. We've looped over the 2 players and then check the
+      // current player in the loop with the following:
+      // highlight-next-line
+      player: ({ player }) => player,
+      actions: ['vote', 'pass']
+    })
+  }),
+```
 
 ## Flow commands
 
@@ -518,4 +586,53 @@ Use e.g. `return` or `else` to control what executes, e.g.:
       game.doOtherStuff();
     },
   });
+```
+
+:::
+
+## Subflows
+
+Every game defines its main flow by calling
+[`game.defineFlow`](../api/classes/Game#defineflow). However, there can be more
+than one flow in a game. Additional flows are called "subflows" and are like
+subroutines in your game. Each subflow is given a unique name and at any point
+in the game, calling [`Do.subflow`](../api/modules#do) with the `name` of the
+subflow and any `args` you wish to pass to the subflow. Like with the [loop
+interruption](#loop-interruption) functions above, this does not throw or return
+from the current block and so the current block will evaluate any remaining
+statements. However, after doing so, game execution will jump to the new subflow
+and start at its beginning. When the subflow reaches the end, game execution
+will resume on the calling flow at the next step from the one that called the
+subflow.
+
+The args passed to the subflow become the part of the [flow
+arguments](#flow-arguments) in this subflow. The subflow does not have access to
+any other flow arguments from the calling flow unless they passed in.
+
+```ts
+  game.defineFlow(
+    whileLoop({
+      while: () => game.all(Token).length > 0,
+      do: eachPlayer({
+        name: 'player',
+        do: [
+          playerActions({ actions: ['discardTokens']}),
+          // if 5 or fewer tokens remain, perform the `voting` subflow
+          // before the next round of token discarding
+          // highlight-next-line
+          () => if (game.all(Token).length <= 5) Do.subflow('token-flow');
+        ]
+      })
+    )}),
+  );
+
+  game.defineSubflow(
+    'voting',
+    eachPlayer({
+      name: 'player',
+      do: playerActions({
+        actions: ['vote']
+      })
+    })
+  );
 ```
