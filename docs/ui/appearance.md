@@ -353,52 +353,46 @@ You may notice that by default the playing area starts as a perfect square and
 adjusting the size of the browser window causes the square to change size to be
 as large as it can be and still fit in the viewport. You can customize the
 aspect ratio of the playing area to something other than 1:1 (a square). This is
-done by adding a `boardSizes` function to the main
+done by adding `boardSizes` function to the main
 [`render`](../api/modules#render) function, e.g.:
 
 ```ts
   render({
-    boardSizes: () => ({
-      name: "standard",
-      aspectRatio: 4 / 3
-    })
-    ...
-  })
+    boardSizes: [{
+      name: 'standard',
+      aspectRatio: { min: 8 / 5, max: 2 / 1 },
+    }]
 ```
 
 The board size will always fill as much of the viewport on the player's device
-as it can while maintaining the specified aspect ratio.
+as it staying within the specified aspect ratio range.
 
 ## Responsive and mobile
 
 You can provide multiple aspect ratios and layouts for different screen sizes
 and device types. All of the layout API above can also be targetted to a
-particular screen size or device type. When you supply the `boardSizes` function
-above, you can also accept some parameters to provide different layouts. These
-parameters are:
-
-- `screenX` (the pixel width of the viewport)
-- `screenY` (the pixel width of the viewport)
-- `mobile` (`true` if using a mobile device)
-
-You can then supply different board sizes depending on these values, for example
-having a portrait or landscape version, or simply giving a different version for
-mobile devices, e.g.:
+particular screen size or device type. You can then supply different board sizes
+depending on these values, for example having a portrait or landscape version,
+or simply giving a different version for mobile devices. You can also specify
+how the board fits within the screen if the screen's aspect ratio is outside the
+provided range, e.g.:
 
 ```ts
   render({
-    boardSizes: (screenX, screenY, mobile) => {
-      if (mobile) return {
-        name: "mobile",
-        aspectRatio: 1 / 2
-      });
-      return {
-        name: "standard",
-        aspectRatio: 5 / 3
-      })
-    })
-    ...
-  });
+    boardSizes: [{
+      name: 'mobile',
+      mobile: true, // only use on mobile devices
+      // any aspect ratio within this range is allowed, whatever is closest to the device screen
+      aspectRatio: { max: 16 / 9, min: 22 / 10 },
+      orientation: 'landscape', // lock to landscape orientation
+    }, {
+      name: 'desktop',
+      desktop: true, // only use on desktop
+      aspectRatio: 8 / 5, // use this exact aspect ratio
+      // instead of fitting within the screen size and adding space on either side, instead
+      // stretch the board to fill the screen and use scrollbars as needed
+      scaling: 'scroll'
+    }]
 ```
 
 The name provided is then passed to the main `layout` function in the

@@ -9,7 +9,33 @@ imported directly and bring their own behavior and appearance, which can be
 customized. You can even subclass or just copy and edit these modules to create
 your own specialized components for your game.
 
-The only module is current the D6.
+## Flippable
+
+A Piece with two sides: front and back. When the Piece is hidden, the back is
+shown. When visible, the front is shown. When the visibility changes, the
+included CSS animates a 3d flip. The starter token game uses this for flipping
+the tokens to reveal their color, e.g.:
+
+```ts
+  import { Flippable } from '@boardzilla/core/components';
+
+  ...
+  // in the "ui/index.tsx" layout() method
+   Piece.appearance({
+      render: piece => (
+        <Flippable>
+          <Flippable.Front>{piece.name}</Flippable.Front>
+          <Flippable.Back></Flippable.Back>
+        </Flippable>
+      );
+    });
+
+  // The resultant DOM structure inside the Piece element in this case would be:
+    <div class="bz-flippable">
+      <div class="front">{piece.name}</div>
+      <div class="back"></div>
+    </div>
+```
 
 ## D6
 

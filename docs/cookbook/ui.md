@@ -61,22 +61,6 @@ render(setup, {
 });
 ```
 
-## Hiding Spaces
-
-To hide a `Space` make `render` equal `false` on the appearance:
-
-```ts
-$.discard.appearance({ render: false });
-```
-
-## Hide Space For Everyone But Me
-
-Often spaces only need to be visibile to a player if the `Space` is owned by that player. Thus you can hide everything else to reduce clutter. This example shows you how to hide every player's `hand` except for their own.
-
-```ts
-game.all("hand", { mine: false }).appearance({ render: false });
-```
-
 ## Drawers
 
 To turn a normal `Space` into a drawer that opens and closes to save space, you just need to apply a layout to it that looks similar to this:

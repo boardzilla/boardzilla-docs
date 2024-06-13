@@ -9,6 +9,12 @@ styles are included basic positioning and animation that are not intended to
 change. However all Boardzilla CSS is applied using a CSS `@layer` so that any
 CSS you provide will override these.
 
+:::info box-sizing
+
+All Boardzilla elements use `box-sizing: border-box` by default.
+
+:::
+
 ## DOM element reference
 
 Here you will find a list of all the elements and classes that can be targetted
@@ -145,7 +151,16 @@ the size of the element. This means that any CSS applied to the element can use
 Specific Spaces and Pieces of your board are rendered with this element. They
 always a class name of `Space` or `Piece` depending on the base type. They also
 have a class name matching the Typescript class of the element if it is
-subclassed.
+subclassed, e.g. a `Card` class that extends `Piece` with have CSS class names
+of both `Card` and `Piece`.
+
+This element can be targetted for any styles *except* `transform`. All styles,
+including `transform`, can freely be applied to *your* elements inside the
+Space/Piece that you supply in the
+[`appearance.render`](appearance#render). These elements all appear immediately
+inside this element. Note however, that if you wish to apply `z-index` layering
+for this element relative to other elements next to it, the `z-index` must be
+applied here.
 
 There are additional class names that may be present depending on circumstances,
 and are useful for targetting to customize appearance:
@@ -168,9 +183,6 @@ attributes, e.g.:
     data-number="1"
   >
 ```
-
-All JSX supplied in the [`appearance.render`](appearance#render) appears
-immediately inside this element.
 
 Also see [appearance](appearance#css).
 
